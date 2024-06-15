@@ -1,0 +1,52 @@
+@startuml
+
+class StradIAN {
+		
+}
+
+class Logger {
+		
+}
+
+class Exception {
+		
+}
+
+class Timer {
+		
+}
+
+abstract Portfolio {
+		-score_update(void)
+		-std::map<int, Asset> trd_assets
+		-std::map<MARKET, double> balance
+}
+
+abstract Asset {
+		+bool price_update(void)
+		+bool bid(double)
+		+bool ask(double)
+		+double value(void)
+		+std::string name
+		-double price
+		-double qnty
+}
+
+class Crypto {
+		-bool binanceBid(double)
+		-bool binanceAsk(double)
+}
+
+class Stock {
+		
+}
+
+
+Crypto ..|> Asset
+Stock ..|> Asset
+Asset "0..*" --> "1" Portfolio
+Portfolio --* StradIAN
+Logger -- StradIAN
+Exception -- StradIAN
+
+@enduml

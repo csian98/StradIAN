@@ -1,0 +1,47 @@
+#+TITLE: PMP.org
+#+AUTHOR: Jeong Hoon Choi
+
+* Project Management Plan
+Project Tagline
+- Created by: Jeong Hoon Choi, Project Manager
+- Created on: Apr 28, 2024
+| Developer       | Role |
+|-----------------+------|
+| Jeong Hoon Choi | PM   |
+
+** Introduction
+*** Project Name
+StradIAN
+*** Project Due Date
+TBD
+*** Project Description
+Finanical Assets Trading System
+
+** System Development Environment
+*** HW structure
+| SYSTEM   |         IP | OS         | HOST     | NOTE                  |
+|----------+------------+------------+----------+-----------------------|
+| Giovanni | 1.231.0.44 | Arch Linux | Giovanni | Nvidia 3060 installed |
+*** SW structure
+| SYSTEM   | PORT | NOTE |
+|----------+------+------|
+| MaridaDB |      |      |
+| Nvidia   |      |      |
+*** APIs
+| PROVIDER    | ID | TOKEN | NOTE |
+|-------------+----+-------+------|
+| Binance API |    |       |      |
+| UpBit API   |    |       |      |
+| Slack API   |    |       |      |
+
+** Requirements
+*** Functional Requirement
+- 
+*** Non-Functional Requirements
+- 
+
+** Project Architecture Design
+*** [[./model.puml][UML]]
+
+** Task Management
+*** [[./TM.org][Task Mangement Org]]
