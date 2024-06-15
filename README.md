@@ -12,7 +12,7 @@
 <br/>
 <div align="center">
 	<a href="https://github.com/csian98/stradian">
-		<img src="src/images/logo.png" alt="Logo" width="80" height="80">
+		<img src="images/logo.png" alt="Logo" width="80" height="80">
 	</a>
 	<h3 align="center">StradIAN</h3>	
 	<a href="mailto:csian7386@gmail.com"><img src="https://img.shields.io/badge/csian7386@gmail.com-grey?logo=Gmail"></a>
@@ -146,7 +146,7 @@ _For more examples, please refer to the [usages](https://github.com/csian98/stra
 - [ ] Feature 3
     - [ ] Nested Feature
 
-See the [open issues](https://github.com/csian98/stradian/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/csian98/StradIAN/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -164,7 +164,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Jeong Hoon (Sian) Choi - [@csian98](https://instagram.com/csian98) - [csian7386@gmail.com](mailto:csian7386@gmail.com)
 
-Project Link: [https://github.com/csian98/stradian](https://github.com/csian98/stradian)
+Project Link: [https://github.com/csian98/StradIAN](https://github.com/csian98/StradIAN)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -23,6 +23,7 @@
  */
 
 #include <vector>
+#include "stradian/exchange.h"
 
 #define OS_WINDOWS	0
 #define OS_LINUX	1
@@ -44,7 +45,13 @@
 int main(int argc, char* argv[]) {
 // 	std::terminate_handler default_terminate =
 //	std::set_terminate(&custom_terminate_fnct);
+	stradian::Exchange exchange;
+	exchange.start();
 
+	for (int i = 0; i < 10; ++i) {
+		exchange.buy_order(0, 0, 0);
+	}
+	exchange.stop();
     
 	return 0;
 }

@@ -1,8 +1,8 @@
 # ENV
 EXEC_TARGET := main
 EXEC_SRC := main.cpp
-LIB_TARGET := libsian.a
-#SHD_LIB_TARGET := libsian.so
+LIB_TARGET := libstradian.a
+#SHD_LIB_TARGET := libstradian.so
 CC := clang
 CXX := c++
 NVCC := nvcc
@@ -12,8 +12,8 @@ AR := ar
 # DIR_STRUCTURE
 BUILD_DIR := build
 SRC_DIR := src
-INC_DIR := /Users/csian/projects/sian/include /opt/homebrew/include
-LIB_DIR := /Users/csian/projects/sian/lib
+INC_DIR := /Users/csian/projects/sian/include /opt/homebrew/include /Users/csian/projects/stradian/include
+LIB_DIR := /Users/csian/projects/stradian/lib
 
 ifeq ($(shell which nvcc), )
 	SRCS := $(shell find $(SRC_DIR) -name "*.cpp" -or -name "*.c" -or -name "*.s")
@@ -33,7 +33,7 @@ CFLAGS := $(INC_FLAGS) -MMD -MP
 CXXFLAGS := -std=c++20 $(INC_FLAGS) -MMD -MP
 #SHD_CXXFLAGS := -std=c++20 $(INC_FLAGS) -MMD -MP -fPIC
 NVCCFLAGS := $(INC_FLAGS)
-LDFLAGS := -L/Users/csian/projects/sian/lib -lsian # -lssl -lcurl -lmariadbcpp
+LDFLAGS := -L/Users/csian/projects/sian/lib -lsian -L/Users/csian/projects/stradian/lib -lstradian # -lssl -lcurl -lmariadbcpp
 ARFLAGS := crs
 #SHD_LDFLAGS := -shared
 

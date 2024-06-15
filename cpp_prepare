@@ -1,0 +1,26 @@
+#!/bin/bash
+
+INCLUDEPATH="./include/stradian/"
+SRCPATH="./src/"
+EXAMPLEPATH="/Users/csian/projects/sian/example/"
+
+echo -n "Enter source file name (without extension): "
+read FILE
+echo -n "Cuda project (y/n): "
+read ISCUDA
+echo -n "Require hpp file (y/n): "
+read ISHPP
+
+if [ $ISCUDA == "n" ];
+then
+   cp $EXAMPLEPATH"sample.h" $INCLUDEPATH$FILE".h"
+   cp $EXAMPLEPATH"sample.cpp" $SRCPATH$FILE".cpp"
+else
+   cp $EXAMPLEPATH"sample_cuda.h" $INCLUDEPATH$FILE".h"
+   cp $EXAMPLEPATH"sample.cu" $SRCPATH$FILE".cu"
+fi
+
+if [ $ISHPP == "y" ];
+then
+cp $EXAMPLEPATH"sample.hpp" $INCLUDEPATH$FILE".hpp"
+fi
