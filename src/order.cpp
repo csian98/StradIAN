@@ -44,12 +44,12 @@ func:
 
 /* Data structures definition - struct & class */
 
-stradian::Order::Order(unsigned code, bool status,
+stradian::Order::Order(const std::string& symbol, bool status,
 					   double quantity, int priority)
-	: code(code), status(status), quantity(quantity), priority(priority) {}
+	: symbol(symbol), status(status), quantity(quantity), priority(priority) {}
 
-std::pair<unsigned, double> stradian::Order::get_item(void) const {
-	return std::make_pair(this->code, this->quantity);
+std::pair<std::string, double> stradian::Order::get_item(void) const {
+	return std::make_pair(this->symbol, this->quantity);
 }
 
 bool stradian::Order::opeartor() const {

@@ -44,10 +44,32 @@ func:
 
 /* Data structures definition - struct & class */
 
-stradian::Exception::Exception(const std::string& error_message) : error_message(error_message) {}
+stradian::Exception::Exception(const std::string& message) : message(message) {}
 
-const char* stradian::Exception::what(void) noexcept {
-	return this->error_message.c_str();
+const char* stradian::Exception::what(void) const noexcept {
+	return this->message.c_str();
+}
+
+stradian::Logger::Logger(const std::string& message,
+						 const std::filesystem::path& path)
+	: Exception(message), path(path) {}
+
+void stradian::Logger::write(std::string_view level) const {
+	std::ofstream fout(this->path, std::ios::app);
+	std::string time = this->local_time();
+	fout << "[" << time <<
+		"] (" << level << ") " << this->message << '\n';
+}
+
+const std::string stradian::Logger::local_time(void) const {
+    auto now = std::chrono::system_clock::now();
+	std::time_t t_now = std::chrono::system_clock::to_time_t(now);
+	tm* t_tm = std::localtime(&t_now);
+
+	char buffer[64];
+	std::strftime(buffer, sizeof(buffer),
+				  "%Y-%m-%d %H:%M:%S", t_tm);
+	return std::string(buffer);
 }
 
 /* Functions definition */

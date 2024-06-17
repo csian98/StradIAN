@@ -27,9 +27,18 @@
 
 #include <string>
 #include <string_view>
+#include <ios>
+#include <ostream>
+#include <fstream>
+#include <sstream>
 
 #include <execution>
 #include <stdexcept>
+#include <filesystem>
+
+#include <chrono>
+#include <ctime>
+
 
 #if __has_include(<iostream>)
 #include <iostream>
@@ -79,15 +88,30 @@ namespace stradian {
 	public:
 		Exception(const std::string&);
 
-		virtual const char* what(void) noexcept;
+		virtual const char* what(void) const noexcept override;
 		
-	private:
-		std::string error_message;
+	protected:
+		std::string message;
 	};
 
-	class ExchangeException : public Exception {};
-	
-    class MarketException : public Exception {};
+	class Logger final : public Exception {
+	public:
+		Logger(const std::string&,
+			   const std::filesystem::path& = "./var/unknown.log");
+		/*
+		  Log Level
+		  1) INFO
+		  2) WARN
+		  3) ERROR
+		  4) FATAL
+		 */
+		virtual void write(std::string_view level = "INFO") const;
+
+	private:
+		virtual const std::string local_time(void) const;
+		
+		std::filesystem::path path;
+	};
 }
 
 /* Functions declaration */

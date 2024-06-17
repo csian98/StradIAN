@@ -75,9 +75,9 @@ extern "C" {
 namespace stradian {
 	class Order {
 	public:
-		Order(unsigned, bool, double, int priority = 0);
+		Order(const std::string&, bool, double, int priority = 0);
 
-		std::pair<unsigned, double> get_item(void) const;
+		std::pair<std::string, double> get_item(void) const;
 
 		bool opeartor() const;
 		
@@ -86,7 +86,7 @@ namespace stradian {
 	private:
 		bool status;	// 0 for buy, 1 for sell
 		
-		unsigned code;
+		std::string symbol;
 
 		double quantity;
 		

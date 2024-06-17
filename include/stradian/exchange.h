@@ -26,6 +26,8 @@
 /* Include */
 
 #include <queue>
+#include <map>
+#include <unordered_map>
 
 #include <thread>
 #include <atomic>
@@ -34,7 +36,6 @@
 #include <future>
 
 #include "stradian/order.h"
-#include "stradian/exception.h"
 
 #if __has_include(<iostream>)
 #include <iostream>
@@ -86,15 +87,28 @@ namespace stradian {
 
 		virtual ~Exchange(void) noexcept;
 		
-		virtual void start(void) const;
+		virtual void start(void);
 
 		virtual void stop(void);
 		
-	    virtual void buy_order(unsigned, double, int priority = 0);
+	    virtual void buy_order(const std::string&, double, int priority = 0);
 
-		virtual void sell_order(unsigned, double, int priority = 0);
+		virtual void sell_order(const std::string&, double, int priority = 0);
 
 	protected:
+		virtual void update(void) = 0;
+
+		virtual void buy(Order&) = 0;
+
+		virtual void sell(Order&) = 0;
+
+		virtual void handler(const Order&) = 0;
+		
+		std::map<std::string, double> assets;
+
+	private:
+		virtual void thread_function(void);
+		
 		std::priority_queue<Order> order;
 
 		std::thread m_thread;
@@ -102,10 +116,6 @@ namespace stradian {
 		std::mutex mtx;
 
 		std::condition_variable cond_var;
-		
-		virtual void handle_function(void);
-
-		virtual void handler(const Order&) const;
 
 		std::atomic<bool> status;
 	};

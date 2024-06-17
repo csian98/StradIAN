@@ -12,7 +12,7 @@ AR := ar
 # DIR_STRUCTURE
 BUILD_DIR := build
 SRC_DIR := src
-INC_DIR := /Users/csian/projects/sian/include /opt/homebrew/include /Users/csian/projects/stradian/include
+INC_DIR := /opt/homebrew/include /Users/csian/projects/stradian/include
 LIB_DIR := /Users/csian/projects/stradian/lib
 
 ifeq ($(shell which nvcc), )
@@ -33,7 +33,7 @@ CFLAGS := $(INC_FLAGS) -MMD -MP
 CXXFLAGS := -std=c++20 $(INC_FLAGS) -MMD -MP
 #SHD_CXXFLAGS := -std=c++20 $(INC_FLAGS) -MMD -MP -fPIC
 NVCCFLAGS := $(INC_FLAGS)
-LDFLAGS := -L/Users/csian/projects/sian/lib -lsian -L/Users/csian/projects/stradian/lib -lstradian # -lssl -lcurl -lmariadbcpp
+LDFLAGS := -L/Users/csian/projects/stradian/lib -lstradian -L/opt/homebrew/lib -lssl -lcrypto # -lcurl -lmariadbcpp
 ARFLAGS := crs
 #SHD_LDFLAGS := -shared
 

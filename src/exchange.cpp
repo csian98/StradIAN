@@ -52,50 +52,49 @@ stradian::Exchange::~Exchange(void) noexcept {
 	}
 }
 
-void stradian::Exchange::start(void) const {
-//	this->m_thread = std::move(std::thread(&Exchange::handle_function, this));
+void stradian::Exchange::start(void) {
+	this->m_thread = std::move(std::thread(&Exchange::thread_function, this));
 }
 
 void stradian::Exchange::stop(void) {
 	this->status.store(false);
+
+	this->cond_var.notify_one();
 }
 
-void stradian::Exchange::buy_order(unsigned code, double quantity,
+void stradian::Exchange::buy_order(const std::string& symbol, double quantity,
 								   int priority) {
-	std::unique_lock lck(this->mtx);
-	order.push(Order(code, 0, quantity, priority));
-	lck.unlock();
+	{
+		std::unique_lock lck(this->mtx);
+		order.push(Order(symbol, 0, quantity, priority));
+	}
 	
 	this->cond_var.notify_one();
 }
 
-void stradian::Exchange::sell_order(unsigned code, double quantity,
+void stradian::Exchange::sell_order(const std::string& symbol, double quantity,
 									int priority) {
-	std::unique_lock lck(this->mtx);
-	order.push(Order(code, 1, quantity, priority));
-	lck.unlock();
+	{
+		std::unique_lock lck(this->mtx);
+		order.push(Order(symbol, 1, quantity, priority));
+	}
 	
 	this->cond_var.notify_one();
 }
 
-void stradian::Exchange::handle_function(void) {
+void stradian::Exchange::thread_function(void) {
     this->status.store(true);
 
     do {
-		std::unique_lock lck(this->mtx);
-		this->cond_var.wait(lck);
-
-	    if (!this->order.empty()) {
+		{
+			std::unique_lock lck(this->mtx);
+			this->cond_var.wait(lck, [this](){
+				return !this->order.empty();
+			});
 			this->handler(this->order.top());
 			this->order.pop();
 		}
-
-	    lck.unlock();
 	} while (this->status);
-}
-#include <iostream>
-void stradian::Exchange::handler(const Order&) const {
-	std::cout << "This is for test" << std::endl;
 }
 
 /* Functions definition */

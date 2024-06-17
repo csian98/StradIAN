@@ -26,6 +26,7 @@
 /* Include */
 
 #include "stradian/exchange.h"
+#include "stradian/exception.h"
 
 #if __has_include(<iostream>)
 #include <iostream>
