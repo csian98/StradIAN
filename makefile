@@ -33,7 +33,7 @@ CFLAGS := $(INC_FLAGS) -MMD -MP
 CXXFLAGS := -std=c++20 $(INC_FLAGS) -MMD -MP
 #SHD_CXXFLAGS := -std=c++20 $(INC_FLAGS) -MMD -MP -fPIC
 NVCCFLAGS := $(INC_FLAGS)
-LDFLAGS := -L/Users/csian/projects/stradian/lib -lstradian -L/opt/homebrew/lib -lssl -lcrypto # -lcurl -lmariadbcpp
+LDFLAGS := -L/Users/csian/projects/stradian/lib -lstradian -L/opt/homebrew/lib -lssl -lcrypto -lcurl # -lmariadbcpp
 ARFLAGS := crs
 #SHD_LDFLAGS := -shared
 

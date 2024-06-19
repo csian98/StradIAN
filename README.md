@@ -217,3 +217,5 @@ Project Link: [https://github.com/csian98/StradIAN](https://github.com/csian98/S
 
 [keras-shield]: https://img.shields.io/badge/Keras-%23D00000.svg?style=for-the-badge&logo=Keras&logoColor=white
 [pytorch-shield]: https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white
+
+[binance-url]: https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api

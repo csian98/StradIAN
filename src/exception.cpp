@@ -51,14 +51,37 @@ const char* stradian::Exception::what(void) const noexcept {
 }
 
 stradian::Logger::Logger(const std::string& message,
-						 const std::filesystem::path& path)
-	: Exception(message), path(path) {}
+						 bool slack)
+	: Exception(message), use_slack(slack) {}
 
-void stradian::Logger::write(std::string_view level) const {
-	std::ofstream fout(this->path, std::ios::app);
+void stradian::Logger::log(LOGLEVEL level) const {
+	std::string level_str;
+    switch (level) {
+	case LOGLEVEL::INFO:
+	    level_str = "INFO";
+		break;
+	case LOGLEVEL::WARN:
+		level_str = "WARN";
+		break;
+	case LOGLEVEL::ERROR:
+		level_str = "ERROR";
+		break;
+	case LOGLEVEL::FATAL:
+		level_str = "FATAL";
+		break;
+	};
+
+	std::stringstream str;
 	std::string time = this->local_time();
-	fout << "[" << time <<
-		"] (" << level << ") " << this->message << '\n';
+	str << "[" << time <<
+		"] (" << level_str << ") " << this->message << '\n';
+
+	std::ofstream fout(this->path, std::ios::app);
+	fout << str.str();
+	fout.close();
+
+	if (this->use_slack)
+		this->slack.write(str.str());
 }
 
 const std::string stradian::Logger::local_time(void) const {
@@ -74,14 +97,7 @@ const std::string stradian::Logger::local_time(void) const {
 
 /* Functions definition */
 
-/*
-
-void swap(Sample& lhs, Sample& rhs) noexcept {
-	// shallow copy
-    // using std::swap;
-}
-
-*/
+stradian::Slack stradian::Logger::slack;
 
 #endif // OS dependency
 

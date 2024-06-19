@@ -54,8 +54,10 @@ stradian::BinanceExchange::BinanceExchange(void)
 
 	this->api_key = BinanceExchange::read_file(this->key_path);
 	this->secret_key = BinanceExchange::read_file(this->secret_path);
-
+	//
 	this->connect();
+	
+	this->update();
 }
 
 
@@ -85,8 +87,7 @@ void stradian::BinanceExchange::connect(void) {
 				req.set(boost::beast::http::field::user_agent,
 						std::string(BOOST_BEAST_VERSION_STRING) +
 						" websocket-client-coro");
-			}
-			)
+			})
 		);
 	this->ws.handshake(this->host + ":" + std::to_string(ep.port()), this->target);
 }
@@ -98,7 +99,6 @@ void stradian::BinanceExchange::disconnect(void) {
 }
 
 void stradian::BinanceExchange::update(void) {
-
 	boost::json::value doc = {
 		{"id", stradian::BinanceExchange::get_id()},
 		{"method", "account.status"},
@@ -110,18 +110,38 @@ void stradian::BinanceExchange::update(void) {
 
 	stradian::BinanceExchange::signature(doc);
 
-	this->ws.write(boost::asio::buffer(boost::json::serialize(doc)));
+	auto result = this->send(doc);
 
-	boost::beast::flat_buffer buffer;
-	this->ws.read(buffer);
-	std::cout << boost::beast::make_printable(buffer.data()) << std::endl;
+	auto& object = result.get_object();
+
+	auto unquote = [](std::string str) {
+		return str.substr(1, str.size() - 2);
+	};
+	
+	for (const auto& ptr : object.at("result").at("balances").as_array()) {
+		auto& object = ptr.as_object();
+		std::string symbol =
+			unquote(boost::json::serialize(object.at("asset")));
+		double free = std::stod(
+			unquote(boost::json::serialize(object.at("free"))));
+		double locked = std::stod(
+			unquote(boost::json::serialize(object.at("locked"))));
+		
+		if (free + locked > 0.0) {
+			this->assets.insert(std::make_pair(symbol,
+											   std::make_pair(free, locked)));
+		}
+	}
 }
 
 void stradian::BinanceExchange::buy(Order& order) {
+	auto [symbol, quantity] = order.get_item();
 	
+    
 }
 
 void stradian::BinanceExchange::sell(Order& order) {
+	auto [symbol, qunatity] = order.get_item();
 	
 }
 
@@ -129,7 +149,34 @@ void stradian::BinanceExchange::handler(const Order& order) {
 	
 }
 
-std::string stradian::BinanceExchange::read_file(const std::string& path) {
+boost::json::value stradian::BinanceExchange::send(const boost::json::value& doc) {
+	this->ws.write(boost::asio::buffer(boost::json::serialize(doc)));
+
+	boost::beast::flat_buffer buffer;
+	this->ws.read(buffer);
+
+	std::string data(boost::asio::buffers_begin(buffer.data()),
+					 boost::asio::buffers_end(buffer.data()));
+
+	return boost::json::parse(data);
+}
+
+bool stradian::BinanceExchange::ping(void) {
+	boost::json::value doc = {
+		{"id", stradian::BinanceExchange::get_id()},
+		{"method", "ping"}
+	};
+
+    auto result = this->send(doc);
+
+	if (result.at("status") == 200) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+std::string stradian::BinanceExchange::read_file(const std::filesystem::path& path) {
 	std::stringstream str;
 	
 	std::ifstream fp;
@@ -143,7 +190,7 @@ std::string stradian::BinanceExchange::read_file(const std::string& path) {
 std::string stradian::BinanceExchange::get_id(void) {
 	std::stringstream str;
 	stradian::BinanceExchange::id++;
-	str << std::setfill('0') << std::setw(8) << stradian::BinanceExchange::id;
+	str << "stradian" << std::setfill('0') << std::setw(8) << stradian::BinanceExchange::id;
 	return str.str();
 }
 
@@ -157,7 +204,7 @@ void stradian::BinanceExchange::signature(boost::json::value& json) const {
 	auto& object = json.get_object();
 
 	std::map<std::string, std::string> params;
-	for (auto& ptr : object.at("params").as_object()) {
+	for (const auto& ptr : object.at("params").as_object()) {
 		params.insert(std::make_pair(ptr.key(),
 									 boost::json::serialize(ptr.value())));
 	}

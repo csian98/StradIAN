@@ -33,10 +33,12 @@
 #include <iomanip>
 
 #include <chrono>
+#include <filesystem>
 #include <map>
 
 #include <openssl/hmac.h>
 
+#include <boost/asio.hpp>
 #include <boost/beast.hpp>
 #include <boost/beast/ssl.hpp>
 #include <boost/json.hpp>
@@ -108,7 +110,11 @@ namespace stradian {
 
 		virtual void handler(const Order&) override;
 
-		static std::string read_file(const std::string&);
+		virtual boost::json::value send(const boost::json::value&);
+
+		virtual bool ping(void);
+
+		static std::string read_file(const std::filesystem::path&);
 		
 		static std::string get_id(void);
 
@@ -120,11 +126,11 @@ namespace stradian {
 
 		std::string api_key, secret_key;
 
-		const std::string key_path = "etc/key/binance_api_key";
+		const std::filesystem::path key_path = "etc/key/binance_api_key";
 
-		const std::string secret_path = "etc/key/binance_api_secret";
+		const std::filesystem::path secret_path = "etc/key/binance_api_secret";
 
-		const std::string host = "testnet.binance.vision";
+		const std::string host = "ws-api.binance.com";
 		
 		std::string port = "443";
 

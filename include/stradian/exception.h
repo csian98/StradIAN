@@ -39,6 +39,8 @@
 #include <chrono>
 #include <ctime>
 
+#include "stradian/slack.h"
+
 
 #if __has_include(<iostream>)
 #include <iostream>
@@ -94,23 +96,27 @@ namespace stradian {
 		std::string message;
 	};
 
+	enum class LOGLEVEL {
+		INFO,
+		WARN,
+		ERROR,
+		FATAL
+	};
+
 	class Logger final : public Exception {
 	public:
-		Logger(const std::string&,
-			   const std::filesystem::path& = "./var/unknown.log");
-		/*
-		  Log Level
-		  1) INFO
-		  2) WARN
-		  3) ERROR
-		  4) FATAL
-		 */
-		virtual void write(std::string_view level = "INFO") const;
+		Logger(const std::string&, bool slack = false);
+
+		virtual void log(LOGLEVEL level = LOGLEVEL::INFO) const;
 
 	private:
 		virtual const std::string local_time(void) const;
 		
-		std::filesystem::path path;
+		const std::filesystem::path path = "./var/log/stradian.log";
+
+		static Slack slack;
+
+		bool use_slack;
 	};
 }
 

@@ -104,7 +104,7 @@ namespace stradian {
 
 		virtual void handler(const Order&) = 0;
 		
-		std::map<std::string, double> assets;
+		std::map<std::string, std::pair<double, double>> assets;
 
 	private:
 		virtual void thread_function(void);
