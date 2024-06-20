@@ -62,23 +62,51 @@ void stradian::Exchange::stop(void) {
 	this->cond_var.notify_one();
 }
 
-void stradian::Exchange::buy_order(const std::string& symbol, double quantity,
-								   int priority) {
+void stradian::Exchange::buy_order(const std::string& symbol,
+								   double quantity, int priority) {
 	{
 		std::unique_lock lck(this->mtx);
-		order.push(Order(symbol, 0, quantity, priority));
+		Order rcp(stradian::ORDERCODE::BUYSELL, priority);
+		rcp.market_order(symbol, true, quantity);
+		this->order.push(rcp);
 	}
 	
 	this->cond_var.notify_one();
 }
 
-void stradian::Exchange::sell_order(const std::string& symbol, double quantity,
-									int priority) {
+void stradian::Exchange::buy_order(const std::string& symbol,
+								   double price, double quantity, int priority) {
 	{
 		std::unique_lock lck(this->mtx);
-		order.push(Order(symbol, 1, quantity, priority));
+		Order rcp(stradian::ORDERCODE::BUYSELL, priority);
+		rcp.limit_order(symbol, true, price, quantity);
+		this->order.push(rcp);
+	}
+
+	this->cond_var.notify_one();
+}
+
+void stradian::Exchange::sell_order(const std::string& symbol,
+									double quantity, int priority) {
+	{
+		std::unique_lock lck(this->mtx);
+		Order rcp(stradian::ORDERCODE::BUYSELL, priority);
+	    rcp.market_order(symbol, false, quantity);
+		this->order.push(rcp);
 	}
 	
+	this->cond_var.notify_one();
+}
+
+void stradian::Exchange::sell_order(const std::string& symbol,
+									double price, double quantity, int priority) {
+	{
+		std::unique_lock lck(this->mtx);
+		Order rcp(stradian::ORDERCODE::BUYSELL, priority);
+		rcp.limit_order(symbol, false, price, quantity);
+		this->order.push(rcp);
+	}
+
 	this->cond_var.notify_one();
 }
 

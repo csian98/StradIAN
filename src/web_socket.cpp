@@ -1,12 +1,13 @@
 /**
- * @file		sample.cpp
- * @brief		
+ * @file		web_socket.cpp
+ * @brief		web socket for stradian
  * @author		Jeong Hoon (Sian) Choi
  * @version		1.0.0
- * @date		2024-04-03
+ * @date		2024-06-19
  */
 
-#include "sample.h"
+#include "stradian/web_socket.h"
+#include <boost/json/src.hpp>
 
 /* C & CPP */
 /*
@@ -44,33 +45,60 @@ func:
 
 /* Data structures definition - struct & class */
 
-/*
-
-Sample::Sample(const Sample& src) {
-	// Deep Copy
+stradian::WebSocket::WebSocket(const std::string& host,
+							   const std::string& port,
+							   const std::string& target)
+	: ctx(boost::asio::ssl::context::sslv23_client), ws(ioc, ctx),
+	  host(host), port(port), target(target) {
+	this->ctx.set_default_verify_paths();
+	this->connect();
 }
 
-Sample& Sample::operator=(const Sample& src) {
-	if(this == &src) {
-		return *this;
+stradian::WebSocket::~WebSocket(void) noexcept {
+	this->disconnect();
+}
+
+void stradian::WebSocket::connect(void) {
+	boost::asio::ip::tcp::resolver resolver(this->ioc);
+	auto const results = resolver.resolve(this->host, this->port);
+	auto& raw = boost::beast::get_lowest_layer(this->ws);
+	auto ep = boost::asio::connect(raw, results);
+
+	if (!SSL_set_tlsext_host_name(this->ws.next_layer().native_handle(), this->host.c_str())) {
+		throw boost::system::system_error(
+			::ERR_get_error(), boost::asio::error::get_ssl_category()
+			);
 	}
-	
-	Sample temp(src);
-	swap(*this, temp);
-	return *this;
+	this->ws.next_layer().handshake(boost::asio::ssl::stream_base::client);
+
+	this->ws.set_option(
+		boost::beast::websocket::stream_base::decorator(
+			[](boost::beast::websocket::request_type& req) {
+				req.set(boost::beast::http::field::user_agent,
+						std::string(BOOST_BEAST_VERSION_STRING) +
+						" websocket-client-coro");
+			})
+		);
+
+	this->ws.handshake(this->host + ":" +std::to_string(ep.port()), this->target);
 }
 
-Sample::Sample(Sample&& src) noexcept : Sample() {
-	swap(*this, src);
+void stradian::WebSocket::disconnect(void) {
+	this->ws.close(
+		boost::beast::websocket::close_code::normal
+		);
 }
 
-Sample& Sample::operator=(Sample&& src) noexcept {
-	Sample temp(std::move(src));
-	swap(*this, temp);
-	return *this;
-}
+boost::json::value stradian::WebSocket::request(const boost::json::value& req) {
+	this->ws.write(boost::asio::buffer(boost::json::serialize(req)));
 
-*/
+	boost::beast::flat_buffer buffer;
+	this->ws.read(buffer);
+
+	std::string res(boost::asio::buffers_begin(buffer.data()),
+					boost::asio::buffers_end(buffer.data()));
+	return std::move(boost::json::parse(res));
+}
 
 /* Functions definition */
 

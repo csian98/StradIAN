@@ -72,6 +72,11 @@ extern "C" {
 /* Data structures declaration - struct & class */
 
 namespace stradian {
+	enum class MARKETCODE {
+		STOCK,
+		BLOCKCHAIN
+	};
+	
 	class Market {
 	public:
 

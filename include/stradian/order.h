@@ -26,6 +26,9 @@
 /* Include */
 
 #include <utility>
+#include <string>
+#include <string_view>
+#include <sstream>
 
 #include "stradian/exception.h"
 
@@ -73,28 +76,63 @@ extern "C" {
 /* Data structures declaration - struct & class */
 
 namespace stradian {
-	class Order {
-	public:
-		Order(const std::string&, bool, double, int priority = 0);
+	enum class ORDERCODE {
+		STATUS,
+		BUYSELL,
+	};
+	
+	/*
+	 *  #STATUS
+	 *
+	 *  #BUYSELL
+	 *  	MARKET ORDER ( price < 0.0 )
+	 *		- bool is_buy
+	 *		- double quantity
+	 *		
+	 *		LIMIT ORDER ( price > 0.0 )
+	 *		- bool is_buy
+	 *		- double price
+	 *		- double quantity
+	 *
+	 */
+	
+	struct Order {
+		Order(ORDERCODE, unsigned int priority = 0);
 
-		std::pair<std::string, double> get_item(void) const;
+		void market_order(const std::string&,
+						  bool, double);
 
-		bool opeartor() const;
+		void limit_order(const std::string&,
+						 bool, double, double);
 		
-		bool operator<(const Order&) const;
-		
-	private:
-		bool status;	// 0 for buy, 1 for sell
+		ORDERCODE ordercode;
+
+		unsigned int priority;
 		
 		std::string symbol;
 
-		double quantity;
+		// STATUS
+
+		// BUYSELL
+		bool is_buy = false;
 		
-		int priority = 0;	// high priority takes precedence
+		double quantity = 0.0;
+		
+		double price = -1.0;
+
+		bool operator<(const Order&) const;
+
+		template <typename T>
+		static std::string to_string_with_precision(const T, const int n = 8);
 	};
 }
 
 /* Functions declaration */
+
+namespace stradian {
+	template <typename T>
+	std::string to_string_with_precision(const T, const int n = 8);
+}
 
 /*
 #ifdef __cplusplus
@@ -105,6 +143,6 @@ namespace stradian {
 #endif // OS dependency
 
 /* Inline & Template Define Header */
-//#include "sample.hpp"
+#include "stradian/order.hpp"
 
 #endif // Header duplicate

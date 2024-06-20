@@ -1,289 +1,4 @@
 build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
-  /opt/homebrew/include/boost/json/src.hpp \
-  /opt/homebrew/include/boost/json.hpp \
-  /opt/homebrew/include/boost/json/detail/config.hpp \
-  /opt/homebrew/include/boost/config.hpp \
-  /opt/homebrew/include/boost/config/user.hpp \
-  /opt/homebrew/include/boost/config/detail/select_compiler_config.hpp \
-  /opt/homebrew/include/boost/config/compiler/clang.hpp \
-  /opt/homebrew/include/boost/config/compiler/clang_version.hpp \
-  /opt/homebrew/include/boost/config/detail/select_stdlib_config.hpp \
-  /opt/homebrew/include/boost/config/stdlib/libcpp.hpp \
-  /opt/homebrew/include/boost/config/detail/select_platform_config.hpp \
-  /opt/homebrew/include/boost/config/platform/macos.hpp \
-  /opt/homebrew/include/boost/config/detail/posix_features.hpp \
-  /opt/homebrew/include/boost/config/detail/suffix.hpp \
-  /opt/homebrew/include/boost/assert.hpp \
-  /opt/homebrew/include/boost/static_assert.hpp \
-  /opt/homebrew/include/boost/detail/workaround.hpp \
-  /opt/homebrew/include/boost/config/workaround.hpp \
-  /opt/homebrew/include/boost/throw_exception.hpp \
-  /opt/homebrew/include/boost/exception/exception.hpp \
-  /opt/homebrew/include/boost/assert/source_location.hpp \
-  /opt/homebrew/include/boost/cstdint.hpp \
-  /opt/homebrew/include/boost/json/array.hpp \
-  /opt/homebrew/include/boost/json/kind.hpp \
-  /opt/homebrew/include/boost/json/string_view.hpp \
-  /opt/homebrew/include/boost/core/detail/string_view.hpp \
-  /opt/homebrew/include/boost/core/enable_if.hpp \
-  /opt/homebrew/include/boost/core/detail/is_same.hpp \
-  /opt/homebrew/include/boost/json/pilfer.hpp \
-  /opt/homebrew/include/boost/json/storage_ptr.hpp \
-  /opt/homebrew/include/boost/container/pmr/polymorphic_allocator.hpp \
-  /opt/homebrew/include/boost/move/detail/type_traits.hpp \
-  /opt/homebrew/include/boost/move/detail/config_begin.hpp \
-  /opt/homebrew/include/boost/move/detail/workaround.hpp \
-  /opt/homebrew/include/boost/move/detail/meta_utils.hpp \
-  /opt/homebrew/include/boost/move/detail/meta_utils_core.hpp \
-  /opt/homebrew/include/boost/move/detail/addressof.hpp \
-  /opt/homebrew/include/boost/move/detail/config_end.hpp \
-  /opt/homebrew/include/boost/move/utility_core.hpp \
-  /opt/homebrew/include/boost/move/core.hpp \
-  /opt/homebrew/include/boost/container/detail/dispatch_uses_allocator.hpp \
-  /opt/homebrew/include/boost/container/detail/config_begin.hpp \
-  /opt/homebrew/include/boost/container/detail/workaround.hpp \
-  /opt/homebrew/include/boost/container/allocator_traits.hpp \
-  /opt/homebrew/include/boost/container/container_fwd.hpp \
-  /opt/homebrew/include/boost/container/detail/std_fwd.hpp \
-  /opt/homebrew/include/boost/move/detail/std_ns_begin.hpp \
-  /opt/homebrew/include/boost/move/detail/std_ns_end.hpp \
-  /opt/homebrew/include/boost/container/detail/mpl.hpp \
-  /opt/homebrew/include/boost/intrusive/detail/mpl.hpp \
-  /opt/homebrew/include/boost/intrusive/detail/config_begin.hpp \
-  /opt/homebrew/include/boost/intrusive/detail/config_end.hpp \
-  /opt/homebrew/include/boost/container/detail/config_end.hpp \
-  /opt/homebrew/include/boost/container/detail/type_traits.hpp \
-  /opt/homebrew/include/boost/container/detail/placement_new.hpp \
-  /opt/homebrew/include/boost/intrusive/pointer_traits.hpp \
-  /opt/homebrew/include/boost/intrusive/detail/workaround.hpp \
-  /opt/homebrew/include/boost/intrusive/pointer_rebind.hpp \
-  /opt/homebrew/include/boost/move/detail/pointer_element.hpp \
-  /opt/homebrew/include/boost/intrusive/detail/has_member_function_callable_with.hpp \
-  /opt/homebrew/include/boost/move/detail/fwd_macros.hpp \
-  /opt/homebrew/include/boost/container/uses_allocator.hpp \
-  /opt/homebrew/include/boost/container/uses_allocator_fwd.hpp \
-  /opt/homebrew/include/boost/container/detail/addressof.hpp \
-  /opt/homebrew/include/boost/container/detail/is_pair.hpp \
-  /opt/homebrew/include/boost/container/detail/variadic_templates_tools.hpp \
-  /opt/homebrew/include/boost/container/new_allocator.hpp \
-  /opt/homebrew/include/boost/container/throw_exception.hpp \
-  /opt/homebrew/include/boost/container/pmr/memory_resource.hpp \
-  /opt/homebrew/include/boost/container/pmr/global_resource.hpp \
-  /opt/homebrew/include/boost/container/detail/auto_link.hpp \
-  /opt/homebrew/include/boost/config/auto_link.hpp \
-  /opt/homebrew/include/boost/json/memory_resource.hpp \
-  /opt/homebrew/include/boost/json/is_deallocate_trivial.hpp \
-  /opt/homebrew/include/boost/json/detail/shared_resource.hpp \
-  /opt/homebrew/include/boost/json/detail/default_resource.hpp \
-  /opt/homebrew/include/boost/json/detail/array.hpp \
-  /opt/homebrew/include/boost/json/value.hpp \
-  /opt/homebrew/include/boost/json/object.hpp \
-  /opt/homebrew/include/boost/json/detail/object.hpp \
-  /opt/homebrew/include/boost/json/detail/value.hpp \
-  /opt/homebrew/include/boost/json/fwd.hpp \
-  /opt/homebrew/include/boost/json/set_pointer_options.hpp \
-  /opt/homebrew/include/boost/json/string.hpp \
-  /opt/homebrew/include/boost/json/detail/digest.hpp \
-  /opt/homebrew/include/boost/json/detail/except.hpp \
-  /opt/homebrew/include/boost/json/error.hpp \
-  /opt/homebrew/include/boost/json/system_error.hpp \
-  /opt/homebrew/include/boost/json/result_for.hpp \
-  /opt/homebrew/include/boost/system/result.hpp \
-  /opt/homebrew/include/boost/system/errc.hpp \
-  /opt/homebrew/include/boost/system/detail/errc.hpp \
-  /opt/homebrew/include/boost/system/is_error_condition_enum.hpp \
-  /opt/homebrew/include/boost/system/detail/cerrno.hpp \
-  /opt/homebrew/include/boost/system/detail/error_code.hpp \
-  /opt/homebrew/include/boost/system/is_error_code_enum.hpp \
-  /opt/homebrew/include/boost/system/detail/error_category.hpp \
-  /opt/homebrew/include/boost/system/detail/config.hpp \
-  /opt/homebrew/include/boost/system/detail/error_condition.hpp \
-  /opt/homebrew/include/boost/system/detail/generic_category.hpp \
-  /opt/homebrew/include/boost/system/detail/generic_category_message.hpp \
-  /opt/homebrew/include/boost/system/detail/enable_if.hpp \
-  /opt/homebrew/include/boost/system/detail/is_same.hpp \
-  /opt/homebrew/include/boost/system/detail/append_int.hpp \
-  /opt/homebrew/include/boost/system/detail/snprintf.hpp \
-  /opt/homebrew/include/boost/system/detail/system_category.hpp \
-  /opt/homebrew/include/boost/system/detail/system_category_impl.hpp \
-  /opt/homebrew/include/boost/system/detail/system_category_message.hpp \
-  /opt/homebrew/include/boost/system/api_config.hpp \
-  /opt/homebrew/include/boost/system/detail/interop_category.hpp \
-  /opt/homebrew/include/boost/system/detail/std_category.hpp \
-  /opt/homebrew/include/boost/system/detail/error_category_impl.hpp \
-  /opt/homebrew/include/boost/system/detail/std_category_impl.hpp \
-  /opt/homebrew/include/boost/system/detail/mutex.hpp \
-  /opt/homebrew/include/boost/system/system_error.hpp \
-  /opt/homebrew/include/boost/variant2/variant.hpp \
-  /opt/homebrew/include/boost/mp11.hpp \
-  /opt/homebrew/include/boost/mp11/list.hpp \
-  /opt/homebrew/include/boost/mp11/integral.hpp \
-  /opt/homebrew/include/boost/mp11/version.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_value.hpp \
-  /opt/homebrew/include/boost/mp11/detail/config.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_list.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_list_v.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_is_list.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_is_value_list.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_front.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_rename.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_defer.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_append.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_count.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_plus.hpp \
-  /opt/homebrew/include/boost/mp11/utility.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_fold.hpp \
-  /opt/homebrew/include/boost/mp11/algorithm.hpp \
-  /opt/homebrew/include/boost/mp11/set.hpp \
-  /opt/homebrew/include/boost/mp11/function.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_min_element.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_void.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_copy_if.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_remove_if.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_map_find.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_with_index.hpp \
-  /opt/homebrew/include/boost/mp11/integer_sequence.hpp \
-  /opt/homebrew/include/boost/mp11/map.hpp \
-  /opt/homebrew/include/boost/mp11/bind.hpp \
-  /opt/homebrew/include/boost/mp11/tuple.hpp \
-  /opt/homebrew/include/boost/system/error_code.hpp \
-  /opt/homebrew/include/boost/system/error_category.hpp \
-  /opt/homebrew/include/boost/system/error_condition.hpp \
-  /opt/homebrew/include/boost/system/generic_category.hpp \
-  /opt/homebrew/include/boost/system/system_category.hpp \
-  /opt/homebrew/include/boost/system/detail/throws.hpp \
-  /opt/homebrew/include/boost/json/impl/error.hpp \
-  /opt/homebrew/include/boost/json/detail/string_impl.hpp \
-  /opt/homebrew/include/boost/json/impl/string.hpp \
-  /opt/homebrew/include/boost/json/value_ref.hpp \
-  /opt/homebrew/include/boost/json/detail/impl/array.hpp \
-  /opt/homebrew/include/boost/json/impl/array.hpp \
-  /opt/homebrew/include/boost/json/impl/object.hpp \
-  /opt/homebrew/include/boost/json/impl/value.hpp \
-  /opt/homebrew/include/boost/json/impl/value_ref.hpp \
-  /opt/homebrew/include/boost/json/basic_parser.hpp \
-  /opt/homebrew/include/boost/json/parse_options.hpp \
-  /opt/homebrew/include/boost/json/detail/stack.hpp \
-  /opt/homebrew/include/boost/json/detail/stream.hpp \
-  /opt/homebrew/include/boost/json/detail/utf8.hpp \
-  /opt/homebrew/include/boost/endian/conversion.hpp \
-  /opt/homebrew/include/boost/endian/detail/endian_reverse.hpp \
-  /opt/homebrew/include/boost/endian/detail/integral_by_size.hpp \
-  /opt/homebrew/include/boost/endian/detail/intrinsic.hpp \
-  /opt/homebrew/include/boost/endian/detail/is_scoped_enum.hpp \
-  /opt/homebrew/include/boost/endian/detail/is_integral.hpp \
-  /opt/homebrew/include/boost/endian/detail/static_assert.hpp \
-  /opt/homebrew/include/boost/endian/detail/endian_load.hpp \
-  /opt/homebrew/include/boost/endian/detail/order.hpp \
-  /opt/homebrew/include/boost/endian/detail/is_trivially_copyable.hpp \
-  /opt/homebrew/include/boost/endian/detail/endian_store.hpp \
-  /opt/homebrew/include/boost/json/detail/sbo_buffer.hpp \
-  /opt/homebrew/include/boost/json/conversion.hpp \
-  /opt/homebrew/include/boost/json/impl/conversion.hpp \
-  /opt/homebrew/include/boost/describe/enumerators.hpp \
-  /opt/homebrew/include/boost/describe/detail/void_t.hpp \
-  /opt/homebrew/include/boost/describe/detail/config.hpp \
-  /opt/homebrew/include/boost/describe/members.hpp \
-  /opt/homebrew/include/boost/describe/modifiers.hpp \
-  /opt/homebrew/include/boost/describe/bases.hpp \
-  /opt/homebrew/include/boost/describe/detail/cx_streq.hpp \
-  /opt/homebrew/include/boost/json/monotonic_resource.hpp \
-  /opt/homebrew/include/boost/json/null_resource.hpp \
-  /opt/homebrew/include/boost/json/parse.hpp \
-  /opt/homebrew/include/boost/json/parse_into.hpp \
-  /opt/homebrew/include/boost/json/detail/parse_into.hpp \
-  /opt/homebrew/include/boost/describe/enum_from_string.hpp \
-  /opt/homebrew/include/boost/json/impl/parse_into.hpp \
-  /opt/homebrew/include/boost/json/basic_parser_impl.hpp \
-  /opt/homebrew/include/boost/json/detail/buffer.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/from_chars.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/config.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/from_chars_result.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/chars_format.hpp \
-  /opt/homebrew/include/boost/json/detail/sse2.hpp \
-  /opt/homebrew/include/boost/json/parser.hpp \
-  /opt/homebrew/include/boost/json/detail/handler.hpp \
-  /opt/homebrew/include/boost/json/value_stack.hpp \
-  /opt/homebrew/include/boost/json/serialize.hpp \
-  /opt/homebrew/include/boost/json/serialize_options.hpp \
-  /opt/homebrew/include/boost/json/serializer.hpp \
-  /opt/homebrew/include/boost/json/detail/format.hpp \
-  /opt/homebrew/include/boost/json/static_resource.hpp \
-  /opt/homebrew/include/boost/json/stream_parser.hpp \
-  /opt/homebrew/include/boost/json/value_from.hpp \
-  /opt/homebrew/include/boost/json/detail/value_from.hpp \
-  /opt/homebrew/include/boost/describe/enum_to_string.hpp \
-  /opt/homebrew/include/boost/json/value_to.hpp \
-  /opt/homebrew/include/boost/json/detail/value_to.hpp \
-  /opt/homebrew/include/boost/json/visit.hpp \
-  /opt/homebrew/include/boost/json/impl/visit.hpp \
-  /opt/homebrew/include/boost/json/impl/array.ipp \
-  /opt/homebrew/include/boost/container_hash/hash.hpp \
-  /opt/homebrew/include/boost/container_hash/hash_fwd.hpp \
-  /opt/homebrew/include/boost/container_hash/is_range.hpp \
-  /opt/homebrew/include/boost/container_hash/is_contiguous_range.hpp \
-  /opt/homebrew/include/boost/container_hash/is_unordered_range.hpp \
-  /opt/homebrew/include/boost/container_hash/is_described_class.hpp \
-  /opt/homebrew/include/boost/container_hash/detail/hash_integral.hpp \
-  /opt/homebrew/include/boost/container_hash/detail/hash_mix.hpp \
-  /opt/homebrew/include/boost/container_hash/detail/hash_tuple_like.hpp \
-  /opt/homebrew/include/boost/container_hash/is_tuple_like.hpp \
-  /opt/homebrew/include/boost/container_hash/detail/hash_range.hpp \
-  /opt/homebrew/include/boost/container_hash/detail/mulx.hpp \
-  /opt/homebrew/include/boost/json/impl/error.ipp \
-  /opt/homebrew/include/boost/json/impl/kind.ipp \
-  /opt/homebrew/include/boost/json/impl/monotonic_resource.ipp \
-  /opt/homebrew/include/boost/align/align.hpp \
-  /opt/homebrew/include/boost/align/detail/align_cxx11.hpp \
-  /opt/homebrew/include/boost/core/max_align.hpp \
-  /opt/homebrew/include/boost/core/alignof.hpp \
-  /opt/homebrew/include/boost/json/impl/null_resource.ipp \
-  /opt/homebrew/include/boost/json/impl/object.ipp \
-  /opt/homebrew/include/boost/json/impl/parse.ipp \
-  /opt/homebrew/include/boost/json/impl/parser.ipp \
-  /opt/homebrew/include/boost/json/impl/pointer.ipp \
-  /opt/homebrew/include/boost/json/impl/serialize.ipp \
-  /opt/homebrew/include/boost/json/impl/serializer.ipp \
-  /opt/homebrew/include/boost/json/impl/static_resource.ipp \
-  /opt/homebrew/include/boost/json/impl/stream_parser.ipp \
-  /opt/homebrew/include/boost/json/impl/string.ipp \
-  /opt/homebrew/include/boost/json/impl/value.ipp \
-  /opt/homebrew/include/boost/json/impl/value_stack.ipp \
-  /opt/homebrew/include/boost/json/impl/value_ref.ipp \
-  /opt/homebrew/include/boost/json/detail/impl/shared_resource.ipp \
-  /opt/homebrew/include/boost/json/detail/impl/default_resource.ipp \
-  /opt/homebrew/include/boost/json/detail/impl/except.ipp \
-  /opt/homebrew/include/boost/version.hpp \
-  /opt/homebrew/include/boost/json/detail/impl/format.ipp \
-  /opt/homebrew/include/boost/json/detail/ryu/ryu.hpp \
-  /opt/homebrew/include/boost/json/detail/impl/handler.ipp \
-  /opt/homebrew/include/boost/json/detail/impl/stack.ipp \
-  /opt/homebrew/include/boost/json/detail/impl/string_impl.ipp \
-  /opt/homebrew/include/boost/json/detail/ryu/impl/d2s.ipp \
-  /opt/homebrew/include/boost/json/detail/ryu/detail/common.hpp \
-  /opt/homebrew/include/boost/json/detail/ryu/detail/digit_table.hpp \
-  /opt/homebrew/include/boost/json/detail/ryu/detail/d2s.hpp \
-  /opt/homebrew/include/boost/json/detail/ryu/detail/d2s_full_table.hpp \
-  /opt/homebrew/include/boost/json/detail/ryu/detail/d2s_intrinsics.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/impl/from_chars.ipp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/fast_float.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/float_common.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/constexpr_feature_detect.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/parse_number.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/ascii_number.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/decimal_to_binary.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/fast_table.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/digit_comparison.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/bigint.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/from_chars_float_impl.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/parser.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/from_chars_integer_impl.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/integer_search_trees.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/limits.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/compute_float64.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/significand_tables.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/emulated128.hpp \
-  /opt/homebrew/include/boost/core/bit.hpp \
   /Users/csian/projects/stradian/include/stradian/binance_exchange.h \
   /opt/homebrew/include/openssl/hmac.h \
   /opt/homebrew/include/openssl/macros.h \
@@ -312,9 +27,27 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
   /opt/homebrew/include/openssl/asn1.h \
   /opt/homebrew/include/openssl/asn1err.h \
   /opt/homebrew/include/openssl/objectserr.h \
+  /Users/csian/projects/stradian/include/stradian/exchange.h \
+  /Users/csian/projects/stradian/include/stradian/order.h \
+  /Users/csian/projects/stradian/include/stradian/exception.h \
+  /Users/csian/projects/stradian/include/stradian/slack.h \
+  /Users/csian/projects/stradian/include/stradian/order.hpp \
+  /Users/csian/projects/stradian/include/stradian/web_socket.h \
   /opt/homebrew/include/boost/asio.hpp \
   /opt/homebrew/include/boost/asio/any_completion_executor.hpp \
   /opt/homebrew/include/boost/asio/detail/config.hpp \
+  /opt/homebrew/include/boost/config.hpp \
+  /opt/homebrew/include/boost/config/user.hpp \
+  /opt/homebrew/include/boost/config/detail/select_compiler_config.hpp \
+  /opt/homebrew/include/boost/config/compiler/clang.hpp \
+  /opt/homebrew/include/boost/config/compiler/clang_version.hpp \
+  /opt/homebrew/include/boost/config/detail/select_stdlib_config.hpp \
+  /opt/homebrew/include/boost/config/stdlib/libcpp.hpp \
+  /opt/homebrew/include/boost/config/detail/select_platform_config.hpp \
+  /opt/homebrew/include/boost/config/platform/macos.hpp \
+  /opt/homebrew/include/boost/config/detail/posix_features.hpp \
+  /opt/homebrew/include/boost/config/detail/suffix.hpp \
+  /opt/homebrew/include/boost/version.hpp \
   /opt/homebrew/include/boost/asio/execution.hpp \
   /opt/homebrew/include/boost/asio/execution/allocator.hpp \
   /opt/homebrew/include/boost/asio/detail/type_traits.hpp \
@@ -329,6 +62,7 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
   /opt/homebrew/include/boost/asio/traits/static_query.hpp \
   /opt/homebrew/include/boost/asio/execution/any_executor.hpp \
   /opt/homebrew/include/boost/asio/detail/assert.hpp \
+  /opt/homebrew/include/boost/assert.hpp \
   /opt/homebrew/include/boost/asio/detail/atomic_count.hpp \
   /opt/homebrew/include/boost/asio/detail/cstddef.hpp \
   /opt/homebrew/include/boost/asio/detail/executor_function.hpp \
@@ -336,6 +70,11 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
   /opt/homebrew/include/boost/asio/detail/memory.hpp \
   /opt/homebrew/include/boost/asio/detail/cstdint.hpp \
   /opt/homebrew/include/boost/asio/detail/throw_exception.hpp \
+  /opt/homebrew/include/boost/throw_exception.hpp \
+  /opt/homebrew/include/boost/exception/exception.hpp \
+  /opt/homebrew/include/boost/assert/source_location.hpp \
+  /opt/homebrew/include/boost/cstdint.hpp \
+  /opt/homebrew/include/boost/config/workaround.hpp \
   /opt/homebrew/include/boost/align/aligned_alloc.hpp \
   /opt/homebrew/include/boost/align/detail/aligned_alloc_posix.hpp \
   /opt/homebrew/include/boost/align/detail/is_alignment.hpp \
@@ -372,7 +111,38 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
   /opt/homebrew/include/boost/asio/detail/posix_event.hpp \
   /opt/homebrew/include/boost/asio/detail/impl/posix_event.ipp \
   /opt/homebrew/include/boost/asio/detail/throw_error.hpp \
+  /opt/homebrew/include/boost/system/error_code.hpp \
+  /opt/homebrew/include/boost/system/detail/error_code.hpp \
+  /opt/homebrew/include/boost/system/is_error_code_enum.hpp \
+  /opt/homebrew/include/boost/system/detail/error_category.hpp \
+  /opt/homebrew/include/boost/system/detail/config.hpp \
+  /opt/homebrew/include/boost/system/detail/error_condition.hpp \
+  /opt/homebrew/include/boost/system/detail/generic_category.hpp \
+  /opt/homebrew/include/boost/system/detail/generic_category_message.hpp \
+  /opt/homebrew/include/boost/system/detail/enable_if.hpp \
+  /opt/homebrew/include/boost/system/detail/is_same.hpp \
+  /opt/homebrew/include/boost/system/detail/errc.hpp \
+  /opt/homebrew/include/boost/system/is_error_condition_enum.hpp \
+  /opt/homebrew/include/boost/system/detail/cerrno.hpp \
+  /opt/homebrew/include/boost/system/detail/append_int.hpp \
+  /opt/homebrew/include/boost/system/detail/snprintf.hpp \
+  /opt/homebrew/include/boost/system/detail/system_category.hpp \
+  /opt/homebrew/include/boost/system/detail/system_category_impl.hpp \
+  /opt/homebrew/include/boost/system/detail/system_category_message.hpp \
+  /opt/homebrew/include/boost/system/api_config.hpp \
+  /opt/homebrew/include/boost/system/detail/interop_category.hpp \
+  /opt/homebrew/include/boost/system/detail/std_category.hpp \
+  /opt/homebrew/include/boost/system/error_category.hpp \
+  /opt/homebrew/include/boost/system/detail/error_category_impl.hpp \
+  /opt/homebrew/include/boost/system/detail/std_category_impl.hpp \
+  /opt/homebrew/include/boost/system/detail/mutex.hpp \
+  /opt/homebrew/include/boost/system/error_condition.hpp \
+  /opt/homebrew/include/boost/system/errc.hpp \
+  /opt/homebrew/include/boost/system/generic_category.hpp \
+  /opt/homebrew/include/boost/system/system_category.hpp \
+  /opt/homebrew/include/boost/system/detail/throws.hpp \
   /opt/homebrew/include/boost/asio/detail/impl/throw_error.ipp \
+  /opt/homebrew/include/boost/system/system_error.hpp \
   /opt/homebrew/include/boost/asio/error.hpp \
   /opt/homebrew/include/boost/cerrno.hpp \
   /opt/homebrew/include/boost/asio/impl/error.ipp \
@@ -516,6 +286,7 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
   /opt/homebrew/include/boost/date_time/time_clock.hpp \
   /opt/homebrew/include/boost/date_time/c_time.hpp \
   /opt/homebrew/include/boost/date_time/compiler_config.hpp \
+  /opt/homebrew/include/boost/detail/workaround.hpp \
   /opt/homebrew/include/boost/date_time/locale_config.hpp \
   /opt/homebrew/include/boost/shared_ptr.hpp \
   /opt/homebrew/include/boost/smart_ptr/shared_ptr.hpp \
@@ -554,9 +325,11 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
   /opt/homebrew/include/boost/limits.hpp \
   /opt/homebrew/include/boost/config/no_tr1/cmath.hpp \
   /opt/homebrew/include/boost/date_time/time_duration.hpp \
+  /opt/homebrew/include/boost/core/enable_if.hpp \
   /opt/homebrew/include/boost/date_time/special_defs.hpp \
   /opt/homebrew/include/boost/date_time/time_defs.hpp \
   /opt/homebrew/include/boost/operators.hpp \
+  /opt/homebrew/include/boost/static_assert.hpp \
   /opt/homebrew/include/boost/type_traits/is_integral.hpp \
   /opt/homebrew/include/boost/type_traits/integral_constant.hpp \
   /opt/homebrew/include/boost/date_time/time_resolution_traits.hpp \
@@ -1057,7 +830,16 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
   /opt/homebrew/include/boost/type_traits/enable_if.hpp \
   /opt/homebrew/include/boost/type_traits/is_nothrow_move_constructible.hpp \
   /opt/homebrew/include/boost/move/utility.hpp \
+  /opt/homebrew/include/boost/move/detail/config_begin.hpp \
+  /opt/homebrew/include/boost/move/detail/workaround.hpp \
+  /opt/homebrew/include/boost/move/utility_core.hpp \
+  /opt/homebrew/include/boost/move/core.hpp \
+  /opt/homebrew/include/boost/move/detail/config_end.hpp \
+  /opt/homebrew/include/boost/move/detail/meta_utils.hpp \
+  /opt/homebrew/include/boost/move/detail/meta_utils_core.hpp \
+  /opt/homebrew/include/boost/move/detail/addressof.hpp \
   /opt/homebrew/include/boost/move/traits.hpp \
+  /opt/homebrew/include/boost/move/detail/type_traits.hpp \
   /opt/homebrew/include/boost/none.hpp \
   /opt/homebrew/include/boost/none_t.hpp \
   /opt/homebrew/include/boost/utility/compare_pointees.hpp \
@@ -1092,6 +874,26 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
   /opt/homebrew/include/boost/beast/core/impl/basic_stream.hpp \
   /opt/homebrew/include/boost/beast/core/buffer_traits.hpp \
   /opt/homebrew/include/boost/beast/core/detail/buffer_traits.hpp \
+  /opt/homebrew/include/boost/mp11/function.hpp \
+  /opt/homebrew/include/boost/mp11/integral.hpp \
+  /opt/homebrew/include/boost/mp11/version.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_value.hpp \
+  /opt/homebrew/include/boost/mp11/detail/config.hpp \
+  /opt/homebrew/include/boost/mp11/utility.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_list.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_fold.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_defer.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_rename.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_front.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_count.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_plus.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_min_element.hpp \
+  /opt/homebrew/include/boost/mp11/list.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_list_v.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_is_list.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_is_value_list.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_append.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_void.hpp \
   /opt/homebrew/include/boost/beast/core/buffers_prefix.hpp \
   /opt/homebrew/include/boost/beast/core/impl/buffers_prefix.hpp \
   /opt/homebrew/include/boost/beast/websocket/teardown.hpp \
@@ -1117,6 +919,13 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
   /opt/homebrew/include/boost/beast/core/bind_handler.hpp \
   /opt/homebrew/include/boost/beast/core/detail/bind_handler.hpp \
   /opt/homebrew/include/boost/beast/core/detail/tuple.hpp \
+  /opt/homebrew/include/boost/mp11/integer_sequence.hpp \
+  /opt/homebrew/include/boost/mp11/algorithm.hpp \
+  /opt/homebrew/include/boost/mp11/set.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_copy_if.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_remove_if.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_map_find.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_with_index.hpp \
   /opt/homebrew/include/boost/type_traits/copy_cv.hpp \
   /opt/homebrew/include/boost/type_traits/add_const.hpp \
   /opt/homebrew/include/boost/type_traits/add_volatile.hpp \
@@ -1125,16 +934,23 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
   /opt/homebrew/include/boost/beast/core/buffered_read_stream.hpp \
   /opt/homebrew/include/boost/beast/core/multi_buffer.hpp \
   /opt/homebrew/include/boost/intrusive/list.hpp \
+  /opt/homebrew/include/boost/intrusive/detail/config_begin.hpp \
   /opt/homebrew/include/boost/intrusive/intrusive_fwd.hpp \
   /opt/homebrew/include/boost/intrusive/link_mode.hpp \
+  /opt/homebrew/include/boost/intrusive/detail/workaround.hpp \
   /opt/homebrew/include/boost/intrusive/detail/assert.hpp \
   /opt/homebrew/include/boost/intrusive/list_hook.hpp \
   /opt/homebrew/include/boost/intrusive/detail/list_node.hpp \
+  /opt/homebrew/include/boost/intrusive/pointer_rebind.hpp \
   /opt/homebrew/include/boost/intrusive/circular_list_algorithms.hpp \
   /opt/homebrew/include/boost/intrusive/detail/algo_type.hpp \
+  /opt/homebrew/include/boost/intrusive/detail/config_end.hpp \
   /opt/homebrew/include/boost/intrusive/options.hpp \
   /opt/homebrew/include/boost/intrusive/pack_options.hpp \
   /opt/homebrew/include/boost/intrusive/detail/generic_hook.hpp \
+  /opt/homebrew/include/boost/intrusive/pointer_traits.hpp \
+  /opt/homebrew/include/boost/move/detail/pointer_element.hpp \
+  /opt/homebrew/include/boost/intrusive/detail/mpl.hpp \
   /opt/homebrew/include/boost/intrusive/detail/node_holder.hpp \
   /opt/homebrew/include/boost/intrusive/detail/get_value_traits.hpp \
   /opt/homebrew/include/boost/intrusive/detail/hook_traits.hpp \
@@ -1149,6 +965,8 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
   /opt/homebrew/include/boost/intrusive/detail/uncast.hpp \
   /opt/homebrew/include/boost/intrusive/detail/list_iterator.hpp \
   /opt/homebrew/include/boost/intrusive/detail/std_fwd.hpp \
+  /opt/homebrew/include/boost/move/detail/std_ns_begin.hpp \
+  /opt/homebrew/include/boost/move/detail/std_ns_end.hpp \
   /opt/homebrew/include/boost/intrusive/detail/iiterator.hpp \
   /opt/homebrew/include/boost/intrusive/detail/iterator.hpp \
   /opt/homebrew/include/boost/intrusive/detail/array_initializer.hpp \
@@ -1314,11 +1132,32 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
   /opt/homebrew/include/boost/beast/core/detail/static_string.hpp \
   /opt/homebrew/include/boost/static_string/static_string.hpp \
   /opt/homebrew/include/boost/static_string/config.hpp \
+  /opt/homebrew/include/boost/container_hash/hash.hpp \
+  /opt/homebrew/include/boost/container_hash/hash_fwd.hpp \
+  /opt/homebrew/include/boost/container_hash/is_range.hpp \
+  /opt/homebrew/include/boost/container_hash/is_contiguous_range.hpp \
+  /opt/homebrew/include/boost/container_hash/is_unordered_range.hpp \
+  /opt/homebrew/include/boost/container_hash/is_described_class.hpp \
+  /opt/homebrew/include/boost/describe/bases.hpp \
+  /opt/homebrew/include/boost/describe/modifiers.hpp \
+  /opt/homebrew/include/boost/describe/detail/config.hpp \
+  /opt/homebrew/include/boost/describe/detail/void_t.hpp \
+  /opt/homebrew/include/boost/describe/members.hpp \
+  /opt/homebrew/include/boost/describe/detail/cx_streq.hpp \
+  /opt/homebrew/include/boost/mp11/bind.hpp \
+  /opt/homebrew/include/boost/container_hash/detail/hash_integral.hpp \
+  /opt/homebrew/include/boost/container_hash/detail/hash_mix.hpp \
+  /opt/homebrew/include/boost/container_hash/detail/hash_tuple_like.hpp \
+  /opt/homebrew/include/boost/container_hash/is_tuple_like.hpp \
+  /opt/homebrew/include/boost/container_hash/detail/hash_range.hpp \
+  /opt/homebrew/include/boost/container_hash/detail/mulx.hpp \
   /opt/homebrew/include/boost/utility/string_view.hpp \
   /opt/homebrew/include/boost/io/ostream_put.hpp \
   /opt/homebrew/include/boost/io/detail/buffer_fill.hpp \
   /opt/homebrew/include/boost/io/detail/ostream_guard.hpp \
   /opt/homebrew/include/boost/utility/string_view_fwd.hpp \
+  /opt/homebrew/include/boost/core/detail/string_view.hpp \
+  /opt/homebrew/include/boost/core/detail/is_same.hpp \
   /opt/homebrew/include/boost/beast/core/string.hpp \
   /opt/homebrew/include/boost/beast/core/string_type.hpp \
   /opt/homebrew/include/boost/beast/core/impl/string.ipp \
@@ -1431,6 +1270,17 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
   /opt/homebrew/include/boost/beast/websocket/detail/frame.hpp \
   /opt/homebrew/include/boost/beast/websocket/detail/utf8_checker.hpp \
   /opt/homebrew/include/boost/beast/websocket/detail/utf8_checker.ipp \
+  /opt/homebrew/include/boost/endian/conversion.hpp \
+  /opt/homebrew/include/boost/endian/detail/endian_reverse.hpp \
+  /opt/homebrew/include/boost/endian/detail/integral_by_size.hpp \
+  /opt/homebrew/include/boost/endian/detail/intrinsic.hpp \
+  /opt/homebrew/include/boost/endian/detail/is_scoped_enum.hpp \
+  /opt/homebrew/include/boost/endian/detail/is_integral.hpp \
+  /opt/homebrew/include/boost/endian/detail/static_assert.hpp \
+  /opt/homebrew/include/boost/endian/detail/endian_load.hpp \
+  /opt/homebrew/include/boost/endian/detail/order.hpp \
+  /opt/homebrew/include/boost/endian/detail/is_trivially_copyable.hpp \
+  /opt/homebrew/include/boost/endian/detail/endian_store.hpp \
   /opt/homebrew/include/boost/beast/websocket/detail/pmd_extension.hpp \
   /opt/homebrew/include/boost/beast/websocket/detail/pmd_extension.ipp \
   /opt/homebrew/include/boost/beast/zlib/deflate_stream.hpp \
@@ -1538,580 +1388,107 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
   /opt/homebrew/include/boost/asio/ssl/detail/shutdown_op.hpp \
   /opt/homebrew/include/boost/asio/ssl/detail/write_op.hpp \
   /opt/homebrew/include/boost/beast/websocket/impl/ssl.hpp \
-  /Users/csian/projects/stradian/include/stradian/exchange.h \
-  /Users/csian/projects/stradian/include/stradian/order.h \
-  /Users/csian/projects/stradian/include/stradian/exception.h \
-  /Users/csian/projects/stradian/include/stradian/slack.h
-
-/opt/homebrew/include/boost/json/src.hpp:
-
-/opt/homebrew/include/boost/json.hpp:
-
-/opt/homebrew/include/boost/json/detail/config.hpp:
-
-/opt/homebrew/include/boost/config.hpp:
-
-/opt/homebrew/include/boost/config/user.hpp:
-
-/opt/homebrew/include/boost/config/detail/select_compiler_config.hpp:
-
-/opt/homebrew/include/boost/config/compiler/clang.hpp:
-
-/opt/homebrew/include/boost/config/compiler/clang_version.hpp:
-
-/opt/homebrew/include/boost/config/detail/select_stdlib_config.hpp:
-
-/opt/homebrew/include/boost/config/stdlib/libcpp.hpp:
-
-/opt/homebrew/include/boost/config/detail/select_platform_config.hpp:
-
-/opt/homebrew/include/boost/config/platform/macos.hpp:
-
-/opt/homebrew/include/boost/config/detail/posix_features.hpp:
-
-/opt/homebrew/include/boost/config/detail/suffix.hpp:
-
-/opt/homebrew/include/boost/assert.hpp:
-
-/opt/homebrew/include/boost/static_assert.hpp:
-
-/opt/homebrew/include/boost/detail/workaround.hpp:
-
-/opt/homebrew/include/boost/config/workaround.hpp:
-
-/opt/homebrew/include/boost/throw_exception.hpp:
-
-/opt/homebrew/include/boost/exception/exception.hpp:
-
-/opt/homebrew/include/boost/assert/source_location.hpp:
-
-/opt/homebrew/include/boost/cstdint.hpp:
-
-/opt/homebrew/include/boost/json/array.hpp:
-
-/opt/homebrew/include/boost/json/kind.hpp:
-
-/opt/homebrew/include/boost/json/string_view.hpp:
-
-/opt/homebrew/include/boost/core/detail/string_view.hpp:
-
-/opt/homebrew/include/boost/core/enable_if.hpp:
-
-/opt/homebrew/include/boost/core/detail/is_same.hpp:
-
-/opt/homebrew/include/boost/json/pilfer.hpp:
-
-/opt/homebrew/include/boost/json/storage_ptr.hpp:
-
-/opt/homebrew/include/boost/container/pmr/polymorphic_allocator.hpp:
-
-/opt/homebrew/include/boost/move/detail/type_traits.hpp:
-
-/opt/homebrew/include/boost/move/detail/config_begin.hpp:
-
-/opt/homebrew/include/boost/move/detail/workaround.hpp:
-
-/opt/homebrew/include/boost/move/detail/meta_utils.hpp:
-
-/opt/homebrew/include/boost/move/detail/meta_utils_core.hpp:
-
-/opt/homebrew/include/boost/move/detail/addressof.hpp:
-
-/opt/homebrew/include/boost/move/detail/config_end.hpp:
-
-/opt/homebrew/include/boost/move/utility_core.hpp:
-
-/opt/homebrew/include/boost/move/core.hpp:
-
-/opt/homebrew/include/boost/container/detail/dispatch_uses_allocator.hpp:
-
-/opt/homebrew/include/boost/container/detail/config_begin.hpp:
-
-/opt/homebrew/include/boost/container/detail/workaround.hpp:
-
-/opt/homebrew/include/boost/container/allocator_traits.hpp:
-
-/opt/homebrew/include/boost/container/container_fwd.hpp:
-
-/opt/homebrew/include/boost/container/detail/std_fwd.hpp:
-
-/opt/homebrew/include/boost/move/detail/std_ns_begin.hpp:
-
-/opt/homebrew/include/boost/move/detail/std_ns_end.hpp:
-
-/opt/homebrew/include/boost/container/detail/mpl.hpp:
-
-/opt/homebrew/include/boost/intrusive/detail/mpl.hpp:
-
-/opt/homebrew/include/boost/intrusive/detail/config_begin.hpp:
-
-/opt/homebrew/include/boost/intrusive/detail/config_end.hpp:
-
-/opt/homebrew/include/boost/container/detail/config_end.hpp:
-
-/opt/homebrew/include/boost/container/detail/type_traits.hpp:
-
-/opt/homebrew/include/boost/container/detail/placement_new.hpp:
-
-/opt/homebrew/include/boost/intrusive/pointer_traits.hpp:
-
-/opt/homebrew/include/boost/intrusive/detail/workaround.hpp:
-
-/opt/homebrew/include/boost/intrusive/pointer_rebind.hpp:
-
-/opt/homebrew/include/boost/move/detail/pointer_element.hpp:
-
-/opt/homebrew/include/boost/intrusive/detail/has_member_function_callable_with.hpp:
-
-/opt/homebrew/include/boost/move/detail/fwd_macros.hpp:
-
-/opt/homebrew/include/boost/container/uses_allocator.hpp:
-
-/opt/homebrew/include/boost/container/uses_allocator_fwd.hpp:
-
-/opt/homebrew/include/boost/container/detail/addressof.hpp:
-
-/opt/homebrew/include/boost/container/detail/is_pair.hpp:
-
-/opt/homebrew/include/boost/container/detail/variadic_templates_tools.hpp:
-
-/opt/homebrew/include/boost/container/new_allocator.hpp:
-
-/opt/homebrew/include/boost/container/throw_exception.hpp:
-
-/opt/homebrew/include/boost/container/pmr/memory_resource.hpp:
-
-/opt/homebrew/include/boost/container/pmr/global_resource.hpp:
-
-/opt/homebrew/include/boost/container/detail/auto_link.hpp:
-
-/opt/homebrew/include/boost/config/auto_link.hpp:
-
-/opt/homebrew/include/boost/json/memory_resource.hpp:
-
-/opt/homebrew/include/boost/json/is_deallocate_trivial.hpp:
-
-/opt/homebrew/include/boost/json/detail/shared_resource.hpp:
-
-/opt/homebrew/include/boost/json/detail/default_resource.hpp:
-
-/opt/homebrew/include/boost/json/detail/array.hpp:
-
-/opt/homebrew/include/boost/json/value.hpp:
-
-/opt/homebrew/include/boost/json/object.hpp:
-
-/opt/homebrew/include/boost/json/detail/object.hpp:
-
-/opt/homebrew/include/boost/json/detail/value.hpp:
-
-/opt/homebrew/include/boost/json/fwd.hpp:
-
-/opt/homebrew/include/boost/json/set_pointer_options.hpp:
-
-/opt/homebrew/include/boost/json/string.hpp:
-
-/opt/homebrew/include/boost/json/detail/digest.hpp:
-
-/opt/homebrew/include/boost/json/detail/except.hpp:
-
-/opt/homebrew/include/boost/json/error.hpp:
-
-/opt/homebrew/include/boost/json/system_error.hpp:
-
-/opt/homebrew/include/boost/json/result_for.hpp:
-
-/opt/homebrew/include/boost/system/result.hpp:
-
-/opt/homebrew/include/boost/system/errc.hpp:
-
-/opt/homebrew/include/boost/system/detail/errc.hpp:
-
-/opt/homebrew/include/boost/system/is_error_condition_enum.hpp:
-
-/opt/homebrew/include/boost/system/detail/cerrno.hpp:
-
-/opt/homebrew/include/boost/system/detail/error_code.hpp:
-
-/opt/homebrew/include/boost/system/is_error_code_enum.hpp:
-
-/opt/homebrew/include/boost/system/detail/error_category.hpp:
-
-/opt/homebrew/include/boost/system/detail/config.hpp:
-
-/opt/homebrew/include/boost/system/detail/error_condition.hpp:
-
-/opt/homebrew/include/boost/system/detail/generic_category.hpp:
-
-/opt/homebrew/include/boost/system/detail/generic_category_message.hpp:
-
-/opt/homebrew/include/boost/system/detail/enable_if.hpp:
-
-/opt/homebrew/include/boost/system/detail/is_same.hpp:
-
-/opt/homebrew/include/boost/system/detail/append_int.hpp:
-
-/opt/homebrew/include/boost/system/detail/snprintf.hpp:
-
-/opt/homebrew/include/boost/system/detail/system_category.hpp:
-
-/opt/homebrew/include/boost/system/detail/system_category_impl.hpp:
-
-/opt/homebrew/include/boost/system/detail/system_category_message.hpp:
-
-/opt/homebrew/include/boost/system/api_config.hpp:
-
-/opt/homebrew/include/boost/system/detail/interop_category.hpp:
-
-/opt/homebrew/include/boost/system/detail/std_category.hpp:
-
-/opt/homebrew/include/boost/system/detail/error_category_impl.hpp:
-
-/opt/homebrew/include/boost/system/detail/std_category_impl.hpp:
-
-/opt/homebrew/include/boost/system/detail/mutex.hpp:
-
-/opt/homebrew/include/boost/system/system_error.hpp:
-
-/opt/homebrew/include/boost/variant2/variant.hpp:
-
-/opt/homebrew/include/boost/mp11.hpp:
-
-/opt/homebrew/include/boost/mp11/list.hpp:
-
-/opt/homebrew/include/boost/mp11/integral.hpp:
-
-/opt/homebrew/include/boost/mp11/version.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_value.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/config.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_list.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_list_v.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_is_list.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_is_value_list.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_front.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_rename.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_defer.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_append.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_count.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_plus.hpp:
-
-/opt/homebrew/include/boost/mp11/utility.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_fold.hpp:
-
-/opt/homebrew/include/boost/mp11/algorithm.hpp:
-
-/opt/homebrew/include/boost/mp11/set.hpp:
-
-/opt/homebrew/include/boost/mp11/function.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_min_element.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_void.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_copy_if.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_remove_if.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_map_find.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_with_index.hpp:
-
-/opt/homebrew/include/boost/mp11/integer_sequence.hpp:
-
-/opt/homebrew/include/boost/mp11/map.hpp:
-
-/opt/homebrew/include/boost/mp11/bind.hpp:
-
-/opt/homebrew/include/boost/mp11/tuple.hpp:
-
-/opt/homebrew/include/boost/system/error_code.hpp:
-
-/opt/homebrew/include/boost/system/error_category.hpp:
-
-/opt/homebrew/include/boost/system/error_condition.hpp:
-
-/opt/homebrew/include/boost/system/generic_category.hpp:
-
-/opt/homebrew/include/boost/system/system_category.hpp:
-
-/opt/homebrew/include/boost/system/detail/throws.hpp:
-
-/opt/homebrew/include/boost/json/impl/error.hpp:
-
-/opt/homebrew/include/boost/json/detail/string_impl.hpp:
-
-/opt/homebrew/include/boost/json/impl/string.hpp:
-
-/opt/homebrew/include/boost/json/value_ref.hpp:
-
-/opt/homebrew/include/boost/json/detail/impl/array.hpp:
-
-/opt/homebrew/include/boost/json/impl/array.hpp:
-
-/opt/homebrew/include/boost/json/impl/object.hpp:
-
-/opt/homebrew/include/boost/json/impl/value.hpp:
-
-/opt/homebrew/include/boost/json/impl/value_ref.hpp:
-
-/opt/homebrew/include/boost/json/basic_parser.hpp:
-
-/opt/homebrew/include/boost/json/parse_options.hpp:
-
-/opt/homebrew/include/boost/json/detail/stack.hpp:
-
-/opt/homebrew/include/boost/json/detail/stream.hpp:
-
-/opt/homebrew/include/boost/json/detail/utf8.hpp:
-
-/opt/homebrew/include/boost/endian/conversion.hpp:
-
-/opt/homebrew/include/boost/endian/detail/endian_reverse.hpp:
-
-/opt/homebrew/include/boost/endian/detail/integral_by_size.hpp:
-
-/opt/homebrew/include/boost/endian/detail/intrinsic.hpp:
-
-/opt/homebrew/include/boost/endian/detail/is_scoped_enum.hpp:
-
-/opt/homebrew/include/boost/endian/detail/is_integral.hpp:
-
-/opt/homebrew/include/boost/endian/detail/static_assert.hpp:
-
-/opt/homebrew/include/boost/endian/detail/endian_load.hpp:
-
-/opt/homebrew/include/boost/endian/detail/order.hpp:
-
-/opt/homebrew/include/boost/endian/detail/is_trivially_copyable.hpp:
-
-/opt/homebrew/include/boost/endian/detail/endian_store.hpp:
-
-/opt/homebrew/include/boost/json/detail/sbo_buffer.hpp:
-
-/opt/homebrew/include/boost/json/conversion.hpp:
-
-/opt/homebrew/include/boost/json/impl/conversion.hpp:
-
-/opt/homebrew/include/boost/describe/enumerators.hpp:
-
-/opt/homebrew/include/boost/describe/detail/void_t.hpp:
-
-/opt/homebrew/include/boost/describe/detail/config.hpp:
-
-/opt/homebrew/include/boost/describe/members.hpp:
-
-/opt/homebrew/include/boost/describe/modifiers.hpp:
-
-/opt/homebrew/include/boost/describe/bases.hpp:
-
-/opt/homebrew/include/boost/describe/detail/cx_streq.hpp:
-
-/opt/homebrew/include/boost/json/monotonic_resource.hpp:
-
-/opt/homebrew/include/boost/json/null_resource.hpp:
-
-/opt/homebrew/include/boost/json/parse.hpp:
-
-/opt/homebrew/include/boost/json/parse_into.hpp:
-
-/opt/homebrew/include/boost/json/detail/parse_into.hpp:
-
-/opt/homebrew/include/boost/describe/enum_from_string.hpp:
-
-/opt/homebrew/include/boost/json/impl/parse_into.hpp:
-
-/opt/homebrew/include/boost/json/basic_parser_impl.hpp:
-
-/opt/homebrew/include/boost/json/detail/buffer.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/from_chars.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/config.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/from_chars_result.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/chars_format.hpp:
-
-/opt/homebrew/include/boost/json/detail/sse2.hpp:
-
-/opt/homebrew/include/boost/json/parser.hpp:
-
-/opt/homebrew/include/boost/json/detail/handler.hpp:
-
-/opt/homebrew/include/boost/json/value_stack.hpp:
-
-/opt/homebrew/include/boost/json/serialize.hpp:
-
-/opt/homebrew/include/boost/json/serialize_options.hpp:
-
-/opt/homebrew/include/boost/json/serializer.hpp:
-
-/opt/homebrew/include/boost/json/detail/format.hpp:
-
-/opt/homebrew/include/boost/json/static_resource.hpp:
-
-/opt/homebrew/include/boost/json/stream_parser.hpp:
-
-/opt/homebrew/include/boost/json/value_from.hpp:
-
-/opt/homebrew/include/boost/json/detail/value_from.hpp:
-
-/opt/homebrew/include/boost/describe/enum_to_string.hpp:
-
-/opt/homebrew/include/boost/json/value_to.hpp:
-
-/opt/homebrew/include/boost/json/detail/value_to.hpp:
-
-/opt/homebrew/include/boost/json/visit.hpp:
-
-/opt/homebrew/include/boost/json/impl/visit.hpp:
-
-/opt/homebrew/include/boost/json/impl/array.ipp:
-
-/opt/homebrew/include/boost/container_hash/hash.hpp:
-
-/opt/homebrew/include/boost/container_hash/hash_fwd.hpp:
-
-/opt/homebrew/include/boost/container_hash/is_range.hpp:
-
-/opt/homebrew/include/boost/container_hash/is_contiguous_range.hpp:
-
-/opt/homebrew/include/boost/container_hash/is_unordered_range.hpp:
-
-/opt/homebrew/include/boost/container_hash/is_described_class.hpp:
-
-/opt/homebrew/include/boost/container_hash/detail/hash_integral.hpp:
-
-/opt/homebrew/include/boost/container_hash/detail/hash_mix.hpp:
-
-/opt/homebrew/include/boost/container_hash/detail/hash_tuple_like.hpp:
-
-/opt/homebrew/include/boost/container_hash/is_tuple_like.hpp:
-
-/opt/homebrew/include/boost/container_hash/detail/hash_range.hpp:
-
-/opt/homebrew/include/boost/container_hash/detail/mulx.hpp:
-
-/opt/homebrew/include/boost/json/impl/error.ipp:
-
-/opt/homebrew/include/boost/json/impl/kind.ipp:
-
-/opt/homebrew/include/boost/json/impl/monotonic_resource.ipp:
-
-/opt/homebrew/include/boost/align/align.hpp:
-
-/opt/homebrew/include/boost/align/detail/align_cxx11.hpp:
-
-/opt/homebrew/include/boost/core/max_align.hpp:
-
-/opt/homebrew/include/boost/core/alignof.hpp:
-
-/opt/homebrew/include/boost/json/impl/null_resource.ipp:
-
-/opt/homebrew/include/boost/json/impl/object.ipp:
-
-/opt/homebrew/include/boost/json/impl/parse.ipp:
-
-/opt/homebrew/include/boost/json/impl/parser.ipp:
-
-/opt/homebrew/include/boost/json/impl/pointer.ipp:
-
-/opt/homebrew/include/boost/json/impl/serialize.ipp:
-
-/opt/homebrew/include/boost/json/impl/serializer.ipp:
-
-/opt/homebrew/include/boost/json/impl/static_resource.ipp:
-
-/opt/homebrew/include/boost/json/impl/stream_parser.ipp:
-
-/opt/homebrew/include/boost/json/impl/string.ipp:
-
-/opt/homebrew/include/boost/json/impl/value.ipp:
-
-/opt/homebrew/include/boost/json/impl/value_stack.ipp:
-
-/opt/homebrew/include/boost/json/impl/value_ref.ipp:
-
-/opt/homebrew/include/boost/json/detail/impl/shared_resource.ipp:
-
-/opt/homebrew/include/boost/json/detail/impl/default_resource.ipp:
-
-/opt/homebrew/include/boost/json/detail/impl/except.ipp:
-
-/opt/homebrew/include/boost/version.hpp:
-
-/opt/homebrew/include/boost/json/detail/impl/format.ipp:
-
-/opt/homebrew/include/boost/json/detail/ryu/ryu.hpp:
-
-/opt/homebrew/include/boost/json/detail/impl/handler.ipp:
-
-/opt/homebrew/include/boost/json/detail/impl/stack.ipp:
-
-/opt/homebrew/include/boost/json/detail/impl/string_impl.ipp:
-
-/opt/homebrew/include/boost/json/detail/ryu/impl/d2s.ipp:
-
-/opt/homebrew/include/boost/json/detail/ryu/detail/common.hpp:
-
-/opt/homebrew/include/boost/json/detail/ryu/detail/digit_table.hpp:
-
-/opt/homebrew/include/boost/json/detail/ryu/detail/d2s.hpp:
-
-/opt/homebrew/include/boost/json/detail/ryu/detail/d2s_full_table.hpp:
-
-/opt/homebrew/include/boost/json/detail/ryu/detail/d2s_intrinsics.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/impl/from_chars.ipp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/fast_float.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/float_common.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/constexpr_feature_detect.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/parse_number.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/ascii_number.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/decimal_to_binary.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/fast_table.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/digit_comparison.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/fast_float/bigint.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/from_chars_float_impl.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/parser.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/from_chars_integer_impl.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/integer_search_trees.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/limits.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/compute_float64.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/significand_tables.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/emulated128.hpp:
-
-/opt/homebrew/include/boost/core/bit.hpp:
+  /opt/homebrew/include/boost/json.hpp \
+  /opt/homebrew/include/boost/json/detail/config.hpp \
+  /opt/homebrew/include/boost/config/auto_link.hpp \
+  /opt/homebrew/include/boost/json/array.hpp \
+  /opt/homebrew/include/boost/json/kind.hpp \
+  /opt/homebrew/include/boost/json/string_view.hpp \
+  /opt/homebrew/include/boost/json/pilfer.hpp \
+  /opt/homebrew/include/boost/json/storage_ptr.hpp \
+  /opt/homebrew/include/boost/container/pmr/polymorphic_allocator.hpp \
+  /opt/homebrew/include/boost/container/detail/dispatch_uses_allocator.hpp \
+  /opt/homebrew/include/boost/container/detail/config_begin.hpp \
+  /opt/homebrew/include/boost/container/detail/workaround.hpp \
+  /opt/homebrew/include/boost/container/allocator_traits.hpp \
+  /opt/homebrew/include/boost/container/container_fwd.hpp \
+  /opt/homebrew/include/boost/container/detail/std_fwd.hpp \
+  /opt/homebrew/include/boost/container/detail/mpl.hpp \
+  /opt/homebrew/include/boost/container/detail/config_end.hpp \
+  /opt/homebrew/include/boost/container/detail/type_traits.hpp \
+  /opt/homebrew/include/boost/container/detail/placement_new.hpp \
+  /opt/homebrew/include/boost/intrusive/detail/has_member_function_callable_with.hpp \
+  /opt/homebrew/include/boost/move/detail/fwd_macros.hpp \
+  /opt/homebrew/include/boost/container/uses_allocator.hpp \
+  /opt/homebrew/include/boost/container/uses_allocator_fwd.hpp \
+  /opt/homebrew/include/boost/container/detail/addressof.hpp \
+  /opt/homebrew/include/boost/container/detail/is_pair.hpp \
+  /opt/homebrew/include/boost/container/detail/variadic_templates_tools.hpp \
+  /opt/homebrew/include/boost/container/new_allocator.hpp \
+  /opt/homebrew/include/boost/container/throw_exception.hpp \
+  /opt/homebrew/include/boost/container/pmr/memory_resource.hpp \
+  /opt/homebrew/include/boost/container/pmr/global_resource.hpp \
+  /opt/homebrew/include/boost/container/detail/auto_link.hpp \
+  /opt/homebrew/include/boost/json/memory_resource.hpp \
+  /opt/homebrew/include/boost/json/is_deallocate_trivial.hpp \
+  /opt/homebrew/include/boost/json/detail/shared_resource.hpp \
+  /opt/homebrew/include/boost/json/detail/default_resource.hpp \
+  /opt/homebrew/include/boost/json/detail/array.hpp \
+  /opt/homebrew/include/boost/json/value.hpp \
+  /opt/homebrew/include/boost/json/object.hpp \
+  /opt/homebrew/include/boost/json/detail/object.hpp \
+  /opt/homebrew/include/boost/json/detail/value.hpp \
+  /opt/homebrew/include/boost/json/fwd.hpp \
+  /opt/homebrew/include/boost/json/set_pointer_options.hpp \
+  /opt/homebrew/include/boost/json/string.hpp \
+  /opt/homebrew/include/boost/json/detail/digest.hpp \
+  /opt/homebrew/include/boost/json/detail/except.hpp \
+  /opt/homebrew/include/boost/json/error.hpp \
+  /opt/homebrew/include/boost/json/system_error.hpp \
+  /opt/homebrew/include/boost/json/result_for.hpp \
+  /opt/homebrew/include/boost/system/result.hpp \
+  /opt/homebrew/include/boost/variant2/variant.hpp \
+  /opt/homebrew/include/boost/mp11.hpp \
+  /opt/homebrew/include/boost/mp11/map.hpp \
+  /opt/homebrew/include/boost/mp11/tuple.hpp \
+  /opt/homebrew/include/boost/json/impl/error.hpp \
+  /opt/homebrew/include/boost/json/detail/string_impl.hpp \
+  /opt/homebrew/include/boost/json/impl/string.hpp \
+  /opt/homebrew/include/boost/json/value_ref.hpp \
+  /opt/homebrew/include/boost/json/detail/impl/array.hpp \
+  /opt/homebrew/include/boost/json/impl/array.hpp \
+  /opt/homebrew/include/boost/json/impl/object.hpp \
+  /opt/homebrew/include/boost/json/impl/value.hpp \
+  /opt/homebrew/include/boost/json/impl/value_ref.hpp \
+  /opt/homebrew/include/boost/json/basic_parser.hpp \
+  /opt/homebrew/include/boost/json/parse_options.hpp \
+  /opt/homebrew/include/boost/json/detail/stack.hpp \
+  /opt/homebrew/include/boost/json/detail/stream.hpp \
+  /opt/homebrew/include/boost/json/detail/utf8.hpp \
+  /opt/homebrew/include/boost/json/detail/sbo_buffer.hpp \
+  /opt/homebrew/include/boost/json/conversion.hpp \
+  /opt/homebrew/include/boost/json/impl/conversion.hpp \
+  /opt/homebrew/include/boost/describe/enumerators.hpp \
+  /opt/homebrew/include/boost/json/monotonic_resource.hpp \
+  /opt/homebrew/include/boost/json/null_resource.hpp \
+  /opt/homebrew/include/boost/json/parse.hpp \
+  /opt/homebrew/include/boost/json/parse_into.hpp \
+  /opt/homebrew/include/boost/json/detail/parse_into.hpp \
+  /opt/homebrew/include/boost/describe/enum_from_string.hpp \
+  /opt/homebrew/include/boost/json/impl/parse_into.hpp \
+  /opt/homebrew/include/boost/json/basic_parser_impl.hpp \
+  /opt/homebrew/include/boost/json/detail/buffer.hpp \
+  /opt/homebrew/include/boost/json/detail/charconv/from_chars.hpp \
+  /opt/homebrew/include/boost/json/detail/charconv/detail/config.hpp \
+  /opt/homebrew/include/boost/json/detail/charconv/detail/from_chars_result.hpp \
+  /opt/homebrew/include/boost/json/detail/charconv/chars_format.hpp \
+  /opt/homebrew/include/boost/json/detail/sse2.hpp \
+  /opt/homebrew/include/boost/json/parser.hpp \
+  /opt/homebrew/include/boost/json/detail/handler.hpp \
+  /opt/homebrew/include/boost/json/value_stack.hpp \
+  /opt/homebrew/include/boost/json/serialize.hpp \
+  /opt/homebrew/include/boost/json/serialize_options.hpp \
+  /opt/homebrew/include/boost/json/serializer.hpp \
+  /opt/homebrew/include/boost/json/detail/format.hpp \
+  /opt/homebrew/include/boost/json/static_resource.hpp \
+  /opt/homebrew/include/boost/json/stream_parser.hpp \
+  /opt/homebrew/include/boost/json/value_from.hpp \
+  /opt/homebrew/include/boost/json/detail/value_from.hpp \
+  /opt/homebrew/include/boost/describe/enum_to_string.hpp \
+  /opt/homebrew/include/boost/json/value_to.hpp \
+  /opt/homebrew/include/boost/json/detail/value_to.hpp \
+  /opt/homebrew/include/boost/json/visit.hpp \
+  /opt/homebrew/include/boost/json/impl/visit.hpp
 
 /Users/csian/projects/stradian/include/stradian/binance_exchange.h:
 
@@ -2169,11 +1546,47 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 
 /opt/homebrew/include/openssl/objectserr.h:
 
+/Users/csian/projects/stradian/include/stradian/exchange.h:
+
+/Users/csian/projects/stradian/include/stradian/order.h:
+
+/Users/csian/projects/stradian/include/stradian/exception.h:
+
+/Users/csian/projects/stradian/include/stradian/slack.h:
+
+/Users/csian/projects/stradian/include/stradian/order.hpp:
+
+/Users/csian/projects/stradian/include/stradian/web_socket.h:
+
 /opt/homebrew/include/boost/asio.hpp:
 
 /opt/homebrew/include/boost/asio/any_completion_executor.hpp:
 
 /opt/homebrew/include/boost/asio/detail/config.hpp:
+
+/opt/homebrew/include/boost/config.hpp:
+
+/opt/homebrew/include/boost/config/user.hpp:
+
+/opt/homebrew/include/boost/config/detail/select_compiler_config.hpp:
+
+/opt/homebrew/include/boost/config/compiler/clang.hpp:
+
+/opt/homebrew/include/boost/config/compiler/clang_version.hpp:
+
+/opt/homebrew/include/boost/config/detail/select_stdlib_config.hpp:
+
+/opt/homebrew/include/boost/config/stdlib/libcpp.hpp:
+
+/opt/homebrew/include/boost/config/detail/select_platform_config.hpp:
+
+/opt/homebrew/include/boost/config/platform/macos.hpp:
+
+/opt/homebrew/include/boost/config/detail/posix_features.hpp:
+
+/opt/homebrew/include/boost/config/detail/suffix.hpp:
+
+/opt/homebrew/include/boost/version.hpp:
 
 /opt/homebrew/include/boost/asio/execution.hpp:
 
@@ -2203,6 +1616,8 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 
 /opt/homebrew/include/boost/asio/detail/assert.hpp:
 
+/opt/homebrew/include/boost/assert.hpp:
+
 /opt/homebrew/include/boost/asio/detail/atomic_count.hpp:
 
 /opt/homebrew/include/boost/asio/detail/cstddef.hpp:
@@ -2216,6 +1631,16 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 /opt/homebrew/include/boost/asio/detail/cstdint.hpp:
 
 /opt/homebrew/include/boost/asio/detail/throw_exception.hpp:
+
+/opt/homebrew/include/boost/throw_exception.hpp:
+
+/opt/homebrew/include/boost/exception/exception.hpp:
+
+/opt/homebrew/include/boost/assert/source_location.hpp:
+
+/opt/homebrew/include/boost/cstdint.hpp:
+
+/opt/homebrew/include/boost/config/workaround.hpp:
 
 /opt/homebrew/include/boost/align/aligned_alloc.hpp:
 
@@ -2289,7 +1714,69 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 
 /opt/homebrew/include/boost/asio/detail/throw_error.hpp:
 
+/opt/homebrew/include/boost/system/error_code.hpp:
+
+/opt/homebrew/include/boost/system/detail/error_code.hpp:
+
+/opt/homebrew/include/boost/system/is_error_code_enum.hpp:
+
+/opt/homebrew/include/boost/system/detail/error_category.hpp:
+
+/opt/homebrew/include/boost/system/detail/config.hpp:
+
+/opt/homebrew/include/boost/system/detail/error_condition.hpp:
+
+/opt/homebrew/include/boost/system/detail/generic_category.hpp:
+
+/opt/homebrew/include/boost/system/detail/generic_category_message.hpp:
+
+/opt/homebrew/include/boost/system/detail/enable_if.hpp:
+
+/opt/homebrew/include/boost/system/detail/is_same.hpp:
+
+/opt/homebrew/include/boost/system/detail/errc.hpp:
+
+/opt/homebrew/include/boost/system/is_error_condition_enum.hpp:
+
+/opt/homebrew/include/boost/system/detail/cerrno.hpp:
+
+/opt/homebrew/include/boost/system/detail/append_int.hpp:
+
+/opt/homebrew/include/boost/system/detail/snprintf.hpp:
+
+/opt/homebrew/include/boost/system/detail/system_category.hpp:
+
+/opt/homebrew/include/boost/system/detail/system_category_impl.hpp:
+
+/opt/homebrew/include/boost/system/detail/system_category_message.hpp:
+
+/opt/homebrew/include/boost/system/api_config.hpp:
+
+/opt/homebrew/include/boost/system/detail/interop_category.hpp:
+
+/opt/homebrew/include/boost/system/detail/std_category.hpp:
+
+/opt/homebrew/include/boost/system/error_category.hpp:
+
+/opt/homebrew/include/boost/system/detail/error_category_impl.hpp:
+
+/opt/homebrew/include/boost/system/detail/std_category_impl.hpp:
+
+/opt/homebrew/include/boost/system/detail/mutex.hpp:
+
+/opt/homebrew/include/boost/system/error_condition.hpp:
+
+/opt/homebrew/include/boost/system/errc.hpp:
+
+/opt/homebrew/include/boost/system/generic_category.hpp:
+
+/opt/homebrew/include/boost/system/system_category.hpp:
+
+/opt/homebrew/include/boost/system/detail/throws.hpp:
+
 /opt/homebrew/include/boost/asio/detail/impl/throw_error.ipp:
+
+/opt/homebrew/include/boost/system/system_error.hpp:
 
 /opt/homebrew/include/boost/asio/error.hpp:
 
@@ -2577,6 +2064,8 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 
 /opt/homebrew/include/boost/date_time/compiler_config.hpp:
 
+/opt/homebrew/include/boost/detail/workaround.hpp:
+
 /opt/homebrew/include/boost/date_time/locale_config.hpp:
 
 /opt/homebrew/include/boost/shared_ptr.hpp:
@@ -2653,11 +2142,15 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 
 /opt/homebrew/include/boost/date_time/time_duration.hpp:
 
+/opt/homebrew/include/boost/core/enable_if.hpp:
+
 /opt/homebrew/include/boost/date_time/special_defs.hpp:
 
 /opt/homebrew/include/boost/date_time/time_defs.hpp:
 
 /opt/homebrew/include/boost/operators.hpp:
+
+/opt/homebrew/include/boost/static_assert.hpp:
 
 /opt/homebrew/include/boost/type_traits/is_integral.hpp:
 
@@ -3659,7 +3152,25 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 
 /opt/homebrew/include/boost/move/utility.hpp:
 
+/opt/homebrew/include/boost/move/detail/config_begin.hpp:
+
+/opt/homebrew/include/boost/move/detail/workaround.hpp:
+
+/opt/homebrew/include/boost/move/utility_core.hpp:
+
+/opt/homebrew/include/boost/move/core.hpp:
+
+/opt/homebrew/include/boost/move/detail/config_end.hpp:
+
+/opt/homebrew/include/boost/move/detail/meta_utils.hpp:
+
+/opt/homebrew/include/boost/move/detail/meta_utils_core.hpp:
+
+/opt/homebrew/include/boost/move/detail/addressof.hpp:
+
 /opt/homebrew/include/boost/move/traits.hpp:
+
+/opt/homebrew/include/boost/move/detail/type_traits.hpp:
 
 /opt/homebrew/include/boost/none.hpp:
 
@@ -3729,6 +3240,46 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 
 /opt/homebrew/include/boost/beast/core/detail/buffer_traits.hpp:
 
+/opt/homebrew/include/boost/mp11/function.hpp:
+
+/opt/homebrew/include/boost/mp11/integral.hpp:
+
+/opt/homebrew/include/boost/mp11/version.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_value.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/config.hpp:
+
+/opt/homebrew/include/boost/mp11/utility.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_list.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_fold.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_defer.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_rename.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_front.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_count.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_plus.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_min_element.hpp:
+
+/opt/homebrew/include/boost/mp11/list.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_list_v.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_is_list.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_is_value_list.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_append.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_void.hpp:
+
 /opt/homebrew/include/boost/beast/core/buffers_prefix.hpp:
 
 /opt/homebrew/include/boost/beast/core/impl/buffers_prefix.hpp:
@@ -3779,6 +3330,20 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 
 /opt/homebrew/include/boost/beast/core/detail/tuple.hpp:
 
+/opt/homebrew/include/boost/mp11/integer_sequence.hpp:
+
+/opt/homebrew/include/boost/mp11/algorithm.hpp:
+
+/opt/homebrew/include/boost/mp11/set.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_copy_if.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_remove_if.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_map_find.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_with_index.hpp:
+
 /opt/homebrew/include/boost/type_traits/copy_cv.hpp:
 
 /opt/homebrew/include/boost/type_traits/add_const.hpp:
@@ -3795,9 +3360,13 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 
 /opt/homebrew/include/boost/intrusive/list.hpp:
 
+/opt/homebrew/include/boost/intrusive/detail/config_begin.hpp:
+
 /opt/homebrew/include/boost/intrusive/intrusive_fwd.hpp:
 
 /opt/homebrew/include/boost/intrusive/link_mode.hpp:
+
+/opt/homebrew/include/boost/intrusive/detail/workaround.hpp:
 
 /opt/homebrew/include/boost/intrusive/detail/assert.hpp:
 
@@ -3805,15 +3374,25 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 
 /opt/homebrew/include/boost/intrusive/detail/list_node.hpp:
 
+/opt/homebrew/include/boost/intrusive/pointer_rebind.hpp:
+
 /opt/homebrew/include/boost/intrusive/circular_list_algorithms.hpp:
 
 /opt/homebrew/include/boost/intrusive/detail/algo_type.hpp:
+
+/opt/homebrew/include/boost/intrusive/detail/config_end.hpp:
 
 /opt/homebrew/include/boost/intrusive/options.hpp:
 
 /opt/homebrew/include/boost/intrusive/pack_options.hpp:
 
 /opt/homebrew/include/boost/intrusive/detail/generic_hook.hpp:
+
+/opt/homebrew/include/boost/intrusive/pointer_traits.hpp:
+
+/opt/homebrew/include/boost/move/detail/pointer_element.hpp:
+
+/opt/homebrew/include/boost/intrusive/detail/mpl.hpp:
 
 /opt/homebrew/include/boost/intrusive/detail/node_holder.hpp:
 
@@ -3842,6 +3421,10 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 /opt/homebrew/include/boost/intrusive/detail/list_iterator.hpp:
 
 /opt/homebrew/include/boost/intrusive/detail/std_fwd.hpp:
+
+/opt/homebrew/include/boost/move/detail/std_ns_begin.hpp:
+
+/opt/homebrew/include/boost/move/detail/std_ns_end.hpp:
 
 /opt/homebrew/include/boost/intrusive/detail/iiterator.hpp:
 
@@ -4173,6 +3756,44 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 
 /opt/homebrew/include/boost/static_string/config.hpp:
 
+/opt/homebrew/include/boost/container_hash/hash.hpp:
+
+/opt/homebrew/include/boost/container_hash/hash_fwd.hpp:
+
+/opt/homebrew/include/boost/container_hash/is_range.hpp:
+
+/opt/homebrew/include/boost/container_hash/is_contiguous_range.hpp:
+
+/opt/homebrew/include/boost/container_hash/is_unordered_range.hpp:
+
+/opt/homebrew/include/boost/container_hash/is_described_class.hpp:
+
+/opt/homebrew/include/boost/describe/bases.hpp:
+
+/opt/homebrew/include/boost/describe/modifiers.hpp:
+
+/opt/homebrew/include/boost/describe/detail/config.hpp:
+
+/opt/homebrew/include/boost/describe/detail/void_t.hpp:
+
+/opt/homebrew/include/boost/describe/members.hpp:
+
+/opt/homebrew/include/boost/describe/detail/cx_streq.hpp:
+
+/opt/homebrew/include/boost/mp11/bind.hpp:
+
+/opt/homebrew/include/boost/container_hash/detail/hash_integral.hpp:
+
+/opt/homebrew/include/boost/container_hash/detail/hash_mix.hpp:
+
+/opt/homebrew/include/boost/container_hash/detail/hash_tuple_like.hpp:
+
+/opt/homebrew/include/boost/container_hash/is_tuple_like.hpp:
+
+/opt/homebrew/include/boost/container_hash/detail/hash_range.hpp:
+
+/opt/homebrew/include/boost/container_hash/detail/mulx.hpp:
+
 /opt/homebrew/include/boost/utility/string_view.hpp:
 
 /opt/homebrew/include/boost/io/ostream_put.hpp:
@@ -4182,6 +3803,10 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 /opt/homebrew/include/boost/io/detail/ostream_guard.hpp:
 
 /opt/homebrew/include/boost/utility/string_view_fwd.hpp:
+
+/opt/homebrew/include/boost/core/detail/string_view.hpp:
+
+/opt/homebrew/include/boost/core/detail/is_same.hpp:
 
 /opt/homebrew/include/boost/beast/core/string.hpp:
 
@@ -4407,6 +4032,28 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 
 /opt/homebrew/include/boost/beast/websocket/detail/utf8_checker.ipp:
 
+/opt/homebrew/include/boost/endian/conversion.hpp:
+
+/opt/homebrew/include/boost/endian/detail/endian_reverse.hpp:
+
+/opt/homebrew/include/boost/endian/detail/integral_by_size.hpp:
+
+/opt/homebrew/include/boost/endian/detail/intrinsic.hpp:
+
+/opt/homebrew/include/boost/endian/detail/is_scoped_enum.hpp:
+
+/opt/homebrew/include/boost/endian/detail/is_integral.hpp:
+
+/opt/homebrew/include/boost/endian/detail/static_assert.hpp:
+
+/opt/homebrew/include/boost/endian/detail/endian_load.hpp:
+
+/opt/homebrew/include/boost/endian/detail/order.hpp:
+
+/opt/homebrew/include/boost/endian/detail/is_trivially_copyable.hpp:
+
+/opt/homebrew/include/boost/endian/detail/endian_store.hpp:
+
 /opt/homebrew/include/boost/beast/websocket/detail/pmd_extension.hpp:
 
 /opt/homebrew/include/boost/beast/websocket/detail/pmd_extension.ipp:
@@ -4623,10 +4270,204 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 
 /opt/homebrew/include/boost/beast/websocket/impl/ssl.hpp:
 
-/Users/csian/projects/stradian/include/stradian/exchange.h:
+/opt/homebrew/include/boost/json.hpp:
 
-/Users/csian/projects/stradian/include/stradian/order.h:
+/opt/homebrew/include/boost/json/detail/config.hpp:
 
-/Users/csian/projects/stradian/include/stradian/exception.h:
+/opt/homebrew/include/boost/config/auto_link.hpp:
 
-/Users/csian/projects/stradian/include/stradian/slack.h:
+/opt/homebrew/include/boost/json/array.hpp:
+
+/opt/homebrew/include/boost/json/kind.hpp:
+
+/opt/homebrew/include/boost/json/string_view.hpp:
+
+/opt/homebrew/include/boost/json/pilfer.hpp:
+
+/opt/homebrew/include/boost/json/storage_ptr.hpp:
+
+/opt/homebrew/include/boost/container/pmr/polymorphic_allocator.hpp:
+
+/opt/homebrew/include/boost/container/detail/dispatch_uses_allocator.hpp:
+
+/opt/homebrew/include/boost/container/detail/config_begin.hpp:
+
+/opt/homebrew/include/boost/container/detail/workaround.hpp:
+
+/opt/homebrew/include/boost/container/allocator_traits.hpp:
+
+/opt/homebrew/include/boost/container/container_fwd.hpp:
+
+/opt/homebrew/include/boost/container/detail/std_fwd.hpp:
+
+/opt/homebrew/include/boost/container/detail/mpl.hpp:
+
+/opt/homebrew/include/boost/container/detail/config_end.hpp:
+
+/opt/homebrew/include/boost/container/detail/type_traits.hpp:
+
+/opt/homebrew/include/boost/container/detail/placement_new.hpp:
+
+/opt/homebrew/include/boost/intrusive/detail/has_member_function_callable_with.hpp:
+
+/opt/homebrew/include/boost/move/detail/fwd_macros.hpp:
+
+/opt/homebrew/include/boost/container/uses_allocator.hpp:
+
+/opt/homebrew/include/boost/container/uses_allocator_fwd.hpp:
+
+/opt/homebrew/include/boost/container/detail/addressof.hpp:
+
+/opt/homebrew/include/boost/container/detail/is_pair.hpp:
+
+/opt/homebrew/include/boost/container/detail/variadic_templates_tools.hpp:
+
+/opt/homebrew/include/boost/container/new_allocator.hpp:
+
+/opt/homebrew/include/boost/container/throw_exception.hpp:
+
+/opt/homebrew/include/boost/container/pmr/memory_resource.hpp:
+
+/opt/homebrew/include/boost/container/pmr/global_resource.hpp:
+
+/opt/homebrew/include/boost/container/detail/auto_link.hpp:
+
+/opt/homebrew/include/boost/json/memory_resource.hpp:
+
+/opt/homebrew/include/boost/json/is_deallocate_trivial.hpp:
+
+/opt/homebrew/include/boost/json/detail/shared_resource.hpp:
+
+/opt/homebrew/include/boost/json/detail/default_resource.hpp:
+
+/opt/homebrew/include/boost/json/detail/array.hpp:
+
+/opt/homebrew/include/boost/json/value.hpp:
+
+/opt/homebrew/include/boost/json/object.hpp:
+
+/opt/homebrew/include/boost/json/detail/object.hpp:
+
+/opt/homebrew/include/boost/json/detail/value.hpp:
+
+/opt/homebrew/include/boost/json/fwd.hpp:
+
+/opt/homebrew/include/boost/json/set_pointer_options.hpp:
+
+/opt/homebrew/include/boost/json/string.hpp:
+
+/opt/homebrew/include/boost/json/detail/digest.hpp:
+
+/opt/homebrew/include/boost/json/detail/except.hpp:
+
+/opt/homebrew/include/boost/json/error.hpp:
+
+/opt/homebrew/include/boost/json/system_error.hpp:
+
+/opt/homebrew/include/boost/json/result_for.hpp:
+
+/opt/homebrew/include/boost/system/result.hpp:
+
+/opt/homebrew/include/boost/variant2/variant.hpp:
+
+/opt/homebrew/include/boost/mp11.hpp:
+
+/opt/homebrew/include/boost/mp11/map.hpp:
+
+/opt/homebrew/include/boost/mp11/tuple.hpp:
+
+/opt/homebrew/include/boost/json/impl/error.hpp:
+
+/opt/homebrew/include/boost/json/detail/string_impl.hpp:
+
+/opt/homebrew/include/boost/json/impl/string.hpp:
+
+/opt/homebrew/include/boost/json/value_ref.hpp:
+
+/opt/homebrew/include/boost/json/detail/impl/array.hpp:
+
+/opt/homebrew/include/boost/json/impl/array.hpp:
+
+/opt/homebrew/include/boost/json/impl/object.hpp:
+
+/opt/homebrew/include/boost/json/impl/value.hpp:
+
+/opt/homebrew/include/boost/json/impl/value_ref.hpp:
+
+/opt/homebrew/include/boost/json/basic_parser.hpp:
+
+/opt/homebrew/include/boost/json/parse_options.hpp:
+
+/opt/homebrew/include/boost/json/detail/stack.hpp:
+
+/opt/homebrew/include/boost/json/detail/stream.hpp:
+
+/opt/homebrew/include/boost/json/detail/utf8.hpp:
+
+/opt/homebrew/include/boost/json/detail/sbo_buffer.hpp:
+
+/opt/homebrew/include/boost/json/conversion.hpp:
+
+/opt/homebrew/include/boost/json/impl/conversion.hpp:
+
+/opt/homebrew/include/boost/describe/enumerators.hpp:
+
+/opt/homebrew/include/boost/json/monotonic_resource.hpp:
+
+/opt/homebrew/include/boost/json/null_resource.hpp:
+
+/opt/homebrew/include/boost/json/parse.hpp:
+
+/opt/homebrew/include/boost/json/parse_into.hpp:
+
+/opt/homebrew/include/boost/json/detail/parse_into.hpp:
+
+/opt/homebrew/include/boost/describe/enum_from_string.hpp:
+
+/opt/homebrew/include/boost/json/impl/parse_into.hpp:
+
+/opt/homebrew/include/boost/json/basic_parser_impl.hpp:
+
+/opt/homebrew/include/boost/json/detail/buffer.hpp:
+
+/opt/homebrew/include/boost/json/detail/charconv/from_chars.hpp:
+
+/opt/homebrew/include/boost/json/detail/charconv/detail/config.hpp:
+
+/opt/homebrew/include/boost/json/detail/charconv/detail/from_chars_result.hpp:
+
+/opt/homebrew/include/boost/json/detail/charconv/chars_format.hpp:
+
+/opt/homebrew/include/boost/json/detail/sse2.hpp:
+
+/opt/homebrew/include/boost/json/parser.hpp:
+
+/opt/homebrew/include/boost/json/detail/handler.hpp:
+
+/opt/homebrew/include/boost/json/value_stack.hpp:
+
+/opt/homebrew/include/boost/json/serialize.hpp:
+
+/opt/homebrew/include/boost/json/serialize_options.hpp:
+
+/opt/homebrew/include/boost/json/serializer.hpp:
+
+/opt/homebrew/include/boost/json/detail/format.hpp:
+
+/opt/homebrew/include/boost/json/static_resource.hpp:
+
+/opt/homebrew/include/boost/json/stream_parser.hpp:
+
+/opt/homebrew/include/boost/json/value_from.hpp:
+
+/opt/homebrew/include/boost/json/detail/value_from.hpp:
+
+/opt/homebrew/include/boost/describe/enum_to_string.hpp:
+
+/opt/homebrew/include/boost/json/value_to.hpp:
+
+/opt/homebrew/include/boost/json/detail/value_to.hpp:
+
+/opt/homebrew/include/boost/json/visit.hpp:
+
+/opt/homebrew/include/boost/json/impl/visit.hpp:

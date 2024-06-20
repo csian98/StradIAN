@@ -93,18 +93,14 @@ namespace stradian {
 		
 	    virtual void buy_order(const std::string&, double, int priority = 0);
 
+		virtual void buy_order(const std::string&, double, double, int priority = 0);
+
 		virtual void sell_order(const std::string&, double, int priority = 0);
 
+		virtual void sell_order(const std::string&, double, double, int priority = 0);
+
 	protected:
-		virtual void update(void) = 0;
-
-		virtual void buy(Order&) = 0;
-
-		virtual void sell(Order&) = 0;
-
-		virtual void handler(const Order&) = 0;
-		
-		std::map<std::string, std::pair<double, double>> assets;
+		virtual void handler(const Order&) = 0;	   
 
 	private:
 		virtual void thread_function(void);

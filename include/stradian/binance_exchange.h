@@ -38,13 +38,8 @@
 
 #include <openssl/hmac.h>
 
-#include <boost/asio.hpp>
-#include <boost/beast.hpp>
-#include <boost/beast/ssl.hpp>
-#include <boost/json.hpp>
-//#include <boost/json/src.hpp>
-
 #include "stradian/exchange.h"
+#include "stradian/web_socket.h"
 #include "stradian/exception.h"
 
 #if __has_include(<iostream>)
@@ -93,26 +88,19 @@ extern "C" {
 namespace stradian {
 	class BinanceExchange final : public Exchange {
 	public:
-		BinanceExchange(void);
+		BinanceExchange(const std::string& host = "ws-api.binance.com",
+						const std::string& port = "443",
+						const std::string& target = "/ws-api/v3");
 
-		virtual ~BinanceExchange(void) noexcept;
+		virtual ~BinanceExchange(void) noexcept = default;
 
 	private:
-		virtual void connect(void);
-
-		virtual void disconnect(void);
-		
-		virtual void update(void) override;
-
-		virtual void buy(Order&) override;
-
-		virtual void sell(Order&) override;
-
+		// Each Exchange object's thread handling function
 		virtual void handler(const Order&) override;
 
-		virtual boost::json::value send(const boost::json::value&);
+		void signature(boost::json::value&) const;
 
-		virtual bool ping(void);
+		std::string encryptHMAC(const char*, const char*) const;
 
 		static std::string read_file(const std::filesystem::path&);
 		
@@ -120,9 +108,30 @@ namespace stradian {
 
 		static std::string get_timestamp(void);
 
-	    void signature(boost::json::value&) const;
+		bool status(const boost::json::value&);
 
-		std::string encryptHMAC(const char*, const char*) const;
+		void limits(const boost::json::value&);
+
+		boost::json::value request_wrapper(const boost::json::value&);
+
+		bool ping(void);
+		
+		void update(void);
+
+		double price(Order&);
+
+		void buy(Order&);
+
+		void sell(Order&);
+
+		
+
+
+		WebSocket websocket;
+
+		static unsigned long id;
+
+		std::map<std::string, std::pair<double, double>> assets;
 
 		std::string api_key, secret_key;
 
@@ -130,20 +139,7 @@ namespace stradian {
 
 		const std::filesystem::path secret_path = "etc/key/binance_api_secret";
 
-		const std::string host = "ws-api.binance.com";
-		
-		std::string port = "443";
-
-		const std::string target = "/ws-api/v3";
-
-		boost::asio::io_context ioc;
-
-		boost::asio::ssl::context ctx;
-
-		boost::beast::websocket::stream<
-			boost::asio::ssl::stream<boost::asio::ip::tcp::socket>> ws;
-		
-		static unsigned long id;
+		const std::string key_currency = "USDT";
 	};
 }
 

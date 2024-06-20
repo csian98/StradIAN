@@ -109,8 +109,12 @@ namespace stradian {
 
 		virtual void log(LOGLEVEL level = LOGLEVEL::INFO) const;
 
+		virtual void set_level(LOGLEVEL loglevel);
+
 	private:
 		virtual const std::string local_time(void) const;
+
+		LOGLEVEL loglevel = LOGLEVEL::INFO;
 		
 		const std::filesystem::path path = "./var/log/stradian.log";
 

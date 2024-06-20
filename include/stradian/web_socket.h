@@ -1,17 +1,17 @@
 /**
- * @file		sample.h
- * @brief		
+ * @file		web_socket.h
+ * @brief		web socket class for stradian
  * @author		Jeong Hoon (Sian) Choi
  * @version		1.0.0
- * @date		2024-04-03
+ * @date		2024-06-19
  */
 	 
 //#pragma once
 //#pragma GCC diagnostic ignored "-Wstringop-truncation"
 //#pragma comment(lib, "libpthread.so")
 
-#ifndef _HEADER_SAMPLEH_
-#define _HEADER_SAMPLEH_
+#ifndef _HEADER_WEB_SOCKETH_
+#define _HEADER_WEB_SOCKETH_
 
 /* OS dependent */
 #define OS_WINDOWS	0
@@ -25,22 +25,10 @@
 
 /* Include */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdarg.h>
-
-#include <utility>
-#include <memory>
-#include <thread>
-
-#include <filesystem>
-
-#include <string>
-#include <string_view>
-#include <algorithm>
-#include <numeric>
-#include <execution>
+#include <boost/asio.hpp>
+#include <boost/beast.hpp>
+#include <boost/beast/ssl.hpp>
+#include <boost/json.hpp>
 
 #if __has_include(<iostream>)
 #include <iostream>
@@ -65,22 +53,6 @@ extern "C" {
 /* defines typedef & constant */
 
 /* MACRO functions */
-#ifndef SWAP
-template <typename T>
-inline void SWAP(T& a, T& b) {
-	T tmp = std::move(a);
-	a = std::move(b);
-	b = std::move(tmp);
-}
-#endif
-
-#ifndef MIN
-#define MIN(a, b)	(a > b ? b : a)
-#endif
-
-#ifndef MAX
-#define MAX(a, b)	(a > b ? a : b)
-#endif
 
 /* Inline define */
 
@@ -100,32 +72,37 @@ inline void SWAP(T& a, T& b) {
 
 /* Data structures declaration - struct & class */
 
-/*
+namespace stradian {
+	class WebSocket final {
+	public:
+		WebSocket(const std::string&,
+				  const std::string&,
+				  const std::string&);
 
-class Sample {
-	friend void swap(Sample&, Sample&) noexcept;
+		virtual ~WebSocket(void) noexcept;
 
-public:
-	Sample(void) = default;
-	
-	Sample(std::initializer_list<int>);
+		virtual boost::json::value request(const boost::json::value&);
+		
+	private:
 
-	virtual ~Sample(void) noexcept = default;
+		virtual void connect(void);
 
-	Sample(const Sample&);
+		virtual void disconnect(void);
 
-	Sample& operator=(const Sample&);
+		const std::string host;
 
-	Sample(Sample&&) noexcept;
+		const std::string port;
 
-	Sample& operator=(Sample&&) noexcept;
-protected:
-	
-private:
-	
-};
+		const std::string target;
 
-*/
+		boost::asio::io_context ioc;
+
+		boost::asio::ssl::context ctx;
+
+		boost::beast::websocket::stream<
+			boost::asio::ssl::stream<boost::asio::ip::tcp::socket>> ws;
+	};
+}
 
 /* Functions declaration */
 
@@ -140,6 +117,6 @@ private:
 #endif // OS dependency
 
 /* Inline & Template Define Header */
-//#include "sample.hpp"
+//#include "stradian/sample.hpp"
 
 #endif // Header duplicate

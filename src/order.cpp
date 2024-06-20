@@ -44,21 +44,30 @@ func:
 
 /* Data structures definition - struct & class */
 
-stradian::Order::Order(const std::string& symbol, bool status,
-					   double quantity, int priority)
-	: symbol(symbol), status(status), quantity(quantity), priority(priority) {}
+stradian::Order::Order(ORDERCODE ordercode, unsigned int priority)
+	: ordercode(ordercode), priority(priority) {}
 
-std::pair<std::string, double> stradian::Order::get_item(void) const {
-	return std::make_pair(this->symbol, this->quantity);
+void stradian::Order::market_order(const std::string& symbol,
+							  bool is_buy, double quantity) {
+	this->ordercode = ORDERCODE::BUYSELL;
+	this->symbol = symbol;
+	this->is_buy = is_buy;
+	this->quantity = quantity;
 }
 
-bool stradian::Order::opeartor() const {
-	return this->status;
+void stradian::Order::limit_order(const std::string& symbol,
+								  bool is_buy, double price, double quantity) {
+	this->ordercode = ORDERCODE::BUYSELL;
+	this->symbol = symbol;
+	this->is_buy = is_buy;
+	this->price = price;
+	this->quantity = quantity;
 }
 
 bool stradian::Order::operator<(const Order& other) const {
 	return this->priority < other.priority;
 }
+
 
 /* Functions definition */
 

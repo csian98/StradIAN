@@ -55,33 +55,39 @@ stradian::Logger::Logger(const std::string& message,
 	: Exception(message), use_slack(slack) {}
 
 void stradian::Logger::log(LOGLEVEL level) const {
-	std::string level_str;
-    switch (level) {
-	case LOGLEVEL::INFO:
-	    level_str = "INFO";
-		break;
-	case LOGLEVEL::WARN:
-		level_str = "WARN";
-		break;
-	case LOGLEVEL::ERROR:
-		level_str = "ERROR";
-		break;
-	case LOGLEVEL::FATAL:
-		level_str = "FATAL";
-		break;
-	};
+	if (this->loglevel <= level) {
+		std::string level_str;
+		switch (level) {
+		case LOGLEVEL::INFO:
+			level_str = "INFO";
+			break;
+		case LOGLEVEL::WARN:
+			level_str = "WARN";
+			break;
+		case LOGLEVEL::ERROR:
+			level_str = "ERROR";
+			break;
+		case LOGLEVEL::FATAL:
+			level_str = "FATAL";
+			break;
+		};
+		
+		std::stringstream str;
+		std::string time = this->local_time();
+		str << "[" << time <<
+			"] (" << level_str << ") " << this->message << '\n';
+		
+		std::ofstream fout(this->path, std::ios::app);
+		fout << str.str();
+		fout.close();
+		
+		if (this->use_slack)
+			this->slack.write(str.str());
+	}
+}
 
-	std::stringstream str;
-	std::string time = this->local_time();
-	str << "[" << time <<
-		"] (" << level_str << ") " << this->message << '\n';
-
-	std::ofstream fout(this->path, std::ios::app);
-	fout << str.str();
-	fout.close();
-
-	if (this->use_slack)
-		this->slack.write(str.str());
+void stradian::Logger::set_level(LOGLEVEL loglevel) {
+	this->loglevel = loglevel;
 }
 
 const std::string stradian::Logger::local_time(void) const {
