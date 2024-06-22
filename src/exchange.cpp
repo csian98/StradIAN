@@ -57,6 +57,8 @@ void stradian::Exchange::start(void) {
 }
 
 void stradian::Exchange::stop(void) {
+	while (!this->order.empty()) {}
+	
 	this->status.store(false);
 
 	this->cond_var.notify_one();
@@ -116,11 +118,14 @@ void stradian::Exchange::thread_function(void) {
     do {
 		{
 			std::unique_lock lck(this->mtx);
-			this->cond_var.wait(lck, [this](){
-				return !this->order.empty();
-			});
-			this->handler(this->order.top());
-			this->order.pop();
+			this->cond_var.wait(lck,
+								[this](){
+									return !this->order.empty();
+								});
+			while (!this->order.empty()) {
+				this->handler(this->order.top());
+				this->order.pop();
+			}
 		}
 	} while (this->status);
 }

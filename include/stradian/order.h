@@ -77,13 +77,10 @@ extern "C" {
 
 namespace stradian {
 	enum class ORDERCODE {
-		STATUS,
 		BUYSELL,
 	};
 	
 	/*
-	 *  #STATUS
-	 *
 	 *  #BUYSELL
 	 *  	MARKET ORDER ( price < 0.0 )
 	 *		- bool is_buy
@@ -93,7 +90,6 @@ namespace stradian {
 	 *		- bool is_buy
 	 *		- double price
 	 *		- double quantity
-	 *
 	 */
 	
 	struct Order {

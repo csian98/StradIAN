@@ -53,8 +53,10 @@ stradian::BinanceExchange::BinanceExchange(const std::string& host,
 	: websocket(host, port, target) {
 	this->api_key = BinanceExchange::read_file(this->key_path);
 	this->secret_key = BinanceExchange::read_file(this->secret_path);
-
+	
     if (this->ping()) {
+		this->update();
+		
 		Logger logger("BinanceExchange: binance exchange connected");
 		logger.log(LOGLEVEL::INFO);
 	} else {
@@ -66,11 +68,17 @@ stradian::BinanceExchange::BinanceExchange(const std::string& host,
 
 void stradian::BinanceExchange::handler(const Order& order) {
 	if (this->ping()) {
-		//
-		//
-		//
-		//
-		//
+		switch (order.ordercode) {
+		case ORDERCODE::BUYSELL:
+			if (order.is_buy) {
+				this->buy(order);
+			} else {
+				this->sell(order);
+			}
+
+			break;
+		}
+		
 		this->update();
 		
 	} else {
@@ -189,11 +197,10 @@ void stradian::BinanceExchange::limits(const boost::json::value& res) {
 }
 
 boost::json::value stradian::BinanceExchange::request_wrapper(const boost::json::value& req) {
-	static int trial = 3, sleep_sec = 10;
-	
+	static int trial = 3, sleep_millisec = 100;
+
 	const auto& res = this->websocket.request(req);
-	std::cout << req << std::endl;
-	std::cout << res << std::endl;
+
 	for (int i = 0; i < trial; ++i) {
 		try {
 			this->status(res);
@@ -201,17 +208,18 @@ boost::json::value stradian::BinanceExchange::request_wrapper(const boost::json:
 
 			return std::move(res);
 		} catch (stradian::Logger& e) {
-			std::this_thread::sleep_for(std::chrono::seconds(sleep_sec));
+			std::this_thread::sleep_for(std::chrono::milliseconds(sleep_millisec));
 		}
 	}
 
-    Logger logger("BinanceExchange: websocket request fails consistently [" + std::to_string(trial * sleep_sec) + " seconds]" , true);
+    Logger logger("BinanceExchange: websocket request fails consistently [" + std::to_string(trial * sleep_millisec) + " ms]" , true);
 	logger.log(LOGLEVEL::FATAL);
 
 	throw logger;
 }
 
 bool stradian::BinanceExchange::ping(void) {
+
 	boost::json::value req = {
 		{"id", stradian::BinanceExchange::get_id()},
 		{"method", "ping"}
@@ -259,7 +267,7 @@ void stradian::BinanceExchange::update(void) {
 	}
 }
 
-double stradian::BinanceExchange::price(Order& order) {
+double stradian::BinanceExchange::price(const Order& order) {
 	boost::json::value req = {
 		{"id", BinanceExchange::get_id()},
 		{"method", "ticker.price"},
@@ -274,7 +282,7 @@ double stradian::BinanceExchange::price(Order& order) {
 	return std::stod(dprice.substr(1, dprice.size() - 2));
 }
 
-void stradian::BinanceExchange::buy(Order& order) {
+void stradian::BinanceExchange::buy(const Order& order) {
 	std::string type = order.price > 0.0 ? "LIMIT" : "MARKET";
 	
 	boost::json::value req = {
@@ -303,17 +311,18 @@ void stradian::BinanceExchange::buy(Order& order) {
 
 	std::stringstream str;
     if (type == "LIMIT") {
-		str << "BinanceExchange: buy " << order.symbol << " order "
-			<< order.quantity << " for " << order.price << " each";
+		str << "BUY " << order.symbol << " "
+			<< order.quantity << " at $" << order.price;
 	} else {
-	    str << "BinanceExchange: buy " << order.symbol << " order "
-			<< order.quantity << " for market price";
+	    str << "BUY " << order.symbol << " "
+			<< order.quantity << " at $"
+			<< this->price(order);
 	}
     Logger logger(str.str(), true);
 	logger.log(LOGLEVEL::INFO);
 }
 
-void stradian::BinanceExchange::sell(Order& order) {
+void stradian::BinanceExchange::sell(const Order& order) {
 	std::string type = order.price > 0.0 ? "LIMIT" : "MARKET";
 	
 	boost::json::value req = {
@@ -342,15 +351,15 @@ void stradian::BinanceExchange::sell(Order& order) {
 
 	std::stringstream str;
     if (type == "LIMIT") {
-		str << "BinanceExchange: sell " << order.symbol << " order "
-			<< order.quantity << " for " << order.price << " each";
+		str << "SELL " << order.symbol << " "
+			<< order.quantity << " at $" << order.price;
 	} else {
-	    str << "BinanceExchange: sell " << order.symbol << " order "
-			<< order.quantity << " for market price";
+	    str << "SELL " << order.symbol << " "
+			<< order.quantity << " at $"
+			<< this->price(order);
 	}
     Logger logger(str.str(), true);
 	logger.log(LOGLEVEL::INFO);
-	
 }
 
 /* Functions definition */

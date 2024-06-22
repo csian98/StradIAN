@@ -118,14 +118,11 @@ namespace stradian {
 		
 		void update(void);
 
-		double price(Order&);
+		double price(const Order&);
 
-		void buy(Order&);
+		void buy(const Order&);
 
-		void sell(Order&);
-
-		
-
+		void sell(const Order&);
 
 		WebSocket websocket;
 
