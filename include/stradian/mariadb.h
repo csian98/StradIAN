@@ -1,17 +1,17 @@
 /**
- * @file		market.h
- * @brief		market virtual class
+ * @file		mariadb.h
+ * @brief		mariadb class for market
  * @author		Jeong Hoon (Sian) Choi
  * @version		1.0.0
- * @date		2024-06-15
+ * @date		2024-06-22
  */
 	 
 //#pragma once
 //#pragma GCC diagnostic ignored "-Wstringop-truncation"
 //#pragma comment(lib, "libpthread.so")
 
-#ifndef _HEADER_MARKETH_
-#define _HEADER_MARKETH_
+#ifndef _HEADER_MARIADBH_
+#define _HEADER_MARIADBH_
 
 /* OS dependent */
 #define OS_WINDOWS	0
@@ -25,9 +25,12 @@
 
 /* Include */
 
-#include <memory>
+#include <string>
+#include <string_view>
 
-#include "stradian/exchange.h"
+#include <mariadb/conncpp.hpp>
+
+#include "stradian/extractable.h"
 #include "stradian/exception.h"
 
 #if __has_include(<iostream>)
@@ -54,7 +57,6 @@ extern "C" {
 
 /* MACRO functions */
 
-
 /* Inline define */
 
 /* Attributes */
@@ -74,25 +76,33 @@ extern "C" {
 /* Data structures declaration - struct & class */
 
 namespace stradian {
-	enum class MARKETCODE {
-		STOCK,
-		CRYPTO
-	};
-	
-	class Market {
+	class MariaDB {
 	public:
-		Market(MARKETCODE);
+		MariaDB(const std::string&,
+				const std::string&,
+				const std::string&,
+				const std::string&,
+				const int);
 
-		virtual ~Market(void) noexcept;
+		virtual ~MariaDB(void) noexcept;
 
-		MARKETCODE get_code(void) const;
 
-		std::pair<double, double> get_asset(void) const;
+	private:
+		void connect(void);
 
-    protected:
-		std::unique_ptr<Exchange> exchange;
+		void disconnect(void);
+		
+		std::unique_ptr<sql::Connection> conn;
 
-		MARKETCODE code;
+		const std::string& user;
+
+		const std::string& password;
+
+		const std::string& host;
+
+		const std::string& db;
+
+		const int port;
 	};
 }
 

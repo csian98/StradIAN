@@ -1483,6 +1483,7 @@ build/src/web_socket.cpp.o: src/web_socket.cpp \
   /opt/homebrew/include/boost/json/detail/value_to.hpp \
   /opt/homebrew/include/boost/json/visit.hpp \
   /opt/homebrew/include/boost/json/impl/visit.hpp \
+  /Users/csian/projects/stradian/include/stradian/extractable.h \
   /opt/homebrew/include/boost/json/src.hpp \
   /opt/homebrew/include/boost/json/impl/array.ipp \
   /opt/homebrew/include/boost/json/impl/error.ipp \
@@ -4508,6 +4509,8 @@ build/src/web_socket.cpp.o: src/web_socket.cpp \
 /opt/homebrew/include/boost/json/visit.hpp:
 
 /opt/homebrew/include/boost/json/impl/visit.hpp:
+
+/Users/csian/projects/stradian/include/stradian/extractable.h:
 
 /opt/homebrew/include/boost/json/src.hpp:
 

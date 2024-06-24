@@ -1,17 +1,17 @@
 /**
- * @file		market.h
- * @brief		market virtual class
+ * @file		stradian.h
+ * @brief		StradIAN class
  * @author		Jeong Hoon (Sian) Choi
  * @version		1.0.0
- * @date		2024-06-15
+ * @date		2024-06-24
  */
 	 
 //#pragma once
 //#pragma GCC diagnostic ignored "-Wstringop-truncation"
 //#pragma comment(lib, "libpthread.so")
 
-#ifndef _HEADER_MARKETH_
-#define _HEADER_MARKETH_
+#ifndef _HEADER_STRADIANH_
+#define _HEADER_STRADIANH_
 
 /* OS dependent */
 #define OS_WINDOWS	0
@@ -25,9 +25,9 @@
 
 /* Include */
 
-#include <memory>
+#include <vector>
 
-#include "stradian/exchange.h"
+#include "stradian/crypto_market.h"
 #include "stradian/exception.h"
 
 #if __has_include(<iostream>)
@@ -74,25 +74,21 @@ extern "C" {
 /* Data structures declaration - struct & class */
 
 namespace stradian {
-	enum class MARKETCODE {
-		STOCK,
-		CRYPTO
-	};
-	
-	class Market {
+	class StradIAN final {
 	public:
-		Market(MARKETCODE);
+		StradIAN(void);
 
-		virtual ~Market(void) noexcept;
+		virtual ~StradIAN(void) noexcept;
 
-		MARKETCODE get_code(void) const;
-
-		std::pair<double, double> get_asset(void) const;
-
-    protected:
-		std::unique_ptr<Exchange> exchange;
-
-		MARKETCODE code;
+		std::pair<double, double> asset(void) const;
+		
+		std::pair<double, double> asset(MARKETCODE) const;
+		
+	private:
+		
+		std::shared_ptr<Market> get_market(MARKETCODE) const;
+		
+		std::vector<std::shared_ptr<Market>> markets;
 	};
 }
 

@@ -44,9 +44,9 @@ func:
 
 /* Data structures definition - struct & class */
 
-stradian::Slack::Slack(void) {
+stradian::Slack::Slack(const std::filesystem::path& channel_path) {
 	this->token = this->read_file(this->token_path);
-	this->channel = this->read_file(this->channel_path);
+	this->channel = this->read_file(channel_path);
 }
 
 void stradian::Slack::write(const std::string& message) {

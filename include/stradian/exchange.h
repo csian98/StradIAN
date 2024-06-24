@@ -90,6 +90,8 @@ namespace stradian {
 		virtual void start(void);
 
 		virtual void stop(void);
+
+		virtual std::pair<double, double> get_asset(void) const = 0;
 		
 	    virtual void buy_order(const std::string&, double, int priority = 0);
 
@@ -100,7 +102,7 @@ namespace stradian {
 		virtual void sell_order(const std::string&, double, double, int priority = 0);
 
 	protected:
-		virtual void handler(const Order&) = 0;	   
+		virtual void handler(const Order&) = 0;
 
 	private:
 		virtual void thread_function(void);

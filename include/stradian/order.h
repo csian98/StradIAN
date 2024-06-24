@@ -30,8 +30,6 @@
 #include <string_view>
 #include <sstream>
 
-#include "stradian/exception.h"
-
 #if __has_include(<iostream>)
 #include <iostream>
 #endif

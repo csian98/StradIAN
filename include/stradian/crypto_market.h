@@ -1,17 +1,17 @@
 /**
- * @file		market.h
- * @brief		market virtual class
+ * @file		crypto_market.h
+ * @brief		crypto market for stradian
  * @author		Jeong Hoon (Sian) Choi
  * @version		1.0.0
- * @date		2024-06-15
+ * @date		2024-06-22
  */
 	 
 //#pragma once
 //#pragma GCC diagnostic ignored "-Wstringop-truncation"
 //#pragma comment(lib, "libpthread.so")
 
-#ifndef _HEADER_MARKETH_
-#define _HEADER_MARKETH_
+#ifndef _HEADER_CRYPTO_MARKETH_
+#define _HEADER_CRYPTO_MARKETH_
 
 /* OS dependent */
 #define OS_WINDOWS	0
@@ -25,10 +25,8 @@
 
 /* Include */
 
-#include <memory>
-
-#include "stradian/exchange.h"
-#include "stradian/exception.h"
+#include "stradian/market.h"
+#include "stradian/binance_exchange.h"
 
 #if __has_include(<iostream>)
 #include <iostream>
@@ -74,25 +72,16 @@ extern "C" {
 /* Data structures declaration - struct & class */
 
 namespace stradian {
-	enum class MARKETCODE {
-		STOCK,
-		CRYPTO
-	};
-	
-	class Market {
+	class CryptoMarket final : public Market {
 	public:
-		Market(MARKETCODE);
+		CryptoMarket(void);
 
-		virtual ~Market(void) noexcept;
+		virtual ~CryptoMarket(void) noexcept;
 
-		MARKETCODE get_code(void) const;
-
-		std::pair<double, double> get_asset(void) const;
-
-    protected:
-		std::unique_ptr<Exchange> exchange;
-
-		MARKETCODE code;
+	    
+	private:
+		
+		
 	};
 }
 

@@ -80,7 +80,7 @@ extern "C" {
 namespace stradian {
 	class Slack {
 	public:
-		Slack(void);
+		Slack(const std::filesystem::path&);
 
 		virtual ~Slack(void) noexcept = default;
 
@@ -103,12 +103,6 @@ namespace stradian {
 		std::string channel;
 
 		const std::filesystem::path token_path = "./etc/slack/oauth";
-
-		const std::filesystem::path channel_path = "./etc/slack/channel";
-
-		//const std::filesystem::path img_path = "./var/slack/image.png";
-
-		//const std::filesystem::path file_path = "./var/slack/";
 	};
 }
 

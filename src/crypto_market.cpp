@@ -1,12 +1,12 @@
 /**
- * @file		market.cpp
- * @brief		market virtual class
+ * @file		sample.cpp
+ * @brief		
  * @author		Jeong Hoon (Sian) Choi
  * @version		1.0.0
- * @date		2024-06-15
+ * @date		2024-04-03
  */
 
-#include "stradian/market.h"
+#include "stradian/crypto_market.h"
 
 /* C & CPP */
 /*
@@ -44,19 +44,17 @@ func:
 
 /* Data structures definition - struct & class */
 
-stradian::Market::Market(MARKETCODE code) : code(code) {}
-
-stradian::Market::~Market(void) noexcept {
-    this->exchange.reset();
+stradian::CryptoMarket::CryptoMarket(void)
+	: Market(MARKETCODE::CRYPTO) {
+	std::unique_ptr<Exchange> exchange(
+		new BinanceExchange
+		);
+	
+	this->exchange = std::move(exchange);
 }
 
-stradian::MARKETCODE stradian::Market::get_code(void) const {
-	return this->code;
-}
-
-std::pair<double, double>
-stradian::Market::get_asset(void) const {
-    return this->exchange->get_asset();
+stradian::CryptoMarket::~CryptoMarket(void) noexcept {
+	this->exchange.reset();
 }
 
 /* Functions definition */

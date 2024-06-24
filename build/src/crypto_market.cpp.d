@@ -1,4 +1,11 @@
-build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
+build/src/crypto_market.cpp.o: src/crypto_market.cpp \
+  /Users/csian/projects/stradian/include/stradian/crypto_market.h \
+  /Users/csian/projects/stradian/include/stradian/market.h \
+  /Users/csian/projects/stradian/include/stradian/exchange.h \
+  /Users/csian/projects/stradian/include/stradian/order.h \
+  /Users/csian/projects/stradian/include/stradian/order.hpp \
+  /Users/csian/projects/stradian/include/stradian/exception.h \
+  /Users/csian/projects/stradian/include/stradian/slack.h \
   /Users/csian/projects/stradian/include/stradian/binance_exchange.h \
   /opt/homebrew/include/openssl/hmac.h \
   /opt/homebrew/include/openssl/macros.h \
@@ -27,9 +34,6 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
   /opt/homebrew/include/openssl/asn1.h \
   /opt/homebrew/include/openssl/asn1err.h \
   /opt/homebrew/include/openssl/objectserr.h \
-  /Users/csian/projects/stradian/include/stradian/exchange.h \
-  /Users/csian/projects/stradian/include/stradian/order.h \
-  /Users/csian/projects/stradian/include/stradian/order.hpp \
   /Users/csian/projects/stradian/include/stradian/web_socket.h \
   /opt/homebrew/include/boost/asio.hpp \
   /opt/homebrew/include/boost/asio/any_completion_executor.hpp \
@@ -1487,9 +1491,21 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
   /opt/homebrew/include/boost/json/detail/value_to.hpp \
   /opt/homebrew/include/boost/json/visit.hpp \
   /opt/homebrew/include/boost/json/impl/visit.hpp \
-  /Users/csian/projects/stradian/include/stradian/extractable.h \
-  /Users/csian/projects/stradian/include/stradian/exception.h \
-  /Users/csian/projects/stradian/include/stradian/slack.h
+  /Users/csian/projects/stradian/include/stradian/extractable.h
+
+/Users/csian/projects/stradian/include/stradian/crypto_market.h:
+
+/Users/csian/projects/stradian/include/stradian/market.h:
+
+/Users/csian/projects/stradian/include/stradian/exchange.h:
+
+/Users/csian/projects/stradian/include/stradian/order.h:
+
+/Users/csian/projects/stradian/include/stradian/order.hpp:
+
+/Users/csian/projects/stradian/include/stradian/exception.h:
+
+/Users/csian/projects/stradian/include/stradian/slack.h:
 
 /Users/csian/projects/stradian/include/stradian/binance_exchange.h:
 
@@ -1546,12 +1562,6 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 /opt/homebrew/include/openssl/asn1err.h:
 
 /opt/homebrew/include/openssl/objectserr.h:
-
-/Users/csian/projects/stradian/include/stradian/exchange.h:
-
-/Users/csian/projects/stradian/include/stradian/order.h:
-
-/Users/csian/projects/stradian/include/stradian/order.hpp:
 
 /Users/csian/projects/stradian/include/stradian/web_socket.h:
 
@@ -4470,7 +4480,3 @@ build/src/binance_exchange.cpp.o: src/binance_exchange.cpp \
 /opt/homebrew/include/boost/json/impl/visit.hpp:
 
 /Users/csian/projects/stradian/include/stradian/extractable.h:
-
-/Users/csian/projects/stradian/include/stradian/exception.h:
-
-/Users/csian/projects/stradian/include/stradian/slack.h:

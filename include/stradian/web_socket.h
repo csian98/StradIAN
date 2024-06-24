@@ -30,6 +30,8 @@
 #include <boost/beast/ssl.hpp>
 #include <boost/json.hpp>
 
+#include "stradian/extractable.h"
+
 #if __has_include(<iostream>)
 #include <iostream>
 #endif
@@ -81,7 +83,9 @@ namespace stradian {
 
 		virtual ~WebSocket(void) noexcept;
 
-		virtual boost::json::value request(const boost::json::value&);
+		boost::json::value request(const boost::json::value&);
+
+		void request(const boost::json::value&, Extractable<boost::json::value>*);
 		
 	private:
 
@@ -101,6 +105,8 @@ namespace stradian {
 
 		boost::beast::websocket::stream<
 			boost::asio::ssl::stream<boost::asio::ip::tcp::socket>> ws;
+
+		std::mutex mtx;
 	};
 }
 

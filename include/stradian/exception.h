@@ -39,8 +39,8 @@
 #include <chrono>
 #include <ctime>
 
+#include "stradian/order.h"
 #include "stradian/slack.h"
-
 
 #if __has_include(<iostream>)
 #include <iostream>
@@ -107,20 +107,34 @@ namespace stradian {
 	public:
 		Logger(const std::string&, bool slack = false);
 
-		virtual void log(LOGLEVEL level = LOGLEVEL::INFO) const;
+	    void log(LOGLEVEL level = LOGLEVEL::INFO) const;
 
-		virtual void set_level(LOGLEVEL loglevel);
+		void set_level(LOGLEVEL loglevel);
 
 	private:
-		virtual const std::string local_time(void) const;
+		const std::string local_time(void) const;
 
 		LOGLEVEL loglevel = LOGLEVEL::INFO;
 		
-		const std::filesystem::path path = "./var/log/stradian.log";
+		const std::filesystem::path path = "./var/log/system.log";
 
 		static Slack slack;
 
 		bool use_slack;
+	};
+
+	class TransactionRecord final : public Exception {
+	public:
+		TransactionRecord(const std::string&);
+
+	    void record(void) const;
+		
+	private:
+	    const std::string local_time(void) const;
+
+		const std::filesystem::path path = "./var/log/transaction.log";
+
+		static Slack slack;
 	};
 }
 

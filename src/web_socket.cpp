@@ -92,7 +92,7 @@ void stradian::WebSocket::disconnect(void) {
 boost::json::value stradian::WebSocket::request(const boost::json::value& req) {
 	if (!this->ws.is_open())
 		this->connect();
-    
+	
 	this->ws.write(boost::asio::buffer(boost::json::serialize(req)));
 	
 	boost::beast::flat_buffer buffer;
@@ -103,6 +103,11 @@ boost::json::value stradian::WebSocket::request(const boost::json::value& req) {
 					boost::asio::buffers_end(buffer.data()));
 
 	return std::move(boost::json::parse(res));
+}
+
+void stradian::WebSocket::request(const boost::json::value& req,
+								  Extractable<boost::json::value>* object) {
+	object->extract(this->request(req));
 }
 
 /* Functions definition */

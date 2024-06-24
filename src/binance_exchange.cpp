@@ -61,10 +61,38 @@ stradian::BinanceExchange::BinanceExchange(const std::string& host,
 		logger.log(LOGLEVEL::INFO);
 	} else {
 		Logger logger("BinanceExchange: binance exchange failed to connect");
-		logger.log(LOGLEVEL::INFO);
+		logger.log(LOGLEVEL::WARN);
 		throw logger;
 	}
 }
+
+stradian::BinanceExchange::~BinanceExchange(void) noexcept {
+	Logger logger("BinanceExchange: biance exchagne disconnected");
+	logger.log(LOGLEVEL::INFO);
+}
+
+std::pair<double, double>
+stradian::BinanceExchange::get_asset(void) const {
+	double key = 0, other = 0;
+
+	std::unique_lock<std::mutex> lock(this->mtx);
+	
+	for (auto iter = this->assets.begin();
+		 iter != this->assets.end(); ++iter) {
+		if (iter->first != this->key_currency) {
+			other += iter->second.first;
+			other += iter->second.second;
+		} else {
+			key += iter->second.first;
+			key += iter->second.second;
+		}
+	}
+	
+	lock.unlock();
+	
+	return std::make_pair(key, other);
+}
+
 
 void stradian::BinanceExchange::handler(const Order& order) {
 	if (this->ping()) {
@@ -99,23 +127,27 @@ void stradian::BinanceExchange::signature(boost::json::value& json) const {
 
 	std::string payload;
 	for (auto iter = params.begin(); iter != params.end(); ++iter) {
-		payload += iter->first + "=" + iter->second.substr(1, iter->second.size() - 2) + "&";
+		payload += iter->first + "=" +
+			iter->second.substr(1, iter->second.size() - 2) + "&";
 	}
     payload.pop_back();
 	
-	std::string signature = encryptHMAC(this->secret_key.c_str(), payload.c_str());
+	std::string signature =
+		encryptHMAC(this->secret_key.c_str(), payload.c_str());
 
     object.at("params").as_object()["signature"] = signature;
 }
 
-std::string stradian::BinanceExchange::encryptHMAC(const char* key, const char* data) const {
+std::string stradian::BinanceExchange::encryptHMAC(
+	const char* key, const char* data) const {
 	unsigned char* result;
 	static char res_hexstring[64];
 	int result_len = 32;
 	std::string signature;
 
 	result = HMAC(EVP_sha256(), key, strlen((char*)key),
-				  const_cast<unsigned char*>(reinterpret_cast<const unsigned char*>(data)),
+				  const_cast<unsigned char*>(
+					  reinterpret_cast<const unsigned char*>(data)),
 				  strlen((char*)data), NULL, NULL);
 
 	for (int i = 0; i < result_len; ++i) {
@@ -129,7 +161,8 @@ std::string stradian::BinanceExchange::encryptHMAC(const char* key, const char* 
 	return signature;
 }
 
-std::string stradian::BinanceExchange::read_file(const std::filesystem::path& path) {
+std::string stradian::BinanceExchange::read_file(
+	const std::filesystem::path& path) {
 	std::stringstream str;
 	
 	std::ifstream fp;
@@ -208,7 +241,8 @@ boost::json::value stradian::BinanceExchange::request_wrapper(const boost::json:
 
 			return std::move(res);
 		} catch (stradian::Logger& e) {
-			std::this_thread::sleep_for(std::chrono::milliseconds(sleep_millisec));
+			std::this_thread::sleep_for(
+				std::chrono::milliseconds(sleep_millisec));
 		}
 	}
 
@@ -237,7 +271,8 @@ void stradian::BinanceExchange::update(void) {
 		{"method", "account.status"},
 		{"params", {
 				{"apiKey", this->api_key},
-				{"timestamp", stradian::BinanceExchange::get_timestamp()}
+				{"timestamp",
+				 stradian::BinanceExchange::get_timestamp()}
 			}}
 	};
 
@@ -251,7 +286,10 @@ void stradian::BinanceExchange::update(void) {
 		return str.substr(1, str.size() - 2);
 	};
 	
-	for (const auto& ptr : object.at("result").at("balances").as_array()) {
+	std::unique_lock<std::mutex> lock(this->mtx);
+	
+	for (const auto& ptr :
+			 object.at("result").at("balances").as_array()) {
 		auto& object = ptr.as_object();
 		std::string symbol =
 			unquote(boost::json::serialize(object.at("asset")));
@@ -261,10 +299,12 @@ void stradian::BinanceExchange::update(void) {
 			unquote(boost::json::serialize(object.at("locked"))));
 		
 		if (free + locked > 0.0) {
-			this->assets.insert(std::make_pair(symbol,
-											   std::make_pair(free, locked)));
+			this->assets.insert(
+				std::make_pair(symbol,
+							   std::make_pair(free, locked)));
 		}
 	}
+	lock.unlock();
 }
 
 double stradian::BinanceExchange::price(const Order& order) {
@@ -318,8 +358,8 @@ void stradian::BinanceExchange::buy(const Order& order) {
 			<< order.quantity << " at $"
 			<< this->price(order);
 	}
-    Logger logger(str.str(), true);
-	logger.log(LOGLEVEL::INFO);
+    TransactionRecord recorder(str.str());
+	recorder.record();
 }
 
 void stradian::BinanceExchange::sell(const Order& order) {
@@ -358,8 +398,8 @@ void stradian::BinanceExchange::sell(const Order& order) {
 			<< order.quantity << " at $"
 			<< this->price(order);
 	}
-    Logger logger(str.str(), true);
-	logger.log(LOGLEVEL::INFO);
+    TransactionRecord recorder(str.str());
+    recorder.record();
 }
 
 /* Functions definition */

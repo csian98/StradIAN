@@ -92,10 +92,11 @@ namespace stradian {
 						const std::string& port = "443",
 						const std::string& target = "/ws-api/v3");
 
-		virtual ~BinanceExchange(void) noexcept = default;
+		virtual ~BinanceExchange(void) noexcept;
+
+		std::pair<double, double> get_asset(void) const override;
 
 	private:
-		// Each Exchange object's thread handling function
 		virtual void handler(const Order&) override;
 
 		void signature(boost::json::value&) const;
@@ -129,6 +130,8 @@ namespace stradian {
 		static unsigned long id;
 
 		std::map<std::string, std::pair<double, double>> assets;
+
+		mutable std::mutex mtx;
 
 		std::string api_key, secret_key;
 

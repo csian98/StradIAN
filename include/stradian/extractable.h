@@ -1,17 +1,17 @@
 /**
- * @file		market.h
- * @brief		market virtual class
+ * @file		extractable.h
+ * @brief		Extractable class for WebSocket
  * @author		Jeong Hoon (Sian) Choi
  * @version		1.0.0
- * @date		2024-06-15
+ * @date		2024-06-21
  */
 	 
 //#pragma once
 //#pragma GCC diagnostic ignored "-Wstringop-truncation"
 //#pragma comment(lib, "libpthread.so")
 
-#ifndef _HEADER_MARKETH_
-#define _HEADER_MARKETH_
+#ifndef _HEADER_EXTRACTABLEH_
+#define _HEADER_EXTRACTABLEH_
 
 /* OS dependent */
 #define OS_WINDOWS	0
@@ -25,10 +25,7 @@
 
 /* Include */
 
-#include <memory>
-
-#include "stradian/exchange.h"
-#include "stradian/exception.h"
+#include <boost/json.hpp>
 
 #if __has_include(<iostream>)
 #include <iostream>
@@ -54,7 +51,6 @@ extern "C" {
 
 /* MACRO functions */
 
-
 /* Inline define */
 
 /* Attributes */
@@ -74,25 +70,10 @@ extern "C" {
 /* Data structures declaration - struct & class */
 
 namespace stradian {
-	enum class MARKETCODE {
-		STOCK,
-		CRYPTO
-	};
-	
-	class Market {
+	template <typename T>
+	class Extractable {
 	public:
-		Market(MARKETCODE);
-
-		virtual ~Market(void) noexcept;
-
-		MARKETCODE get_code(void) const;
-
-		std::pair<double, double> get_asset(void) const;
-
-    protected:
-		std::unique_ptr<Exchange> exchange;
-
-		MARKETCODE code;
+		virtual void extract(const T&) = 0;
 	};
 }
 

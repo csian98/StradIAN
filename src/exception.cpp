@@ -101,9 +101,38 @@ const std::string stradian::Logger::local_time(void) const {
 	return std::string(buffer);
 }
 
+stradian::TransactionRecord::TransactionRecord(const std::string& message)
+	: Exception(message) {}
+
+void stradian::TransactionRecord::record(void) const {
+	std::stringstream str;
+	std::string time = this->local_time();
+	str << "[" << time << "] "  << this->message << '\n';
+	
+	std::ofstream fout(this->path, std::ios::app);
+	fout << str.str();
+	fout.close();
+
+	slack.write(str.str());
+}
+
+
+const std::string stradian::TransactionRecord::local_time(void) const {
+    auto now = std::chrono::system_clock::now();
+	std::time_t t_now = std::chrono::system_clock::to_time_t(now);
+	tm* t_tm = std::localtime(&t_now);
+
+	char buffer[64];
+	std::strftime(buffer, sizeof(buffer),
+				  "%Y-%m-%d %H:%M:%S", t_tm);
+	return std::string(buffer);
+}
+
 /* Functions definition */
 
-stradian::Slack stradian::Logger::slack;
+stradian::Slack stradian::Logger::slack("./etc/slack/system");
+
+stradian::Slack stradian::TransactionRecord::slack("./etc/slack/transaction");
 
 #endif // OS dependency
 
