@@ -51,10 +51,18 @@ stradian::CryptoMarket::CryptoMarket(void)
 		);
 	
 	this->exchange = std::move(exchange);
+	
+	this->exchange->start();
 }
 
 stradian::CryptoMarket::~CryptoMarket(void) noexcept {
-	this->exchange.reset();
+	this->exchange->stop();
+}
+
+void stradian::CryptoMarket::fork_crawler(void) {
+	this->fork_exec(this->crawler_exec);
+
+	this->wait_async();
 }
 
 /* Functions definition */

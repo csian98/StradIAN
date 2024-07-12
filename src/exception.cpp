@@ -56,26 +56,10 @@ stradian::Logger::Logger(const std::string& message,
 
 void stradian::Logger::log(LOGLEVEL level) const {
 	if (this->loglevel <= level) {
-		std::string level_str;
-		switch (level) {
-		case LOGLEVEL::INFO:
-			level_str = "INFO";
-			break;
-		case LOGLEVEL::WARN:
-			level_str = "WARN";
-			break;
-		case LOGLEVEL::ERROR:
-			level_str = "ERROR";
-			break;
-		case LOGLEVEL::FATAL:
-			level_str = "FATAL";
-			break;
-		};
-		
 		std::stringstream str;
 		std::string time = this->local_time();
 		str << "[" << time <<
-			"] (" << level_str << ") " << this->message << '\n';
+			"] (" << to_string(level) << ") " << this->message << '\n';
 		
 		std::ofstream fout(this->path, std::ios::app);
 		fout << str.str();
@@ -128,11 +112,109 @@ const std::string stradian::TransactionRecord::local_time(void) const {
 	return std::string(buffer);
 }
 
+stradian::Reporter::Reporter(double current, double past,
+							 REPORT_TYPE report_type)
+	: report_type(report_type) {
+	this->content << "[" <<this->date() << "]" ;
+	
+	switch (report_type) {
+	case REPORT_TYPE::DAILY:
+		this->path /= "daily.log";
+	    this->content << "Daily";
+		break;
+	case REPORT_TYPE::WEEKLY:
+		this->path /= "weekly.log";
+		this->content << "Weekly";
+		break;
+	case REPORT_TYPE::MONTLY:
+		this->path /= "montly.log";
+		this->content << "Montly";
+		break;
+	case REPORT_TYPE::QUARTER:
+		this->path /= "quarter.log";
+		this->content << "QUARTER";
+	}
+
+	double inc = (current - past) / past;
+	std::string inc_str;
+	if (inc > 0.0) {
+		inc_str = "+" + std::to_string(inc);
+	} else {
+		inc_str = std::to_string(inc);
+	}
+	
+	this->content << " Report ;Current Asset Valuation: " << current
+				  << "(" << inc_str << ")";
+};
+
+const std::string stradian::Reporter::date(void) const {
+    auto now = std::chrono::system_clock::now();
+	std::time_t t_now = std::chrono::system_clock::to_time_t(now);
+	tm* t_tm = std::localtime(&t_now);
+
+	char buffer[64];
+	std::strftime(buffer, sizeof(buffer),
+				  "%Y%m%d", t_tm);
+	return std::string(buffer);
+}
+
+void stradian::Reporter::report(void) const {
+	std::ofstream fout(this->path, std::ios::app);
+	fout << this->content.str();
+	fout.close();
+	
+	this->slack.write(this->content.str());
+}
+
 /* Functions definition */
 
 stradian::Slack stradian::Logger::slack("./etc/slack/system");
 
 stradian::Slack stradian::TransactionRecord::slack("./etc/slack/transaction");
+
+stradian::Slack stradian::Reporter::slack("./etc/slack/report");
+
+std::string stradian::to_string(LOGLEVEL log_level) {
+	std::string s_level;
+
+	switch (log_level) {
+	case LOGLEVEL::INFO:
+		s_level = "INFO";
+		break;
+	case LOGLEVEL::WARN:
+		s_level = "WARN";
+		break;
+	case LOGLEVEL::ERROR:
+		s_level = "ERROR";
+		break;
+	case LOGLEVEL::FATAL:
+		s_level = "FATAL";
+		break;
+	}
+
+	return s_level;
+}
+
+std::string stradian::to_string(REPORT_TYPE report_type) {
+	std::string s_report_type;
+
+	switch (report_type) {
+	case REPORT_TYPE::DAILY:
+		s_report_type = "Daily";
+		break;
+	case REPORT_TYPE::WEEKLY:
+		s_report_type = "Weekly";
+		break;
+	case REPORT_TYPE::MONTLY:
+		s_report_type = "Montly";
+		break;
+	case REPORT_TYPE::QUARTER:
+		s_report_type = "Quarter";
+		break;
+	}
+
+	return s_report_type;
+}
 
 #endif // OS dependency
 

@@ -5,13 +5,14 @@
  * @version		1.0.0
  * @date		2024-06-18
  */
-	 
-//#pragma once
-//#pragma GCC diagnostic ignored "-Wstringop-truncation"
-//#pragma comment(lib, "libpthread.so")
 
-#ifndef _HEADER_SLACKH_
-#define _HEADER_SLACKH_
+// #pragma once
+// #pragma GCC diagnostic ignored "-Wstringop-truncation"
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"  
+// #pragma comment(lib, "libpthread.so")
+
+#ifndef _HEADER_SLACK_H_
+#define _HEADER_SLACK_H_
 
 /* OS dependent */
 #define OS_WINDOWS	0

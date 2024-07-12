@@ -49,9 +49,12 @@ stradian::StradIAN::StradIAN(void) {
 		this->markets.push_back(
 			std::make_shared<CryptoMarket>()
 			);
+		
 	} catch (Exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
+
+	this->update_system_manager();
 
 	Logger logger("StradIAN: stradian started successfully");
 	logger.log(LOGLEVEL::INFO);
@@ -68,10 +71,10 @@ stradian::StradIAN::~StradIAN(void) noexcept {
 }
 
 std::pair<double, double>
-stradian::StradIAN::asset(void) const {
+stradian::StradIAN::get_validation(void) const {
 	double key = 0.0, other = 0.0;
 	for (auto market : this->markets) {
-		auto [nkey, nother] = market->get_asset();
+		auto [nkey, nother] = market->get_validation();
 		key += nkey;
 		other += nother;
 	}
@@ -79,8 +82,60 @@ stradian::StradIAN::asset(void) const {
 }
 
 std::pair<double, double>
-stradian::StradIAN::asset(MARKETCODE code) const {
-	return this->get_market(code)->get_asset();
+stradian::StradIAN::get_validation(MARKETCODE code) const {
+	return this->get_market(code)->get_validation();
+}
+
+std::map<std::string, std::pair<double, double>>
+stradian::StradIAN::get_items(void) const {
+	std::map<std::string, std::pair<double, double>> merged;
+
+	for (auto market : this->markets) {
+		auto market_item = market->get_items();
+		merged.insert(market_item.begin(), market_item.end());
+	}
+
+	return merged;
+}
+
+std::map<std::string, std::pair<double, double>>
+stradian::StradIAN::get_items(MARKETCODE code) const {
+	return this->get_market(code)->get_items();
+}
+
+std::vector<std::string>
+stradian::StradIAN::get_symbols(void) const {
+	std::vector<std::string> merged;
+	
+	for (auto market : this->markets) {
+		auto market_symbol = market->get_symbols();
+		merged.insert(merged.end(), market_symbol.begin(), market_symbol.end());
+	}
+
+	return merged;
+}
+
+std::vector<std::string>
+stradian::StradIAN::get_symbols(MARKETCODE code) const {
+	return this->get_market(code)->get_symbols();
+}
+
+void stradian::StradIAN::run_crawler(void) const {
+	for (auto market : this->markets) {
+	    market->fork_crawler();
+	}
+}
+
+void stradian::StradIAN::run_crawler(MARKETCODE code) const {
+	this->get_market(code)->fork_crawler();
+}
+
+void stradian::StradIAN::update_system_manager(void) {
+	this->update_balance();
+
+	for (auto market : this->markets) {
+		this->update_market(market->get_code());
+	}
 }
 
 std::shared_ptr<stradian::Market>

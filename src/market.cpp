@@ -47,7 +47,7 @@ func:
 stradian::Market::Market(MARKETCODE code) : code(code) {}
 
 stradian::Market::~Market(void) noexcept {
-    this->exchange.reset();
+	
 }
 
 stradian::MARKETCODE stradian::Market::get_code(void) const {
@@ -55,20 +55,35 @@ stradian::MARKETCODE stradian::Market::get_code(void) const {
 }
 
 std::pair<double, double>
-stradian::Market::get_asset(void) const {
-    return this->exchange->get_asset();
+stradian::Market::get_validation(void) const {
+    return this->exchange->get_validation();
+}
+
+std::map<std::string, std::pair<double, double>>
+stradian::Market::get_items(void) const {
+	return std::move(this->exchange->get_items());
+}
+
+std::vector<std::string>
+stradian::Market::get_symbols(void) const {
+	return std::move(this->exchange->get_symbols());
 }
 
 /* Functions definition */
 
-/*
+std::string stradian::to_string(MARKETCODE code) {
+	std::string s_code;
+	switch (code) {
+	case MARKETCODE::STOCK:
+		s_code = "stock";
+		break;
+	case MARKETCODE::CRYPTO:
+		s_code = "crypto";
+		break;
+	}
 
-void swap(Sample& lhs, Sample& rhs) noexcept {
-	// shallow copy
-    // using std::swap;
+	return s_code;
 }
-
-*/
 
 #endif // OS dependency
 

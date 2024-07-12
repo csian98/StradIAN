@@ -33,9 +33,10 @@ CFLAGS := $(INC_FLAGS) -MMD -MP
 CXXFLAGS := -std=c++20 $(INC_FLAGS) -MMD -MP
 #SHD_CXXFLAGS := -std=c++20 $(INC_FLAGS) -MMD -MP -fPIC
 NVCCFLAGS := $(INC_FLAGS)
-LDFLAGS := -L/Users/csian/projects/stradian/lib -lstradian -L/opt/homebrew/lib -lssl -lcrypto -lcurl # -lmariadbcpp
+LDFLAGS := -L/Users/csian/projects/stradian/lib -lstradian -L/opt/homebrew/lib -lssl -lcrypto -lcurl -L/usr/local/lib/mariadb -lmariadbcpp
 ARFLAGS := crs
 #SHD_LDFLAGS := -shared
+DYLD_LIBRARY_PATH := /usr/local/lib/mariadb
 
 IS_NVCC := $(notdir $(shell which $(NVCC) 2> /dev/null))
 $(info $(IS_NVCC))

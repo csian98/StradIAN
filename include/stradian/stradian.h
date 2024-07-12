@@ -5,13 +5,14 @@
  * @version		1.0.0
  * @date		2024-06-24
  */
-	 
-//#pragma once
-//#pragma GCC diagnostic ignored "-Wstringop-truncation"
-//#pragma comment(lib, "libpthread.so")
 
-#ifndef _HEADER_STRADIANH_
-#define _HEADER_STRADIANH_
+// #pragma once
+// #pragma GCC diagnostic ignored "-Wstringop-truncation"
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+// #pragma comment(lib, "libpthread.so")
+
+#ifndef _HEADER_STRADIAN_H_
+#define _HEADER_STRADIAN_H_
 
 /* OS dependent */
 #define OS_WINDOWS	0
@@ -26,7 +27,10 @@
 /* Include */
 
 #include <vector>
+#include <string>
+#include <string_view>
 
+#include "stradian/system_manager.h"
 #include "stradian/crypto_market.h"
 #include "stradian/exception.h"
 
@@ -74,20 +78,34 @@ extern "C" {
 /* Data structures declaration - struct & class */
 
 namespace stradian {
-	class StradIAN final {
+	class StradIAN final : public SystemManager {
 	public:
 		StradIAN(void);
 
 		virtual ~StradIAN(void) noexcept;
 
-		std::pair<double, double> asset(void) const;
-		
-		std::pair<double, double> asset(MARKETCODE) const;
-		
 	private:
+
+		virtual std::pair<double, double> get_validation(void) const override;
+		
+		virtual std::pair<double, double> get_validation(MARKETCODE) const override;
+
+		virtual std::map<std::string, std::pair<double, double>> get_items(void) const override;
+
+		virtual std::map<std::string, std::pair<double, double>> get_items(MARKETCODE) const override;
+
+		virtual std::vector<std::string> get_symbols(void) const override;
+
+		virtual std::vector<std::string> get_symbols(MARKETCODE) const override;
+
+		virtual void run_crawler(void) const;
+
+		virtual void run_crawler(MARKETCODE) const;
+
+		virtual void update_system_manager(void) override;
 		
 		std::shared_ptr<Market> get_market(MARKETCODE) const;
-		
+
 		std::vector<std::shared_ptr<Market>> markets;
 	};
 }

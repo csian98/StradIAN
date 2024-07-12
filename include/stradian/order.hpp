@@ -9,8 +9,8 @@
 //#pragma once
 //#pragma GCC diagnostic ignored "-Wstringop-truncation"
 
-#ifndef _HEADER_ORDERHPP_
-#define _HEADER_ORDERHPP_
+#ifndef _HEADER_ORDER_HPP_
+#define _HEADER_ORDER_HPP_
 
 #include "stradian/order.h"
 

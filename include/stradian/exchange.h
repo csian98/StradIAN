@@ -5,13 +5,14 @@
  * @version		1.0.0
  * @date		2024-06-15
  */
-	 
-//#pragma once
-//#pragma GCC diagnostic ignored "-Wstringop-truncation"
-//#pragma comment(lib, "libpthread.so")
 
-#ifndef _HEADER_EXCHANGEH_
-#define _HEADER_EXCHANGEH_
+// #pragma once
+// #pragma GCC diagnostic ignored "-Wstringop-truncation"
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+// #pragma comment(lib, "libpthread.so")
+
+#ifndef _HEADER_EXCHANGE_H_
+#define _HEADER_EXCHANGE_H_
 
 /* OS dependent */
 #define OS_WINDOWS	0
@@ -90,8 +91,12 @@ namespace stradian {
 		virtual void start(void);
 
 		virtual void stop(void);
+		
+		virtual std::pair<double, double> get_validation(void) = 0;
 
-		virtual std::pair<double, double> get_asset(void) const = 0;
+		virtual std::map<std::string, std::pair<double, double>> get_items(void) = 0;
+
+		virtual std::vector<std::string> get_symbols(void) = 0;
 		
 	    virtual void buy_order(const std::string&, double, int priority = 0);
 

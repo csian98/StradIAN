@@ -1,41 +1,12 @@
 build/src/stradian.cpp.o: src/stradian.cpp \
   /Users/csian/projects/stradian/include/stradian/stradian.h \
-  /Users/csian/projects/stradian/include/stradian/crypto_market.h \
-  /Users/csian/projects/stradian/include/stradian/market.h \
-  /Users/csian/projects/stradian/include/stradian/exchange.h \
-  /Users/csian/projects/stradian/include/stradian/order.h \
-  /Users/csian/projects/stradian/include/stradian/order.hpp \
-  /Users/csian/projects/stradian/include/stradian/exception.h \
-  /Users/csian/projects/stradian/include/stradian/slack.h \
-  /Users/csian/projects/stradian/include/stradian/binance_exchange.h \
-  /opt/homebrew/include/openssl/hmac.h \
+  /Users/csian/projects/stradian/include/stradian/system_manager.h \
+  /opt/homebrew/include/openssl/sha.h \
   /opt/homebrew/include/openssl/macros.h \
   /opt/homebrew/include/openssl/opensslconf.h \
   /opt/homebrew/include/openssl/configuration.h \
   /opt/homebrew/include/openssl/opensslv.h \
-  /opt/homebrew/include/openssl/evp.h \
-  /opt/homebrew/include/openssl/types.h \
   /opt/homebrew/include/openssl/e_os2.h \
-  /opt/homebrew/include/openssl/safestack.h \
-  /opt/homebrew/include/openssl/stack.h \
-  /opt/homebrew/include/openssl/core.h \
-  /opt/homebrew/include/openssl/core_dispatch.h \
-  /opt/homebrew/include/openssl/symhacks.h \
-  /opt/homebrew/include/openssl/bio.h \
-  /opt/homebrew/include/openssl/crypto.h \
-  /opt/homebrew/include/openssl/cryptoerr.h \
-  /opt/homebrew/include/openssl/cryptoerr_legacy.h \
-  /opt/homebrew/include/openssl/bioerr.h \
-  /opt/homebrew/include/openssl/evperr.h \
-  /opt/homebrew/include/openssl/params.h \
-  /opt/homebrew/include/openssl/bn.h \
-  /opt/homebrew/include/openssl/bnerr.h \
-  /opt/homebrew/include/openssl/objects.h \
-  /opt/homebrew/include/openssl/obj_mac.h \
-  /opt/homebrew/include/openssl/asn1.h \
-  /opt/homebrew/include/openssl/asn1err.h \
-  /opt/homebrew/include/openssl/objectserr.h \
-  /Users/csian/projects/stradian/include/stradian/web_socket.h \
   /opt/homebrew/include/boost/asio.hpp \
   /opt/homebrew/include/boost/asio/any_completion_executor.hpp \
   /opt/homebrew/include/boost/asio/detail/config.hpp \
@@ -776,6 +747,304 @@ build/src/stradian.cpp.o: src/stradian.cpp \
   /opt/homebrew/include/boost/asio/writable_pipe.hpp \
   /opt/homebrew/include/boost/asio/write_at.hpp \
   /opt/homebrew/include/boost/asio/impl/write_at.hpp \
+  /opt/homebrew/include/boost/asio/ssl.hpp \
+  /opt/homebrew/include/boost/asio/ssl/context.hpp \
+  /opt/homebrew/include/boost/asio/ssl/context_base.hpp \
+  /opt/homebrew/include/boost/asio/ssl/detail/openssl_types.hpp \
+  /opt/homebrew/include/openssl/conf.h \
+  /opt/homebrew/include/openssl/bio.h \
+  /opt/homebrew/include/openssl/crypto.h \
+  /opt/homebrew/include/openssl/safestack.h \
+  /opt/homebrew/include/openssl/stack.h \
+  /opt/homebrew/include/openssl/types.h \
+  /opt/homebrew/include/openssl/cryptoerr.h \
+  /opt/homebrew/include/openssl/symhacks.h \
+  /opt/homebrew/include/openssl/cryptoerr_legacy.h \
+  /opt/homebrew/include/openssl/core.h \
+  /opt/homebrew/include/openssl/bioerr.h \
+  /opt/homebrew/include/openssl/lhash.h \
+  /opt/homebrew/include/openssl/conferr.h \
+  /opt/homebrew/include/openssl/conftypes.h \
+  /opt/homebrew/include/openssl/ssl.h \
+  /opt/homebrew/include/openssl/e_ostime.h \
+  /opt/homebrew/include/openssl/comp.h \
+  /opt/homebrew/include/openssl/comperr.h \
+  /opt/homebrew/include/openssl/x509.h \
+  /opt/homebrew/include/openssl/buffer.h \
+  /opt/homebrew/include/openssl/buffererr.h \
+  /opt/homebrew/include/openssl/evp.h \
+  /opt/homebrew/include/openssl/core_dispatch.h \
+  /opt/homebrew/include/openssl/evperr.h \
+  /opt/homebrew/include/openssl/params.h \
+  /opt/homebrew/include/openssl/bn.h \
+  /opt/homebrew/include/openssl/bnerr.h \
+  /opt/homebrew/include/openssl/objects.h \
+  /opt/homebrew/include/openssl/obj_mac.h \
+  /opt/homebrew/include/openssl/asn1.h \
+  /opt/homebrew/include/openssl/asn1err.h \
+  /opt/homebrew/include/openssl/objectserr.h \
+  /opt/homebrew/include/openssl/ec.h \
+  /opt/homebrew/include/openssl/ecerr.h \
+  /opt/homebrew/include/openssl/rsa.h \
+  /opt/homebrew/include/openssl/rsaerr.h \
+  /opt/homebrew/include/openssl/dsa.h /opt/homebrew/include/openssl/dh.h \
+  /opt/homebrew/include/openssl/dherr.h \
+  /opt/homebrew/include/openssl/dsaerr.h \
+  /opt/homebrew/include/openssl/x509err.h \
+  /opt/homebrew/include/openssl/x509_vfy.h \
+  /opt/homebrew/include/openssl/pkcs7.h \
+  /opt/homebrew/include/openssl/pkcs7err.h \
+  /opt/homebrew/include/openssl/http.h \
+  /opt/homebrew/include/openssl/pem.h \
+  /opt/homebrew/include/openssl/pemerr.h \
+  /opt/homebrew/include/openssl/hmac.h \
+  /opt/homebrew/include/openssl/async.h \
+  /opt/homebrew/include/openssl/asyncerr.h \
+  /opt/homebrew/include/openssl/ct.h \
+  /opt/homebrew/include/openssl/cterr.h \
+  /opt/homebrew/include/openssl/sslerr.h \
+  /opt/homebrew/include/openssl/sslerr_legacy.h \
+  /opt/homebrew/include/openssl/prov_ssl.h \
+  /opt/homebrew/include/openssl/ssl2.h \
+  /opt/homebrew/include/openssl/ssl3.h \
+  /opt/homebrew/include/openssl/tls1.h \
+  /opt/homebrew/include/openssl/dtls1.h \
+  /opt/homebrew/include/openssl/srtp.h \
+  /opt/homebrew/include/openssl/quic.h \
+  /opt/homebrew/include/openssl/engine.h \
+  /opt/homebrew/include/openssl/rand.h \
+  /opt/homebrew/include/openssl/randerr.h \
+  /opt/homebrew/include/openssl/ui.h \
+  /opt/homebrew/include/openssl/uierr.h \
+  /opt/homebrew/include/openssl/err.h \
+  /opt/homebrew/include/openssl/engineerr.h \
+  /opt/homebrew/include/openssl/x509v3.h \
+  /opt/homebrew/include/openssl/x509v3err.h \
+  /opt/homebrew/include/boost/asio/ssl/detail/openssl_init.hpp \
+  /opt/homebrew/include/boost/asio/ssl/detail/impl/openssl_init.ipp \
+  /opt/homebrew/include/boost/asio/ssl/detail/password_callback.hpp \
+  /opt/homebrew/include/boost/asio/ssl/detail/verify_callback.hpp \
+  /opt/homebrew/include/boost/asio/ssl/verify_context.hpp \
+  /opt/homebrew/include/boost/asio/ssl/verify_mode.hpp \
+  /opt/homebrew/include/boost/asio/ssl/impl/context.hpp \
+  /opt/homebrew/include/boost/asio/ssl/impl/context.ipp \
+  /opt/homebrew/include/boost/asio/ssl/error.hpp \
+  /opt/homebrew/include/boost/asio/ssl/impl/error.ipp \
+  /opt/homebrew/include/boost/asio/ssl/rfc2818_verification.hpp \
+  /opt/homebrew/include/boost/asio/ssl/impl/rfc2818_verification.ipp \
+  /opt/homebrew/include/boost/asio/ssl/host_name_verification.hpp \
+  /opt/homebrew/include/boost/asio/ssl/impl/host_name_verification.ipp \
+  /opt/homebrew/include/boost/asio/ssl/stream.hpp \
+  /opt/homebrew/include/boost/asio/ssl/detail/buffered_handshake_op.hpp \
+  /opt/homebrew/include/boost/asio/ssl/detail/engine.hpp \
+  /opt/homebrew/include/boost/asio/ssl/stream_base.hpp \
+  /opt/homebrew/include/boost/asio/ssl/detail/impl/engine.ipp \
+  /opt/homebrew/include/boost/asio/ssl/detail/handshake_op.hpp \
+  /opt/homebrew/include/boost/asio/ssl/detail/io.hpp \
+  /opt/homebrew/include/boost/asio/ssl/detail/stream_core.hpp \
+  /opt/homebrew/include/boost/asio/ssl/detail/read_op.hpp \
+  /opt/homebrew/include/boost/asio/ssl/detail/shutdown_op.hpp \
+  /opt/homebrew/include/boost/asio/ssl/detail/write_op.hpp \
+  /Users/csian/projects/stradian/include/stradian/mariadb.h \
+  /usr/local/include/mariadb/conncpp.hpp \
+  /usr/local/include/mariadb/conncpp/Driver.hpp \
+  /usr/local/include/mariadb/conncpp/buildconf.hpp \
+  /usr/local/include/mariadb/conncpp/SQLString.hpp \
+  /usr/local/include/mariadb/conncpp/Connection.hpp \
+  /usr/local/include/mariadb/conncpp/Savepoint.hpp \
+  /usr/local/include/mariadb/conncpp/jdbccompat.hpp \
+  /usr/local/include/mariadb/conncpp/CArray.hpp \
+  /usr/local/include/mariadb/conncpp/compat/Struct.hpp \
+  /usr/local/include/mariadb/conncpp/compat/Object.hpp \
+  /usr/local/include/mariadb/conncpp/compat/Executor.hpp \
+  /usr/local/include/mariadb/conncpp/DriverManager.hpp \
+  /usr/local/include/mariadb/conncpp/ResultSet.hpp \
+  /usr/local/include/mariadb/conncpp/Warning.hpp \
+  /usr/local/include/mariadb/conncpp/DatabaseMetaData.hpp \
+  /usr/local/include/mariadb/conncpp/ResultSetMetaData.hpp \
+  /usr/local/include/mariadb/conncpp/Statement.hpp \
+  /usr/local/include/mariadb/conncpp/PreparedStatement.hpp \
+  /usr/local/include/mariadb/conncpp/ParameterMetaData.hpp \
+  /usr/local/include/mariadb/conncpp/CallableStatement.hpp \
+  /usr/local/include/mariadb/conncpp/Types.hpp \
+  /usr/local/include/mariadb/conncpp/Exception.hpp \
+  /Users/csian/projects/stradian/include/stradian/extractable.h \
+  /opt/homebrew/include/boost/json.hpp \
+  /opt/homebrew/include/boost/json/detail/config.hpp \
+  /opt/homebrew/include/boost/config/auto_link.hpp \
+  /opt/homebrew/include/boost/json/array.hpp \
+  /opt/homebrew/include/boost/json/kind.hpp \
+  /opt/homebrew/include/boost/json/string_view.hpp \
+  /opt/homebrew/include/boost/core/detail/string_view.hpp \
+  /opt/homebrew/include/boost/core/detail/is_same.hpp \
+  /opt/homebrew/include/boost/json/pilfer.hpp \
+  /opt/homebrew/include/boost/json/storage_ptr.hpp \
+  /opt/homebrew/include/boost/container/pmr/polymorphic_allocator.hpp \
+  /opt/homebrew/include/boost/move/detail/type_traits.hpp \
+  /opt/homebrew/include/boost/move/detail/config_begin.hpp \
+  /opt/homebrew/include/boost/move/detail/workaround.hpp \
+  /opt/homebrew/include/boost/move/detail/meta_utils.hpp \
+  /opt/homebrew/include/boost/move/detail/meta_utils_core.hpp \
+  /opt/homebrew/include/boost/move/detail/addressof.hpp \
+  /opt/homebrew/include/boost/move/detail/config_end.hpp \
+  /opt/homebrew/include/boost/move/utility_core.hpp \
+  /opt/homebrew/include/boost/move/core.hpp \
+  /opt/homebrew/include/boost/container/detail/dispatch_uses_allocator.hpp \
+  /opt/homebrew/include/boost/container/detail/config_begin.hpp \
+  /opt/homebrew/include/boost/container/detail/workaround.hpp \
+  /opt/homebrew/include/boost/container/allocator_traits.hpp \
+  /opt/homebrew/include/boost/container/container_fwd.hpp \
+  /opt/homebrew/include/boost/container/detail/std_fwd.hpp \
+  /opt/homebrew/include/boost/move/detail/std_ns_begin.hpp \
+  /opt/homebrew/include/boost/move/detail/std_ns_end.hpp \
+  /opt/homebrew/include/boost/container/detail/mpl.hpp \
+  /opt/homebrew/include/boost/intrusive/detail/mpl.hpp \
+  /opt/homebrew/include/boost/intrusive/detail/config_begin.hpp \
+  /opt/homebrew/include/boost/intrusive/detail/config_end.hpp \
+  /opt/homebrew/include/boost/container/detail/config_end.hpp \
+  /opt/homebrew/include/boost/container/detail/type_traits.hpp \
+  /opt/homebrew/include/boost/container/detail/placement_new.hpp \
+  /opt/homebrew/include/boost/intrusive/pointer_traits.hpp \
+  /opt/homebrew/include/boost/intrusive/detail/workaround.hpp \
+  /opt/homebrew/include/boost/intrusive/pointer_rebind.hpp \
+  /opt/homebrew/include/boost/move/detail/pointer_element.hpp \
+  /opt/homebrew/include/boost/intrusive/detail/has_member_function_callable_with.hpp \
+  /opt/homebrew/include/boost/move/detail/fwd_macros.hpp \
+  /opt/homebrew/include/boost/container/uses_allocator.hpp \
+  /opt/homebrew/include/boost/container/uses_allocator_fwd.hpp \
+  /opt/homebrew/include/boost/container/detail/addressof.hpp \
+  /opt/homebrew/include/boost/container/detail/is_pair.hpp \
+  /opt/homebrew/include/boost/container/detail/variadic_templates_tools.hpp \
+  /opt/homebrew/include/boost/container/new_allocator.hpp \
+  /opt/homebrew/include/boost/container/throw_exception.hpp \
+  /opt/homebrew/include/boost/container/pmr/memory_resource.hpp \
+  /opt/homebrew/include/boost/container/pmr/global_resource.hpp \
+  /opt/homebrew/include/boost/container/detail/auto_link.hpp \
+  /opt/homebrew/include/boost/json/memory_resource.hpp \
+  /opt/homebrew/include/boost/json/is_deallocate_trivial.hpp \
+  /opt/homebrew/include/boost/json/detail/shared_resource.hpp \
+  /opt/homebrew/include/boost/json/detail/default_resource.hpp \
+  /opt/homebrew/include/boost/json/detail/array.hpp \
+  /opt/homebrew/include/boost/json/value.hpp \
+  /opt/homebrew/include/boost/json/object.hpp \
+  /opt/homebrew/include/boost/json/detail/object.hpp \
+  /opt/homebrew/include/boost/json/detail/value.hpp \
+  /opt/homebrew/include/boost/json/fwd.hpp \
+  /opt/homebrew/include/boost/json/set_pointer_options.hpp \
+  /opt/homebrew/include/boost/json/string.hpp \
+  /opt/homebrew/include/boost/json/detail/digest.hpp \
+  /opt/homebrew/include/boost/json/detail/except.hpp \
+  /opt/homebrew/include/boost/json/error.hpp \
+  /opt/homebrew/include/boost/json/system_error.hpp \
+  /opt/homebrew/include/boost/json/result_for.hpp \
+  /opt/homebrew/include/boost/system/result.hpp \
+  /opt/homebrew/include/boost/variant2/variant.hpp \
+  /opt/homebrew/include/boost/mp11.hpp \
+  /opt/homebrew/include/boost/mp11/list.hpp \
+  /opt/homebrew/include/boost/mp11/integral.hpp \
+  /opt/homebrew/include/boost/mp11/version.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_value.hpp \
+  /opt/homebrew/include/boost/mp11/detail/config.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_list.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_list_v.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_is_list.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_is_value_list.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_front.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_rename.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_defer.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_append.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_count.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_plus.hpp \
+  /opt/homebrew/include/boost/mp11/utility.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_fold.hpp \
+  /opt/homebrew/include/boost/mp11/algorithm.hpp \
+  /opt/homebrew/include/boost/mp11/set.hpp \
+  /opt/homebrew/include/boost/mp11/function.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_min_element.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_void.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_copy_if.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_remove_if.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_map_find.hpp \
+  /opt/homebrew/include/boost/mp11/detail/mp_with_index.hpp \
+  /opt/homebrew/include/boost/mp11/integer_sequence.hpp \
+  /opt/homebrew/include/boost/mp11/map.hpp \
+  /opt/homebrew/include/boost/mp11/bind.hpp \
+  /opt/homebrew/include/boost/mp11/tuple.hpp \
+  /opt/homebrew/include/boost/json/impl/error.hpp \
+  /opt/homebrew/include/boost/json/detail/string_impl.hpp \
+  /opt/homebrew/include/boost/json/impl/string.hpp \
+  /opt/homebrew/include/boost/json/value_ref.hpp \
+  /opt/homebrew/include/boost/json/detail/impl/array.hpp \
+  /opt/homebrew/include/boost/json/impl/array.hpp \
+  /opt/homebrew/include/boost/json/impl/object.hpp \
+  /opt/homebrew/include/boost/json/impl/value.hpp \
+  /opt/homebrew/include/boost/json/impl/value_ref.hpp \
+  /opt/homebrew/include/boost/json/basic_parser.hpp \
+  /opt/homebrew/include/boost/json/parse_options.hpp \
+  /opt/homebrew/include/boost/json/detail/stack.hpp \
+  /opt/homebrew/include/boost/json/detail/stream.hpp \
+  /opt/homebrew/include/boost/json/detail/utf8.hpp \
+  /opt/homebrew/include/boost/endian/conversion.hpp \
+  /opt/homebrew/include/boost/endian/detail/endian_reverse.hpp \
+  /opt/homebrew/include/boost/endian/detail/integral_by_size.hpp \
+  /opt/homebrew/include/boost/endian/detail/intrinsic.hpp \
+  /opt/homebrew/include/boost/endian/detail/is_scoped_enum.hpp \
+  /opt/homebrew/include/boost/endian/detail/is_integral.hpp \
+  /opt/homebrew/include/boost/endian/detail/static_assert.hpp \
+  /opt/homebrew/include/boost/endian/detail/endian_load.hpp \
+  /opt/homebrew/include/boost/endian/detail/order.hpp \
+  /opt/homebrew/include/boost/endian/detail/is_trivially_copyable.hpp \
+  /opt/homebrew/include/boost/endian/detail/endian_store.hpp \
+  /opt/homebrew/include/boost/json/detail/sbo_buffer.hpp \
+  /opt/homebrew/include/boost/json/conversion.hpp \
+  /opt/homebrew/include/boost/json/impl/conversion.hpp \
+  /opt/homebrew/include/boost/describe/enumerators.hpp \
+  /opt/homebrew/include/boost/describe/detail/void_t.hpp \
+  /opt/homebrew/include/boost/describe/detail/config.hpp \
+  /opt/homebrew/include/boost/describe/members.hpp \
+  /opt/homebrew/include/boost/describe/modifiers.hpp \
+  /opt/homebrew/include/boost/describe/bases.hpp \
+  /opt/homebrew/include/boost/describe/detail/cx_streq.hpp \
+  /opt/homebrew/include/boost/json/monotonic_resource.hpp \
+  /opt/homebrew/include/boost/json/null_resource.hpp \
+  /opt/homebrew/include/boost/json/parse.hpp \
+  /opt/homebrew/include/boost/json/parse_into.hpp \
+  /opt/homebrew/include/boost/json/detail/parse_into.hpp \
+  /opt/homebrew/include/boost/describe/enum_from_string.hpp \
+  /opt/homebrew/include/boost/json/impl/parse_into.hpp \
+  /opt/homebrew/include/boost/json/basic_parser_impl.hpp \
+  /opt/homebrew/include/boost/json/detail/buffer.hpp \
+  /opt/homebrew/include/boost/json/detail/charconv/from_chars.hpp \
+  /opt/homebrew/include/boost/json/detail/charconv/detail/config.hpp \
+  /opt/homebrew/include/boost/json/detail/charconv/detail/from_chars_result.hpp \
+  /opt/homebrew/include/boost/json/detail/charconv/chars_format.hpp \
+  /opt/homebrew/include/boost/json/detail/sse2.hpp \
+  /opt/homebrew/include/boost/json/parser.hpp \
+  /opt/homebrew/include/boost/json/detail/handler.hpp \
+  /opt/homebrew/include/boost/json/value_stack.hpp \
+  /opt/homebrew/include/boost/json/serialize.hpp \
+  /opt/homebrew/include/boost/json/serialize_options.hpp \
+  /opt/homebrew/include/boost/json/serializer.hpp \
+  /opt/homebrew/include/boost/json/detail/format.hpp \
+  /opt/homebrew/include/boost/json/static_resource.hpp \
+  /opt/homebrew/include/boost/json/stream_parser.hpp \
+  /opt/homebrew/include/boost/json/value_from.hpp \
+  /opt/homebrew/include/boost/json/detail/value_from.hpp \
+  /opt/homebrew/include/boost/describe/enum_to_string.hpp \
+  /opt/homebrew/include/boost/json/value_to.hpp \
+  /opt/homebrew/include/boost/json/detail/value_to.hpp \
+  /opt/homebrew/include/boost/json/visit.hpp \
+  /opt/homebrew/include/boost/json/impl/visit.hpp \
+  /Users/csian/projects/stradian/include/stradian/exception.h \
+  /Users/csian/projects/stradian/include/stradian/order.h \
+  /Users/csian/projects/stradian/include/stradian/order.hpp \
+  /Users/csian/projects/stradian/include/stradian/slack.h \
+  /Users/csian/projects/stradian/include/stradian/market.h \
+  /Users/csian/projects/stradian/include/stradian/exchange.h \
+  /Users/csian/projects/stradian/include/stradian/forkexecable.h \
+  /Users/csian/projects/stradian/include/stradian/crypto_market.h \
+  /Users/csian/projects/stradian/include/stradian/binance_exchange.h \
+  /Users/csian/projects/stradian/include/stradian/web_socket.h \
   /opt/homebrew/include/boost/beast.hpp \
   /opt/homebrew/include/boost/beast/core/detail/config.hpp \
   /opt/homebrew/include/boost/core/ignore_unused.hpp \
@@ -833,16 +1102,7 @@ build/src/stradian.cpp.o: src/stradian.cpp \
   /opt/homebrew/include/boost/type_traits/enable_if.hpp \
   /opt/homebrew/include/boost/type_traits/is_nothrow_move_constructible.hpp \
   /opt/homebrew/include/boost/move/utility.hpp \
-  /opt/homebrew/include/boost/move/detail/config_begin.hpp \
-  /opt/homebrew/include/boost/move/detail/workaround.hpp \
-  /opt/homebrew/include/boost/move/utility_core.hpp \
-  /opt/homebrew/include/boost/move/core.hpp \
-  /opt/homebrew/include/boost/move/detail/config_end.hpp \
-  /opt/homebrew/include/boost/move/detail/meta_utils.hpp \
-  /opt/homebrew/include/boost/move/detail/meta_utils_core.hpp \
-  /opt/homebrew/include/boost/move/detail/addressof.hpp \
   /opt/homebrew/include/boost/move/traits.hpp \
-  /opt/homebrew/include/boost/move/detail/type_traits.hpp \
   /opt/homebrew/include/boost/none.hpp \
   /opt/homebrew/include/boost/none_t.hpp \
   /opt/homebrew/include/boost/utility/compare_pointees.hpp \
@@ -877,26 +1137,6 @@ build/src/stradian.cpp.o: src/stradian.cpp \
   /opt/homebrew/include/boost/beast/core/impl/basic_stream.hpp \
   /opt/homebrew/include/boost/beast/core/buffer_traits.hpp \
   /opt/homebrew/include/boost/beast/core/detail/buffer_traits.hpp \
-  /opt/homebrew/include/boost/mp11/function.hpp \
-  /opt/homebrew/include/boost/mp11/integral.hpp \
-  /opt/homebrew/include/boost/mp11/version.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_value.hpp \
-  /opt/homebrew/include/boost/mp11/detail/config.hpp \
-  /opt/homebrew/include/boost/mp11/utility.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_list.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_fold.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_defer.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_rename.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_front.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_count.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_plus.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_min_element.hpp \
-  /opt/homebrew/include/boost/mp11/list.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_list_v.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_is_list.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_is_value_list.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_append.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_void.hpp \
   /opt/homebrew/include/boost/beast/core/buffers_prefix.hpp \
   /opt/homebrew/include/boost/beast/core/impl/buffers_prefix.hpp \
   /opt/homebrew/include/boost/beast/websocket/teardown.hpp \
@@ -922,13 +1162,6 @@ build/src/stradian.cpp.o: src/stradian.cpp \
   /opt/homebrew/include/boost/beast/core/bind_handler.hpp \
   /opt/homebrew/include/boost/beast/core/detail/bind_handler.hpp \
   /opt/homebrew/include/boost/beast/core/detail/tuple.hpp \
-  /opt/homebrew/include/boost/mp11/integer_sequence.hpp \
-  /opt/homebrew/include/boost/mp11/algorithm.hpp \
-  /opt/homebrew/include/boost/mp11/set.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_copy_if.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_remove_if.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_map_find.hpp \
-  /opt/homebrew/include/boost/mp11/detail/mp_with_index.hpp \
   /opt/homebrew/include/boost/type_traits/copy_cv.hpp \
   /opt/homebrew/include/boost/type_traits/add_const.hpp \
   /opt/homebrew/include/boost/type_traits/add_volatile.hpp \
@@ -937,23 +1170,16 @@ build/src/stradian.cpp.o: src/stradian.cpp \
   /opt/homebrew/include/boost/beast/core/buffered_read_stream.hpp \
   /opt/homebrew/include/boost/beast/core/multi_buffer.hpp \
   /opt/homebrew/include/boost/intrusive/list.hpp \
-  /opt/homebrew/include/boost/intrusive/detail/config_begin.hpp \
   /opt/homebrew/include/boost/intrusive/intrusive_fwd.hpp \
   /opt/homebrew/include/boost/intrusive/link_mode.hpp \
-  /opt/homebrew/include/boost/intrusive/detail/workaround.hpp \
   /opt/homebrew/include/boost/intrusive/detail/assert.hpp \
   /opt/homebrew/include/boost/intrusive/list_hook.hpp \
   /opt/homebrew/include/boost/intrusive/detail/list_node.hpp \
-  /opt/homebrew/include/boost/intrusive/pointer_rebind.hpp \
   /opt/homebrew/include/boost/intrusive/circular_list_algorithms.hpp \
   /opt/homebrew/include/boost/intrusive/detail/algo_type.hpp \
-  /opt/homebrew/include/boost/intrusive/detail/config_end.hpp \
   /opt/homebrew/include/boost/intrusive/options.hpp \
   /opt/homebrew/include/boost/intrusive/pack_options.hpp \
   /opt/homebrew/include/boost/intrusive/detail/generic_hook.hpp \
-  /opt/homebrew/include/boost/intrusive/pointer_traits.hpp \
-  /opt/homebrew/include/boost/move/detail/pointer_element.hpp \
-  /opt/homebrew/include/boost/intrusive/detail/mpl.hpp \
   /opt/homebrew/include/boost/intrusive/detail/node_holder.hpp \
   /opt/homebrew/include/boost/intrusive/detail/get_value_traits.hpp \
   /opt/homebrew/include/boost/intrusive/detail/hook_traits.hpp \
@@ -968,8 +1194,6 @@ build/src/stradian.cpp.o: src/stradian.cpp \
   /opt/homebrew/include/boost/intrusive/detail/uncast.hpp \
   /opt/homebrew/include/boost/intrusive/detail/list_iterator.hpp \
   /opt/homebrew/include/boost/intrusive/detail/std_fwd.hpp \
-  /opt/homebrew/include/boost/move/detail/std_ns_begin.hpp \
-  /opt/homebrew/include/boost/move/detail/std_ns_end.hpp \
   /opt/homebrew/include/boost/intrusive/detail/iiterator.hpp \
   /opt/homebrew/include/boost/intrusive/detail/iterator.hpp \
   /opt/homebrew/include/boost/intrusive/detail/array_initializer.hpp \
@@ -1141,13 +1365,6 @@ build/src/stradian.cpp.o: src/stradian.cpp \
   /opt/homebrew/include/boost/container_hash/is_contiguous_range.hpp \
   /opt/homebrew/include/boost/container_hash/is_unordered_range.hpp \
   /opt/homebrew/include/boost/container_hash/is_described_class.hpp \
-  /opt/homebrew/include/boost/describe/bases.hpp \
-  /opt/homebrew/include/boost/describe/modifiers.hpp \
-  /opt/homebrew/include/boost/describe/detail/config.hpp \
-  /opt/homebrew/include/boost/describe/detail/void_t.hpp \
-  /opt/homebrew/include/boost/describe/members.hpp \
-  /opt/homebrew/include/boost/describe/detail/cx_streq.hpp \
-  /opt/homebrew/include/boost/mp11/bind.hpp \
   /opt/homebrew/include/boost/container_hash/detail/hash_integral.hpp \
   /opt/homebrew/include/boost/container_hash/detail/hash_mix.hpp \
   /opt/homebrew/include/boost/container_hash/detail/hash_tuple_like.hpp \
@@ -1159,8 +1376,6 @@ build/src/stradian.cpp.o: src/stradian.cpp \
   /opt/homebrew/include/boost/io/detail/buffer_fill.hpp \
   /opt/homebrew/include/boost/io/detail/ostream_guard.hpp \
   /opt/homebrew/include/boost/utility/string_view_fwd.hpp \
-  /opt/homebrew/include/boost/core/detail/string_view.hpp \
-  /opt/homebrew/include/boost/core/detail/is_same.hpp \
   /opt/homebrew/include/boost/beast/core/string.hpp \
   /opt/homebrew/include/boost/beast/core/string_type.hpp \
   /opt/homebrew/include/boost/beast/core/impl/string.ipp \
@@ -1273,17 +1488,6 @@ build/src/stradian.cpp.o: src/stradian.cpp \
   /opt/homebrew/include/boost/beast/websocket/detail/frame.hpp \
   /opt/homebrew/include/boost/beast/websocket/detail/utf8_checker.hpp \
   /opt/homebrew/include/boost/beast/websocket/detail/utf8_checker.ipp \
-  /opt/homebrew/include/boost/endian/conversion.hpp \
-  /opt/homebrew/include/boost/endian/detail/endian_reverse.hpp \
-  /opt/homebrew/include/boost/endian/detail/integral_by_size.hpp \
-  /opt/homebrew/include/boost/endian/detail/intrinsic.hpp \
-  /opt/homebrew/include/boost/endian/detail/is_scoped_enum.hpp \
-  /opt/homebrew/include/boost/endian/detail/is_integral.hpp \
-  /opt/homebrew/include/boost/endian/detail/static_assert.hpp \
-  /opt/homebrew/include/boost/endian/detail/endian_load.hpp \
-  /opt/homebrew/include/boost/endian/detail/order.hpp \
-  /opt/homebrew/include/boost/endian/detail/is_trivially_copyable.hpp \
-  /opt/homebrew/include/boost/endian/detail/endian_store.hpp \
   /opt/homebrew/include/boost/beast/websocket/detail/pmd_extension.hpp \
   /opt/homebrew/include/boost/beast/websocket/detail/pmd_extension.ipp \
   /opt/homebrew/include/boost/beast/zlib/deflate_stream.hpp \
@@ -1318,201 +1522,13 @@ build/src/stradian.cpp.o: src/stradian.cpp \
   /opt/homebrew/include/boost/beast/ssl.hpp \
   /opt/homebrew/include/boost/beast/ssl/ssl_stream.hpp \
   /opt/homebrew/include/boost/beast/websocket/ssl.hpp \
-  /opt/homebrew/include/boost/asio/ssl/stream.hpp \
-  /opt/homebrew/include/boost/asio/ssl/context.hpp \
-  /opt/homebrew/include/boost/asio/ssl/context_base.hpp \
-  /opt/homebrew/include/boost/asio/ssl/detail/openssl_types.hpp \
-  /opt/homebrew/include/openssl/conf.h \
-  /opt/homebrew/include/openssl/lhash.h \
-  /opt/homebrew/include/openssl/conferr.h \
-  /opt/homebrew/include/openssl/conftypes.h \
-  /opt/homebrew/include/openssl/ssl.h \
-  /opt/homebrew/include/openssl/e_ostime.h \
-  /opt/homebrew/include/openssl/comp.h \
-  /opt/homebrew/include/openssl/comperr.h \
-  /opt/homebrew/include/openssl/x509.h \
-  /opt/homebrew/include/openssl/buffer.h \
-  /opt/homebrew/include/openssl/buffererr.h \
-  /opt/homebrew/include/openssl/ec.h \
-  /opt/homebrew/include/openssl/ecerr.h \
-  /opt/homebrew/include/openssl/rsa.h \
-  /opt/homebrew/include/openssl/rsaerr.h \
-  /opt/homebrew/include/openssl/dsa.h /opt/homebrew/include/openssl/dh.h \
-  /opt/homebrew/include/openssl/dherr.h \
-  /opt/homebrew/include/openssl/dsaerr.h \
-  /opt/homebrew/include/openssl/sha.h \
-  /opt/homebrew/include/openssl/x509err.h \
-  /opt/homebrew/include/openssl/x509_vfy.h \
-  /opt/homebrew/include/openssl/pkcs7.h \
-  /opt/homebrew/include/openssl/pkcs7err.h \
-  /opt/homebrew/include/openssl/http.h \
-  /opt/homebrew/include/openssl/pem.h \
-  /opt/homebrew/include/openssl/pemerr.h \
-  /opt/homebrew/include/openssl/async.h \
-  /opt/homebrew/include/openssl/asyncerr.h \
-  /opt/homebrew/include/openssl/ct.h \
-  /opt/homebrew/include/openssl/cterr.h \
-  /opt/homebrew/include/openssl/sslerr.h \
-  /opt/homebrew/include/openssl/sslerr_legacy.h \
-  /opt/homebrew/include/openssl/prov_ssl.h \
-  /opt/homebrew/include/openssl/ssl2.h \
-  /opt/homebrew/include/openssl/ssl3.h \
-  /opt/homebrew/include/openssl/tls1.h \
-  /opt/homebrew/include/openssl/dtls1.h \
-  /opt/homebrew/include/openssl/srtp.h \
-  /opt/homebrew/include/openssl/quic.h \
-  /opt/homebrew/include/openssl/engine.h \
-  /opt/homebrew/include/openssl/rand.h \
-  /opt/homebrew/include/openssl/randerr.h \
-  /opt/homebrew/include/openssl/ui.h \
-  /opt/homebrew/include/openssl/uierr.h \
-  /opt/homebrew/include/openssl/err.h \
-  /opt/homebrew/include/openssl/engineerr.h \
-  /opt/homebrew/include/openssl/x509v3.h \
-  /opt/homebrew/include/openssl/x509v3err.h \
-  /opt/homebrew/include/boost/asio/ssl/detail/openssl_init.hpp \
-  /opt/homebrew/include/boost/asio/ssl/detail/impl/openssl_init.ipp \
-  /opt/homebrew/include/boost/asio/ssl/detail/password_callback.hpp \
-  /opt/homebrew/include/boost/asio/ssl/detail/verify_callback.hpp \
-  /opt/homebrew/include/boost/asio/ssl/verify_context.hpp \
-  /opt/homebrew/include/boost/asio/ssl/verify_mode.hpp \
-  /opt/homebrew/include/boost/asio/ssl/impl/context.hpp \
-  /opt/homebrew/include/boost/asio/ssl/impl/context.ipp \
-  /opt/homebrew/include/boost/asio/ssl/error.hpp \
-  /opt/homebrew/include/boost/asio/ssl/impl/error.ipp \
-  /opt/homebrew/include/boost/asio/ssl/detail/buffered_handshake_op.hpp \
-  /opt/homebrew/include/boost/asio/ssl/detail/engine.hpp \
-  /opt/homebrew/include/boost/asio/ssl/stream_base.hpp \
-  /opt/homebrew/include/boost/asio/ssl/detail/impl/engine.ipp \
-  /opt/homebrew/include/boost/asio/ssl/detail/handshake_op.hpp \
-  /opt/homebrew/include/boost/asio/ssl/detail/io.hpp \
-  /opt/homebrew/include/boost/asio/ssl/detail/stream_core.hpp \
-  /opt/homebrew/include/boost/asio/ssl/detail/read_op.hpp \
-  /opt/homebrew/include/boost/asio/ssl/detail/shutdown_op.hpp \
-  /opt/homebrew/include/boost/asio/ssl/detail/write_op.hpp \
-  /opt/homebrew/include/boost/beast/websocket/impl/ssl.hpp \
-  /opt/homebrew/include/boost/json.hpp \
-  /opt/homebrew/include/boost/json/detail/config.hpp \
-  /opt/homebrew/include/boost/config/auto_link.hpp \
-  /opt/homebrew/include/boost/json/array.hpp \
-  /opt/homebrew/include/boost/json/kind.hpp \
-  /opt/homebrew/include/boost/json/string_view.hpp \
-  /opt/homebrew/include/boost/json/pilfer.hpp \
-  /opt/homebrew/include/boost/json/storage_ptr.hpp \
-  /opt/homebrew/include/boost/container/pmr/polymorphic_allocator.hpp \
-  /opt/homebrew/include/boost/container/detail/dispatch_uses_allocator.hpp \
-  /opt/homebrew/include/boost/container/detail/config_begin.hpp \
-  /opt/homebrew/include/boost/container/detail/workaround.hpp \
-  /opt/homebrew/include/boost/container/allocator_traits.hpp \
-  /opt/homebrew/include/boost/container/container_fwd.hpp \
-  /opt/homebrew/include/boost/container/detail/std_fwd.hpp \
-  /opt/homebrew/include/boost/container/detail/mpl.hpp \
-  /opt/homebrew/include/boost/container/detail/config_end.hpp \
-  /opt/homebrew/include/boost/container/detail/type_traits.hpp \
-  /opt/homebrew/include/boost/container/detail/placement_new.hpp \
-  /opt/homebrew/include/boost/intrusive/detail/has_member_function_callable_with.hpp \
-  /opt/homebrew/include/boost/move/detail/fwd_macros.hpp \
-  /opt/homebrew/include/boost/container/uses_allocator.hpp \
-  /opt/homebrew/include/boost/container/uses_allocator_fwd.hpp \
-  /opt/homebrew/include/boost/container/detail/addressof.hpp \
-  /opt/homebrew/include/boost/container/detail/is_pair.hpp \
-  /opt/homebrew/include/boost/container/detail/variadic_templates_tools.hpp \
-  /opt/homebrew/include/boost/container/new_allocator.hpp \
-  /opt/homebrew/include/boost/container/throw_exception.hpp \
-  /opt/homebrew/include/boost/container/pmr/memory_resource.hpp \
-  /opt/homebrew/include/boost/container/pmr/global_resource.hpp \
-  /opt/homebrew/include/boost/container/detail/auto_link.hpp \
-  /opt/homebrew/include/boost/json/memory_resource.hpp \
-  /opt/homebrew/include/boost/json/is_deallocate_trivial.hpp \
-  /opt/homebrew/include/boost/json/detail/shared_resource.hpp \
-  /opt/homebrew/include/boost/json/detail/default_resource.hpp \
-  /opt/homebrew/include/boost/json/detail/array.hpp \
-  /opt/homebrew/include/boost/json/value.hpp \
-  /opt/homebrew/include/boost/json/object.hpp \
-  /opt/homebrew/include/boost/json/detail/object.hpp \
-  /opt/homebrew/include/boost/json/detail/value.hpp \
-  /opt/homebrew/include/boost/json/fwd.hpp \
-  /opt/homebrew/include/boost/json/set_pointer_options.hpp \
-  /opt/homebrew/include/boost/json/string.hpp \
-  /opt/homebrew/include/boost/json/detail/digest.hpp \
-  /opt/homebrew/include/boost/json/detail/except.hpp \
-  /opt/homebrew/include/boost/json/error.hpp \
-  /opt/homebrew/include/boost/json/system_error.hpp \
-  /opt/homebrew/include/boost/json/result_for.hpp \
-  /opt/homebrew/include/boost/system/result.hpp \
-  /opt/homebrew/include/boost/variant2/variant.hpp \
-  /opt/homebrew/include/boost/mp11.hpp \
-  /opt/homebrew/include/boost/mp11/map.hpp \
-  /opt/homebrew/include/boost/mp11/tuple.hpp \
-  /opt/homebrew/include/boost/json/impl/error.hpp \
-  /opt/homebrew/include/boost/json/detail/string_impl.hpp \
-  /opt/homebrew/include/boost/json/impl/string.hpp \
-  /opt/homebrew/include/boost/json/value_ref.hpp \
-  /opt/homebrew/include/boost/json/detail/impl/array.hpp \
-  /opt/homebrew/include/boost/json/impl/array.hpp \
-  /opt/homebrew/include/boost/json/impl/object.hpp \
-  /opt/homebrew/include/boost/json/impl/value.hpp \
-  /opt/homebrew/include/boost/json/impl/value_ref.hpp \
-  /opt/homebrew/include/boost/json/basic_parser.hpp \
-  /opt/homebrew/include/boost/json/parse_options.hpp \
-  /opt/homebrew/include/boost/json/detail/stack.hpp \
-  /opt/homebrew/include/boost/json/detail/stream.hpp \
-  /opt/homebrew/include/boost/json/detail/utf8.hpp \
-  /opt/homebrew/include/boost/json/detail/sbo_buffer.hpp \
-  /opt/homebrew/include/boost/json/conversion.hpp \
-  /opt/homebrew/include/boost/json/impl/conversion.hpp \
-  /opt/homebrew/include/boost/describe/enumerators.hpp \
-  /opt/homebrew/include/boost/json/monotonic_resource.hpp \
-  /opt/homebrew/include/boost/json/null_resource.hpp \
-  /opt/homebrew/include/boost/json/parse.hpp \
-  /opt/homebrew/include/boost/json/parse_into.hpp \
-  /opt/homebrew/include/boost/json/detail/parse_into.hpp \
-  /opt/homebrew/include/boost/describe/enum_from_string.hpp \
-  /opt/homebrew/include/boost/json/impl/parse_into.hpp \
-  /opt/homebrew/include/boost/json/basic_parser_impl.hpp \
-  /opt/homebrew/include/boost/json/detail/buffer.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/from_chars.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/config.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/detail/from_chars_result.hpp \
-  /opt/homebrew/include/boost/json/detail/charconv/chars_format.hpp \
-  /opt/homebrew/include/boost/json/detail/sse2.hpp \
-  /opt/homebrew/include/boost/json/parser.hpp \
-  /opt/homebrew/include/boost/json/detail/handler.hpp \
-  /opt/homebrew/include/boost/json/value_stack.hpp \
-  /opt/homebrew/include/boost/json/serialize.hpp \
-  /opt/homebrew/include/boost/json/serialize_options.hpp \
-  /opt/homebrew/include/boost/json/serializer.hpp \
-  /opt/homebrew/include/boost/json/detail/format.hpp \
-  /opt/homebrew/include/boost/json/static_resource.hpp \
-  /opt/homebrew/include/boost/json/stream_parser.hpp \
-  /opt/homebrew/include/boost/json/value_from.hpp \
-  /opt/homebrew/include/boost/json/detail/value_from.hpp \
-  /opt/homebrew/include/boost/describe/enum_to_string.hpp \
-  /opt/homebrew/include/boost/json/value_to.hpp \
-  /opt/homebrew/include/boost/json/detail/value_to.hpp \
-  /opt/homebrew/include/boost/json/visit.hpp \
-  /opt/homebrew/include/boost/json/impl/visit.hpp \
-  /Users/csian/projects/stradian/include/stradian/extractable.h
+  /opt/homebrew/include/boost/beast/websocket/impl/ssl.hpp
 
 /Users/csian/projects/stradian/include/stradian/stradian.h:
 
-/Users/csian/projects/stradian/include/stradian/crypto_market.h:
+/Users/csian/projects/stradian/include/stradian/system_manager.h:
 
-/Users/csian/projects/stradian/include/stradian/market.h:
-
-/Users/csian/projects/stradian/include/stradian/exchange.h:
-
-/Users/csian/projects/stradian/include/stradian/order.h:
-
-/Users/csian/projects/stradian/include/stradian/order.hpp:
-
-/Users/csian/projects/stradian/include/stradian/exception.h:
-
-/Users/csian/projects/stradian/include/stradian/slack.h:
-
-/Users/csian/projects/stradian/include/stradian/binance_exchange.h:
-
-/opt/homebrew/include/openssl/hmac.h:
+/opt/homebrew/include/openssl/sha.h:
 
 /opt/homebrew/include/openssl/macros.h:
 
@@ -1522,51 +1538,7 @@ build/src/stradian.cpp.o: src/stradian.cpp \
 
 /opt/homebrew/include/openssl/opensslv.h:
 
-/opt/homebrew/include/openssl/evp.h:
-
-/opt/homebrew/include/openssl/types.h:
-
 /opt/homebrew/include/openssl/e_os2.h:
-
-/opt/homebrew/include/openssl/safestack.h:
-
-/opt/homebrew/include/openssl/stack.h:
-
-/opt/homebrew/include/openssl/core.h:
-
-/opt/homebrew/include/openssl/core_dispatch.h:
-
-/opt/homebrew/include/openssl/symhacks.h:
-
-/opt/homebrew/include/openssl/bio.h:
-
-/opt/homebrew/include/openssl/crypto.h:
-
-/opt/homebrew/include/openssl/cryptoerr.h:
-
-/opt/homebrew/include/openssl/cryptoerr_legacy.h:
-
-/opt/homebrew/include/openssl/bioerr.h:
-
-/opt/homebrew/include/openssl/evperr.h:
-
-/opt/homebrew/include/openssl/params.h:
-
-/opt/homebrew/include/openssl/bn.h:
-
-/opt/homebrew/include/openssl/bnerr.h:
-
-/opt/homebrew/include/openssl/objects.h:
-
-/opt/homebrew/include/openssl/obj_mac.h:
-
-/opt/homebrew/include/openssl/asn1.h:
-
-/opt/homebrew/include/openssl/asn1err.h:
-
-/opt/homebrew/include/openssl/objectserr.h:
-
-/Users/csian/projects/stradian/include/stradian/web_socket.h:
 
 /opt/homebrew/include/boost/asio.hpp:
 
@@ -3048,6 +3020,604 @@ build/src/stradian.cpp.o: src/stradian.cpp \
 
 /opt/homebrew/include/boost/asio/impl/write_at.hpp:
 
+/opt/homebrew/include/boost/asio/ssl.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/context.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/context_base.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/detail/openssl_types.hpp:
+
+/opt/homebrew/include/openssl/conf.h:
+
+/opt/homebrew/include/openssl/bio.h:
+
+/opt/homebrew/include/openssl/crypto.h:
+
+/opt/homebrew/include/openssl/safestack.h:
+
+/opt/homebrew/include/openssl/stack.h:
+
+/opt/homebrew/include/openssl/types.h:
+
+/opt/homebrew/include/openssl/cryptoerr.h:
+
+/opt/homebrew/include/openssl/symhacks.h:
+
+/opt/homebrew/include/openssl/cryptoerr_legacy.h:
+
+/opt/homebrew/include/openssl/core.h:
+
+/opt/homebrew/include/openssl/bioerr.h:
+
+/opt/homebrew/include/openssl/lhash.h:
+
+/opt/homebrew/include/openssl/conferr.h:
+
+/opt/homebrew/include/openssl/conftypes.h:
+
+/opt/homebrew/include/openssl/ssl.h:
+
+/opt/homebrew/include/openssl/e_ostime.h:
+
+/opt/homebrew/include/openssl/comp.h:
+
+/opt/homebrew/include/openssl/comperr.h:
+
+/opt/homebrew/include/openssl/x509.h:
+
+/opt/homebrew/include/openssl/buffer.h:
+
+/opt/homebrew/include/openssl/buffererr.h:
+
+/opt/homebrew/include/openssl/evp.h:
+
+/opt/homebrew/include/openssl/core_dispatch.h:
+
+/opt/homebrew/include/openssl/evperr.h:
+
+/opt/homebrew/include/openssl/params.h:
+
+/opt/homebrew/include/openssl/bn.h:
+
+/opt/homebrew/include/openssl/bnerr.h:
+
+/opt/homebrew/include/openssl/objects.h:
+
+/opt/homebrew/include/openssl/obj_mac.h:
+
+/opt/homebrew/include/openssl/asn1.h:
+
+/opt/homebrew/include/openssl/asn1err.h:
+
+/opt/homebrew/include/openssl/objectserr.h:
+
+/opt/homebrew/include/openssl/ec.h:
+
+/opt/homebrew/include/openssl/ecerr.h:
+
+/opt/homebrew/include/openssl/rsa.h:
+
+/opt/homebrew/include/openssl/rsaerr.h:
+
+/opt/homebrew/include/openssl/dsa.h:
+
+/opt/homebrew/include/openssl/dh.h:
+
+/opt/homebrew/include/openssl/dherr.h:
+
+/opt/homebrew/include/openssl/dsaerr.h:
+
+/opt/homebrew/include/openssl/x509err.h:
+
+/opt/homebrew/include/openssl/x509_vfy.h:
+
+/opt/homebrew/include/openssl/pkcs7.h:
+
+/opt/homebrew/include/openssl/pkcs7err.h:
+
+/opt/homebrew/include/openssl/http.h:
+
+/opt/homebrew/include/openssl/pem.h:
+
+/opt/homebrew/include/openssl/pemerr.h:
+
+/opt/homebrew/include/openssl/hmac.h:
+
+/opt/homebrew/include/openssl/async.h:
+
+/opt/homebrew/include/openssl/asyncerr.h:
+
+/opt/homebrew/include/openssl/ct.h:
+
+/opt/homebrew/include/openssl/cterr.h:
+
+/opt/homebrew/include/openssl/sslerr.h:
+
+/opt/homebrew/include/openssl/sslerr_legacy.h:
+
+/opt/homebrew/include/openssl/prov_ssl.h:
+
+/opt/homebrew/include/openssl/ssl2.h:
+
+/opt/homebrew/include/openssl/ssl3.h:
+
+/opt/homebrew/include/openssl/tls1.h:
+
+/opt/homebrew/include/openssl/dtls1.h:
+
+/opt/homebrew/include/openssl/srtp.h:
+
+/opt/homebrew/include/openssl/quic.h:
+
+/opt/homebrew/include/openssl/engine.h:
+
+/opt/homebrew/include/openssl/rand.h:
+
+/opt/homebrew/include/openssl/randerr.h:
+
+/opt/homebrew/include/openssl/ui.h:
+
+/opt/homebrew/include/openssl/uierr.h:
+
+/opt/homebrew/include/openssl/err.h:
+
+/opt/homebrew/include/openssl/engineerr.h:
+
+/opt/homebrew/include/openssl/x509v3.h:
+
+/opt/homebrew/include/openssl/x509v3err.h:
+
+/opt/homebrew/include/boost/asio/ssl/detail/openssl_init.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/detail/impl/openssl_init.ipp:
+
+/opt/homebrew/include/boost/asio/ssl/detail/password_callback.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/detail/verify_callback.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/verify_context.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/verify_mode.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/impl/context.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/impl/context.ipp:
+
+/opt/homebrew/include/boost/asio/ssl/error.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/impl/error.ipp:
+
+/opt/homebrew/include/boost/asio/ssl/rfc2818_verification.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/impl/rfc2818_verification.ipp:
+
+/opt/homebrew/include/boost/asio/ssl/host_name_verification.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/impl/host_name_verification.ipp:
+
+/opt/homebrew/include/boost/asio/ssl/stream.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/detail/buffered_handshake_op.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/detail/engine.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/stream_base.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/detail/impl/engine.ipp:
+
+/opt/homebrew/include/boost/asio/ssl/detail/handshake_op.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/detail/io.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/detail/stream_core.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/detail/read_op.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/detail/shutdown_op.hpp:
+
+/opt/homebrew/include/boost/asio/ssl/detail/write_op.hpp:
+
+/Users/csian/projects/stradian/include/stradian/mariadb.h:
+
+/usr/local/include/mariadb/conncpp.hpp:
+
+/usr/local/include/mariadb/conncpp/Driver.hpp:
+
+/usr/local/include/mariadb/conncpp/buildconf.hpp:
+
+/usr/local/include/mariadb/conncpp/SQLString.hpp:
+
+/usr/local/include/mariadb/conncpp/Connection.hpp:
+
+/usr/local/include/mariadb/conncpp/Savepoint.hpp:
+
+/usr/local/include/mariadb/conncpp/jdbccompat.hpp:
+
+/usr/local/include/mariadb/conncpp/CArray.hpp:
+
+/usr/local/include/mariadb/conncpp/compat/Struct.hpp:
+
+/usr/local/include/mariadb/conncpp/compat/Object.hpp:
+
+/usr/local/include/mariadb/conncpp/compat/Executor.hpp:
+
+/usr/local/include/mariadb/conncpp/DriverManager.hpp:
+
+/usr/local/include/mariadb/conncpp/ResultSet.hpp:
+
+/usr/local/include/mariadb/conncpp/Warning.hpp:
+
+/usr/local/include/mariadb/conncpp/DatabaseMetaData.hpp:
+
+/usr/local/include/mariadb/conncpp/ResultSetMetaData.hpp:
+
+/usr/local/include/mariadb/conncpp/Statement.hpp:
+
+/usr/local/include/mariadb/conncpp/PreparedStatement.hpp:
+
+/usr/local/include/mariadb/conncpp/ParameterMetaData.hpp:
+
+/usr/local/include/mariadb/conncpp/CallableStatement.hpp:
+
+/usr/local/include/mariadb/conncpp/Types.hpp:
+
+/usr/local/include/mariadb/conncpp/Exception.hpp:
+
+/Users/csian/projects/stradian/include/stradian/extractable.h:
+
+/opt/homebrew/include/boost/json.hpp:
+
+/opt/homebrew/include/boost/json/detail/config.hpp:
+
+/opt/homebrew/include/boost/config/auto_link.hpp:
+
+/opt/homebrew/include/boost/json/array.hpp:
+
+/opt/homebrew/include/boost/json/kind.hpp:
+
+/opt/homebrew/include/boost/json/string_view.hpp:
+
+/opt/homebrew/include/boost/core/detail/string_view.hpp:
+
+/opt/homebrew/include/boost/core/detail/is_same.hpp:
+
+/opt/homebrew/include/boost/json/pilfer.hpp:
+
+/opt/homebrew/include/boost/json/storage_ptr.hpp:
+
+/opt/homebrew/include/boost/container/pmr/polymorphic_allocator.hpp:
+
+/opt/homebrew/include/boost/move/detail/type_traits.hpp:
+
+/opt/homebrew/include/boost/move/detail/config_begin.hpp:
+
+/opt/homebrew/include/boost/move/detail/workaround.hpp:
+
+/opt/homebrew/include/boost/move/detail/meta_utils.hpp:
+
+/opt/homebrew/include/boost/move/detail/meta_utils_core.hpp:
+
+/opt/homebrew/include/boost/move/detail/addressof.hpp:
+
+/opt/homebrew/include/boost/move/detail/config_end.hpp:
+
+/opt/homebrew/include/boost/move/utility_core.hpp:
+
+/opt/homebrew/include/boost/move/core.hpp:
+
+/opt/homebrew/include/boost/container/detail/dispatch_uses_allocator.hpp:
+
+/opt/homebrew/include/boost/container/detail/config_begin.hpp:
+
+/opt/homebrew/include/boost/container/detail/workaround.hpp:
+
+/opt/homebrew/include/boost/container/allocator_traits.hpp:
+
+/opt/homebrew/include/boost/container/container_fwd.hpp:
+
+/opt/homebrew/include/boost/container/detail/std_fwd.hpp:
+
+/opt/homebrew/include/boost/move/detail/std_ns_begin.hpp:
+
+/opt/homebrew/include/boost/move/detail/std_ns_end.hpp:
+
+/opt/homebrew/include/boost/container/detail/mpl.hpp:
+
+/opt/homebrew/include/boost/intrusive/detail/mpl.hpp:
+
+/opt/homebrew/include/boost/intrusive/detail/config_begin.hpp:
+
+/opt/homebrew/include/boost/intrusive/detail/config_end.hpp:
+
+/opt/homebrew/include/boost/container/detail/config_end.hpp:
+
+/opt/homebrew/include/boost/container/detail/type_traits.hpp:
+
+/opt/homebrew/include/boost/container/detail/placement_new.hpp:
+
+/opt/homebrew/include/boost/intrusive/pointer_traits.hpp:
+
+/opt/homebrew/include/boost/intrusive/detail/workaround.hpp:
+
+/opt/homebrew/include/boost/intrusive/pointer_rebind.hpp:
+
+/opt/homebrew/include/boost/move/detail/pointer_element.hpp:
+
+/opt/homebrew/include/boost/intrusive/detail/has_member_function_callable_with.hpp:
+
+/opt/homebrew/include/boost/move/detail/fwd_macros.hpp:
+
+/opt/homebrew/include/boost/container/uses_allocator.hpp:
+
+/opt/homebrew/include/boost/container/uses_allocator_fwd.hpp:
+
+/opt/homebrew/include/boost/container/detail/addressof.hpp:
+
+/opt/homebrew/include/boost/container/detail/is_pair.hpp:
+
+/opt/homebrew/include/boost/container/detail/variadic_templates_tools.hpp:
+
+/opt/homebrew/include/boost/container/new_allocator.hpp:
+
+/opt/homebrew/include/boost/container/throw_exception.hpp:
+
+/opt/homebrew/include/boost/container/pmr/memory_resource.hpp:
+
+/opt/homebrew/include/boost/container/pmr/global_resource.hpp:
+
+/opt/homebrew/include/boost/container/detail/auto_link.hpp:
+
+/opt/homebrew/include/boost/json/memory_resource.hpp:
+
+/opt/homebrew/include/boost/json/is_deallocate_trivial.hpp:
+
+/opt/homebrew/include/boost/json/detail/shared_resource.hpp:
+
+/opt/homebrew/include/boost/json/detail/default_resource.hpp:
+
+/opt/homebrew/include/boost/json/detail/array.hpp:
+
+/opt/homebrew/include/boost/json/value.hpp:
+
+/opt/homebrew/include/boost/json/object.hpp:
+
+/opt/homebrew/include/boost/json/detail/object.hpp:
+
+/opt/homebrew/include/boost/json/detail/value.hpp:
+
+/opt/homebrew/include/boost/json/fwd.hpp:
+
+/opt/homebrew/include/boost/json/set_pointer_options.hpp:
+
+/opt/homebrew/include/boost/json/string.hpp:
+
+/opt/homebrew/include/boost/json/detail/digest.hpp:
+
+/opt/homebrew/include/boost/json/detail/except.hpp:
+
+/opt/homebrew/include/boost/json/error.hpp:
+
+/opt/homebrew/include/boost/json/system_error.hpp:
+
+/opt/homebrew/include/boost/json/result_for.hpp:
+
+/opt/homebrew/include/boost/system/result.hpp:
+
+/opt/homebrew/include/boost/variant2/variant.hpp:
+
+/opt/homebrew/include/boost/mp11.hpp:
+
+/opt/homebrew/include/boost/mp11/list.hpp:
+
+/opt/homebrew/include/boost/mp11/integral.hpp:
+
+/opt/homebrew/include/boost/mp11/version.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_value.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/config.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_list.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_list_v.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_is_list.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_is_value_list.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_front.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_rename.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_defer.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_append.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_count.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_plus.hpp:
+
+/opt/homebrew/include/boost/mp11/utility.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_fold.hpp:
+
+/opt/homebrew/include/boost/mp11/algorithm.hpp:
+
+/opt/homebrew/include/boost/mp11/set.hpp:
+
+/opt/homebrew/include/boost/mp11/function.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_min_element.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_void.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_copy_if.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_remove_if.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_map_find.hpp:
+
+/opt/homebrew/include/boost/mp11/detail/mp_with_index.hpp:
+
+/opt/homebrew/include/boost/mp11/integer_sequence.hpp:
+
+/opt/homebrew/include/boost/mp11/map.hpp:
+
+/opt/homebrew/include/boost/mp11/bind.hpp:
+
+/opt/homebrew/include/boost/mp11/tuple.hpp:
+
+/opt/homebrew/include/boost/json/impl/error.hpp:
+
+/opt/homebrew/include/boost/json/detail/string_impl.hpp:
+
+/opt/homebrew/include/boost/json/impl/string.hpp:
+
+/opt/homebrew/include/boost/json/value_ref.hpp:
+
+/opt/homebrew/include/boost/json/detail/impl/array.hpp:
+
+/opt/homebrew/include/boost/json/impl/array.hpp:
+
+/opt/homebrew/include/boost/json/impl/object.hpp:
+
+/opt/homebrew/include/boost/json/impl/value.hpp:
+
+/opt/homebrew/include/boost/json/impl/value_ref.hpp:
+
+/opt/homebrew/include/boost/json/basic_parser.hpp:
+
+/opt/homebrew/include/boost/json/parse_options.hpp:
+
+/opt/homebrew/include/boost/json/detail/stack.hpp:
+
+/opt/homebrew/include/boost/json/detail/stream.hpp:
+
+/opt/homebrew/include/boost/json/detail/utf8.hpp:
+
+/opt/homebrew/include/boost/endian/conversion.hpp:
+
+/opt/homebrew/include/boost/endian/detail/endian_reverse.hpp:
+
+/opt/homebrew/include/boost/endian/detail/integral_by_size.hpp:
+
+/opt/homebrew/include/boost/endian/detail/intrinsic.hpp:
+
+/opt/homebrew/include/boost/endian/detail/is_scoped_enum.hpp:
+
+/opt/homebrew/include/boost/endian/detail/is_integral.hpp:
+
+/opt/homebrew/include/boost/endian/detail/static_assert.hpp:
+
+/opt/homebrew/include/boost/endian/detail/endian_load.hpp:
+
+/opt/homebrew/include/boost/endian/detail/order.hpp:
+
+/opt/homebrew/include/boost/endian/detail/is_trivially_copyable.hpp:
+
+/opt/homebrew/include/boost/endian/detail/endian_store.hpp:
+
+/opt/homebrew/include/boost/json/detail/sbo_buffer.hpp:
+
+/opt/homebrew/include/boost/json/conversion.hpp:
+
+/opt/homebrew/include/boost/json/impl/conversion.hpp:
+
+/opt/homebrew/include/boost/describe/enumerators.hpp:
+
+/opt/homebrew/include/boost/describe/detail/void_t.hpp:
+
+/opt/homebrew/include/boost/describe/detail/config.hpp:
+
+/opt/homebrew/include/boost/describe/members.hpp:
+
+/opt/homebrew/include/boost/describe/modifiers.hpp:
+
+/opt/homebrew/include/boost/describe/bases.hpp:
+
+/opt/homebrew/include/boost/describe/detail/cx_streq.hpp:
+
+/opt/homebrew/include/boost/json/monotonic_resource.hpp:
+
+/opt/homebrew/include/boost/json/null_resource.hpp:
+
+/opt/homebrew/include/boost/json/parse.hpp:
+
+/opt/homebrew/include/boost/json/parse_into.hpp:
+
+/opt/homebrew/include/boost/json/detail/parse_into.hpp:
+
+/opt/homebrew/include/boost/describe/enum_from_string.hpp:
+
+/opt/homebrew/include/boost/json/impl/parse_into.hpp:
+
+/opt/homebrew/include/boost/json/basic_parser_impl.hpp:
+
+/opt/homebrew/include/boost/json/detail/buffer.hpp:
+
+/opt/homebrew/include/boost/json/detail/charconv/from_chars.hpp:
+
+/opt/homebrew/include/boost/json/detail/charconv/detail/config.hpp:
+
+/opt/homebrew/include/boost/json/detail/charconv/detail/from_chars_result.hpp:
+
+/opt/homebrew/include/boost/json/detail/charconv/chars_format.hpp:
+
+/opt/homebrew/include/boost/json/detail/sse2.hpp:
+
+/opt/homebrew/include/boost/json/parser.hpp:
+
+/opt/homebrew/include/boost/json/detail/handler.hpp:
+
+/opt/homebrew/include/boost/json/value_stack.hpp:
+
+/opt/homebrew/include/boost/json/serialize.hpp:
+
+/opt/homebrew/include/boost/json/serialize_options.hpp:
+
+/opt/homebrew/include/boost/json/serializer.hpp:
+
+/opt/homebrew/include/boost/json/detail/format.hpp:
+
+/opt/homebrew/include/boost/json/static_resource.hpp:
+
+/opt/homebrew/include/boost/json/stream_parser.hpp:
+
+/opt/homebrew/include/boost/json/value_from.hpp:
+
+/opt/homebrew/include/boost/json/detail/value_from.hpp:
+
+/opt/homebrew/include/boost/describe/enum_to_string.hpp:
+
+/opt/homebrew/include/boost/json/value_to.hpp:
+
+/opt/homebrew/include/boost/json/detail/value_to.hpp:
+
+/opt/homebrew/include/boost/json/visit.hpp:
+
+/opt/homebrew/include/boost/json/impl/visit.hpp:
+
+/Users/csian/projects/stradian/include/stradian/exception.h:
+
+/Users/csian/projects/stradian/include/stradian/order.h:
+
+/Users/csian/projects/stradian/include/stradian/order.hpp:
+
+/Users/csian/projects/stradian/include/stradian/slack.h:
+
+/Users/csian/projects/stradian/include/stradian/market.h:
+
+/Users/csian/projects/stradian/include/stradian/exchange.h:
+
+/Users/csian/projects/stradian/include/stradian/forkexecable.h:
+
+/Users/csian/projects/stradian/include/stradian/crypto_market.h:
+
+/Users/csian/projects/stradian/include/stradian/binance_exchange.h:
+
+/Users/csian/projects/stradian/include/stradian/web_socket.h:
+
 /opt/homebrew/include/boost/beast.hpp:
 
 /opt/homebrew/include/boost/beast/core/detail/config.hpp:
@@ -3162,25 +3732,7 @@ build/src/stradian.cpp.o: src/stradian.cpp \
 
 /opt/homebrew/include/boost/move/utility.hpp:
 
-/opt/homebrew/include/boost/move/detail/config_begin.hpp:
-
-/opt/homebrew/include/boost/move/detail/workaround.hpp:
-
-/opt/homebrew/include/boost/move/utility_core.hpp:
-
-/opt/homebrew/include/boost/move/core.hpp:
-
-/opt/homebrew/include/boost/move/detail/config_end.hpp:
-
-/opt/homebrew/include/boost/move/detail/meta_utils.hpp:
-
-/opt/homebrew/include/boost/move/detail/meta_utils_core.hpp:
-
-/opt/homebrew/include/boost/move/detail/addressof.hpp:
-
 /opt/homebrew/include/boost/move/traits.hpp:
-
-/opt/homebrew/include/boost/move/detail/type_traits.hpp:
 
 /opt/homebrew/include/boost/none.hpp:
 
@@ -3250,46 +3802,6 @@ build/src/stradian.cpp.o: src/stradian.cpp \
 
 /opt/homebrew/include/boost/beast/core/detail/buffer_traits.hpp:
 
-/opt/homebrew/include/boost/mp11/function.hpp:
-
-/opt/homebrew/include/boost/mp11/integral.hpp:
-
-/opt/homebrew/include/boost/mp11/version.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_value.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/config.hpp:
-
-/opt/homebrew/include/boost/mp11/utility.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_list.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_fold.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_defer.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_rename.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_front.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_count.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_plus.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_min_element.hpp:
-
-/opt/homebrew/include/boost/mp11/list.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_list_v.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_is_list.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_is_value_list.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_append.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_void.hpp:
-
 /opt/homebrew/include/boost/beast/core/buffers_prefix.hpp:
 
 /opt/homebrew/include/boost/beast/core/impl/buffers_prefix.hpp:
@@ -3340,20 +3852,6 @@ build/src/stradian.cpp.o: src/stradian.cpp \
 
 /opt/homebrew/include/boost/beast/core/detail/tuple.hpp:
 
-/opt/homebrew/include/boost/mp11/integer_sequence.hpp:
-
-/opt/homebrew/include/boost/mp11/algorithm.hpp:
-
-/opt/homebrew/include/boost/mp11/set.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_copy_if.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_remove_if.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_map_find.hpp:
-
-/opt/homebrew/include/boost/mp11/detail/mp_with_index.hpp:
-
 /opt/homebrew/include/boost/type_traits/copy_cv.hpp:
 
 /opt/homebrew/include/boost/type_traits/add_const.hpp:
@@ -3370,13 +3868,9 @@ build/src/stradian.cpp.o: src/stradian.cpp \
 
 /opt/homebrew/include/boost/intrusive/list.hpp:
 
-/opt/homebrew/include/boost/intrusive/detail/config_begin.hpp:
-
 /opt/homebrew/include/boost/intrusive/intrusive_fwd.hpp:
 
 /opt/homebrew/include/boost/intrusive/link_mode.hpp:
-
-/opt/homebrew/include/boost/intrusive/detail/workaround.hpp:
 
 /opt/homebrew/include/boost/intrusive/detail/assert.hpp:
 
@@ -3384,25 +3878,15 @@ build/src/stradian.cpp.o: src/stradian.cpp \
 
 /opt/homebrew/include/boost/intrusive/detail/list_node.hpp:
 
-/opt/homebrew/include/boost/intrusive/pointer_rebind.hpp:
-
 /opt/homebrew/include/boost/intrusive/circular_list_algorithms.hpp:
 
 /opt/homebrew/include/boost/intrusive/detail/algo_type.hpp:
-
-/opt/homebrew/include/boost/intrusive/detail/config_end.hpp:
 
 /opt/homebrew/include/boost/intrusive/options.hpp:
 
 /opt/homebrew/include/boost/intrusive/pack_options.hpp:
 
 /opt/homebrew/include/boost/intrusive/detail/generic_hook.hpp:
-
-/opt/homebrew/include/boost/intrusive/pointer_traits.hpp:
-
-/opt/homebrew/include/boost/move/detail/pointer_element.hpp:
-
-/opt/homebrew/include/boost/intrusive/detail/mpl.hpp:
 
 /opt/homebrew/include/boost/intrusive/detail/node_holder.hpp:
 
@@ -3431,10 +3915,6 @@ build/src/stradian.cpp.o: src/stradian.cpp \
 /opt/homebrew/include/boost/intrusive/detail/list_iterator.hpp:
 
 /opt/homebrew/include/boost/intrusive/detail/std_fwd.hpp:
-
-/opt/homebrew/include/boost/move/detail/std_ns_begin.hpp:
-
-/opt/homebrew/include/boost/move/detail/std_ns_end.hpp:
 
 /opt/homebrew/include/boost/intrusive/detail/iiterator.hpp:
 
@@ -3778,20 +4258,6 @@ build/src/stradian.cpp.o: src/stradian.cpp \
 
 /opt/homebrew/include/boost/container_hash/is_described_class.hpp:
 
-/opt/homebrew/include/boost/describe/bases.hpp:
-
-/opt/homebrew/include/boost/describe/modifiers.hpp:
-
-/opt/homebrew/include/boost/describe/detail/config.hpp:
-
-/opt/homebrew/include/boost/describe/detail/void_t.hpp:
-
-/opt/homebrew/include/boost/describe/members.hpp:
-
-/opt/homebrew/include/boost/describe/detail/cx_streq.hpp:
-
-/opt/homebrew/include/boost/mp11/bind.hpp:
-
 /opt/homebrew/include/boost/container_hash/detail/hash_integral.hpp:
 
 /opt/homebrew/include/boost/container_hash/detail/hash_mix.hpp:
@@ -3813,10 +4279,6 @@ build/src/stradian.cpp.o: src/stradian.cpp \
 /opt/homebrew/include/boost/io/detail/ostream_guard.hpp:
 
 /opt/homebrew/include/boost/utility/string_view_fwd.hpp:
-
-/opt/homebrew/include/boost/core/detail/string_view.hpp:
-
-/opt/homebrew/include/boost/core/detail/is_same.hpp:
 
 /opt/homebrew/include/boost/beast/core/string.hpp:
 
@@ -4042,28 +4504,6 @@ build/src/stradian.cpp.o: src/stradian.cpp \
 
 /opt/homebrew/include/boost/beast/websocket/detail/utf8_checker.ipp:
 
-/opt/homebrew/include/boost/endian/conversion.hpp:
-
-/opt/homebrew/include/boost/endian/detail/endian_reverse.hpp:
-
-/opt/homebrew/include/boost/endian/detail/integral_by_size.hpp:
-
-/opt/homebrew/include/boost/endian/detail/intrinsic.hpp:
-
-/opt/homebrew/include/boost/endian/detail/is_scoped_enum.hpp:
-
-/opt/homebrew/include/boost/endian/detail/is_integral.hpp:
-
-/opt/homebrew/include/boost/endian/detail/static_assert.hpp:
-
-/opt/homebrew/include/boost/endian/detail/endian_load.hpp:
-
-/opt/homebrew/include/boost/endian/detail/order.hpp:
-
-/opt/homebrew/include/boost/endian/detail/is_trivially_copyable.hpp:
-
-/opt/homebrew/include/boost/endian/detail/endian_store.hpp:
-
 /opt/homebrew/include/boost/beast/websocket/detail/pmd_extension.hpp:
 
 /opt/homebrew/include/boost/beast/websocket/detail/pmd_extension.ipp:
@@ -4132,354 +4572,4 @@ build/src/stradian.cpp.o: src/stradian.cpp \
 
 /opt/homebrew/include/boost/beast/websocket/ssl.hpp:
 
-/opt/homebrew/include/boost/asio/ssl/stream.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/context.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/context_base.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/detail/openssl_types.hpp:
-
-/opt/homebrew/include/openssl/conf.h:
-
-/opt/homebrew/include/openssl/lhash.h:
-
-/opt/homebrew/include/openssl/conferr.h:
-
-/opt/homebrew/include/openssl/conftypes.h:
-
-/opt/homebrew/include/openssl/ssl.h:
-
-/opt/homebrew/include/openssl/e_ostime.h:
-
-/opt/homebrew/include/openssl/comp.h:
-
-/opt/homebrew/include/openssl/comperr.h:
-
-/opt/homebrew/include/openssl/x509.h:
-
-/opt/homebrew/include/openssl/buffer.h:
-
-/opt/homebrew/include/openssl/buffererr.h:
-
-/opt/homebrew/include/openssl/ec.h:
-
-/opt/homebrew/include/openssl/ecerr.h:
-
-/opt/homebrew/include/openssl/rsa.h:
-
-/opt/homebrew/include/openssl/rsaerr.h:
-
-/opt/homebrew/include/openssl/dsa.h:
-
-/opt/homebrew/include/openssl/dh.h:
-
-/opt/homebrew/include/openssl/dherr.h:
-
-/opt/homebrew/include/openssl/dsaerr.h:
-
-/opt/homebrew/include/openssl/sha.h:
-
-/opt/homebrew/include/openssl/x509err.h:
-
-/opt/homebrew/include/openssl/x509_vfy.h:
-
-/opt/homebrew/include/openssl/pkcs7.h:
-
-/opt/homebrew/include/openssl/pkcs7err.h:
-
-/opt/homebrew/include/openssl/http.h:
-
-/opt/homebrew/include/openssl/pem.h:
-
-/opt/homebrew/include/openssl/pemerr.h:
-
-/opt/homebrew/include/openssl/async.h:
-
-/opt/homebrew/include/openssl/asyncerr.h:
-
-/opt/homebrew/include/openssl/ct.h:
-
-/opt/homebrew/include/openssl/cterr.h:
-
-/opt/homebrew/include/openssl/sslerr.h:
-
-/opt/homebrew/include/openssl/sslerr_legacy.h:
-
-/opt/homebrew/include/openssl/prov_ssl.h:
-
-/opt/homebrew/include/openssl/ssl2.h:
-
-/opt/homebrew/include/openssl/ssl3.h:
-
-/opt/homebrew/include/openssl/tls1.h:
-
-/opt/homebrew/include/openssl/dtls1.h:
-
-/opt/homebrew/include/openssl/srtp.h:
-
-/opt/homebrew/include/openssl/quic.h:
-
-/opt/homebrew/include/openssl/engine.h:
-
-/opt/homebrew/include/openssl/rand.h:
-
-/opt/homebrew/include/openssl/randerr.h:
-
-/opt/homebrew/include/openssl/ui.h:
-
-/opt/homebrew/include/openssl/uierr.h:
-
-/opt/homebrew/include/openssl/err.h:
-
-/opt/homebrew/include/openssl/engineerr.h:
-
-/opt/homebrew/include/openssl/x509v3.h:
-
-/opt/homebrew/include/openssl/x509v3err.h:
-
-/opt/homebrew/include/boost/asio/ssl/detail/openssl_init.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/detail/impl/openssl_init.ipp:
-
-/opt/homebrew/include/boost/asio/ssl/detail/password_callback.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/detail/verify_callback.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/verify_context.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/verify_mode.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/impl/context.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/impl/context.ipp:
-
-/opt/homebrew/include/boost/asio/ssl/error.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/impl/error.ipp:
-
-/opt/homebrew/include/boost/asio/ssl/detail/buffered_handshake_op.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/detail/engine.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/stream_base.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/detail/impl/engine.ipp:
-
-/opt/homebrew/include/boost/asio/ssl/detail/handshake_op.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/detail/io.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/detail/stream_core.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/detail/read_op.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/detail/shutdown_op.hpp:
-
-/opt/homebrew/include/boost/asio/ssl/detail/write_op.hpp:
-
 /opt/homebrew/include/boost/beast/websocket/impl/ssl.hpp:
-
-/opt/homebrew/include/boost/json.hpp:
-
-/opt/homebrew/include/boost/json/detail/config.hpp:
-
-/opt/homebrew/include/boost/config/auto_link.hpp:
-
-/opt/homebrew/include/boost/json/array.hpp:
-
-/opt/homebrew/include/boost/json/kind.hpp:
-
-/opt/homebrew/include/boost/json/string_view.hpp:
-
-/opt/homebrew/include/boost/json/pilfer.hpp:
-
-/opt/homebrew/include/boost/json/storage_ptr.hpp:
-
-/opt/homebrew/include/boost/container/pmr/polymorphic_allocator.hpp:
-
-/opt/homebrew/include/boost/container/detail/dispatch_uses_allocator.hpp:
-
-/opt/homebrew/include/boost/container/detail/config_begin.hpp:
-
-/opt/homebrew/include/boost/container/detail/workaround.hpp:
-
-/opt/homebrew/include/boost/container/allocator_traits.hpp:
-
-/opt/homebrew/include/boost/container/container_fwd.hpp:
-
-/opt/homebrew/include/boost/container/detail/std_fwd.hpp:
-
-/opt/homebrew/include/boost/container/detail/mpl.hpp:
-
-/opt/homebrew/include/boost/container/detail/config_end.hpp:
-
-/opt/homebrew/include/boost/container/detail/type_traits.hpp:
-
-/opt/homebrew/include/boost/container/detail/placement_new.hpp:
-
-/opt/homebrew/include/boost/intrusive/detail/has_member_function_callable_with.hpp:
-
-/opt/homebrew/include/boost/move/detail/fwd_macros.hpp:
-
-/opt/homebrew/include/boost/container/uses_allocator.hpp:
-
-/opt/homebrew/include/boost/container/uses_allocator_fwd.hpp:
-
-/opt/homebrew/include/boost/container/detail/addressof.hpp:
-
-/opt/homebrew/include/boost/container/detail/is_pair.hpp:
-
-/opt/homebrew/include/boost/container/detail/variadic_templates_tools.hpp:
-
-/opt/homebrew/include/boost/container/new_allocator.hpp:
-
-/opt/homebrew/include/boost/container/throw_exception.hpp:
-
-/opt/homebrew/include/boost/container/pmr/memory_resource.hpp:
-
-/opt/homebrew/include/boost/container/pmr/global_resource.hpp:
-
-/opt/homebrew/include/boost/container/detail/auto_link.hpp:
-
-/opt/homebrew/include/boost/json/memory_resource.hpp:
-
-/opt/homebrew/include/boost/json/is_deallocate_trivial.hpp:
-
-/opt/homebrew/include/boost/json/detail/shared_resource.hpp:
-
-/opt/homebrew/include/boost/json/detail/default_resource.hpp:
-
-/opt/homebrew/include/boost/json/detail/array.hpp:
-
-/opt/homebrew/include/boost/json/value.hpp:
-
-/opt/homebrew/include/boost/json/object.hpp:
-
-/opt/homebrew/include/boost/json/detail/object.hpp:
-
-/opt/homebrew/include/boost/json/detail/value.hpp:
-
-/opt/homebrew/include/boost/json/fwd.hpp:
-
-/opt/homebrew/include/boost/json/set_pointer_options.hpp:
-
-/opt/homebrew/include/boost/json/string.hpp:
-
-/opt/homebrew/include/boost/json/detail/digest.hpp:
-
-/opt/homebrew/include/boost/json/detail/except.hpp:
-
-/opt/homebrew/include/boost/json/error.hpp:
-
-/opt/homebrew/include/boost/json/system_error.hpp:
-
-/opt/homebrew/include/boost/json/result_for.hpp:
-
-/opt/homebrew/include/boost/system/result.hpp:
-
-/opt/homebrew/include/boost/variant2/variant.hpp:
-
-/opt/homebrew/include/boost/mp11.hpp:
-
-/opt/homebrew/include/boost/mp11/map.hpp:
-
-/opt/homebrew/include/boost/mp11/tuple.hpp:
-
-/opt/homebrew/include/boost/json/impl/error.hpp:
-
-/opt/homebrew/include/boost/json/detail/string_impl.hpp:
-
-/opt/homebrew/include/boost/json/impl/string.hpp:
-
-/opt/homebrew/include/boost/json/value_ref.hpp:
-
-/opt/homebrew/include/boost/json/detail/impl/array.hpp:
-
-/opt/homebrew/include/boost/json/impl/array.hpp:
-
-/opt/homebrew/include/boost/json/impl/object.hpp:
-
-/opt/homebrew/include/boost/json/impl/value.hpp:
-
-/opt/homebrew/include/boost/json/impl/value_ref.hpp:
-
-/opt/homebrew/include/boost/json/basic_parser.hpp:
-
-/opt/homebrew/include/boost/json/parse_options.hpp:
-
-/opt/homebrew/include/boost/json/detail/stack.hpp:
-
-/opt/homebrew/include/boost/json/detail/stream.hpp:
-
-/opt/homebrew/include/boost/json/detail/utf8.hpp:
-
-/opt/homebrew/include/boost/json/detail/sbo_buffer.hpp:
-
-/opt/homebrew/include/boost/json/conversion.hpp:
-
-/opt/homebrew/include/boost/json/impl/conversion.hpp:
-
-/opt/homebrew/include/boost/describe/enumerators.hpp:
-
-/opt/homebrew/include/boost/json/monotonic_resource.hpp:
-
-/opt/homebrew/include/boost/json/null_resource.hpp:
-
-/opt/homebrew/include/boost/json/parse.hpp:
-
-/opt/homebrew/include/boost/json/parse_into.hpp:
-
-/opt/homebrew/include/boost/json/detail/parse_into.hpp:
-
-/opt/homebrew/include/boost/describe/enum_from_string.hpp:
-
-/opt/homebrew/include/boost/json/impl/parse_into.hpp:
-
-/opt/homebrew/include/boost/json/basic_parser_impl.hpp:
-
-/opt/homebrew/include/boost/json/detail/buffer.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/from_chars.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/config.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/detail/from_chars_result.hpp:
-
-/opt/homebrew/include/boost/json/detail/charconv/chars_format.hpp:
-
-/opt/homebrew/include/boost/json/detail/sse2.hpp:
-
-/opt/homebrew/include/boost/json/parser.hpp:
-
-/opt/homebrew/include/boost/json/detail/handler.hpp:
-
-/opt/homebrew/include/boost/json/value_stack.hpp:
-
-/opt/homebrew/include/boost/json/serialize.hpp:
-
-/opt/homebrew/include/boost/json/serialize_options.hpp:
-
-/opt/homebrew/include/boost/json/serializer.hpp:
-
-/opt/homebrew/include/boost/json/detail/format.hpp:
-
-/opt/homebrew/include/boost/json/static_resource.hpp:
-
-/opt/homebrew/include/boost/json/stream_parser.hpp:
-
-/opt/homebrew/include/boost/json/value_from.hpp:
-
-/opt/homebrew/include/boost/json/detail/value_from.hpp:
-
-/opt/homebrew/include/boost/describe/enum_to_string.hpp:
-
-/opt/homebrew/include/boost/json/value_to.hpp:
-
-/opt/homebrew/include/boost/json/detail/value_to.hpp:
-
-/opt/homebrew/include/boost/json/visit.hpp:
-
-/opt/homebrew/include/boost/json/impl/visit.hpp:
-
-/Users/csian/projects/stradian/include/stradian/extractable.h:

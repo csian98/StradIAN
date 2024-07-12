@@ -5,13 +5,14 @@
  * @version		1.0.0
  * @date		2024-06-22
  */
-	 
-//#pragma once
-//#pragma GCC diagnostic ignored "-Wstringop-truncation"
+
+// #pragma once
+// #pragma GCC diagnostic ignored "-Wstringop-truncation"
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"  
 //#pragma comment(lib, "libpthread.so")
 
-#ifndef _HEADER_CRYPTO_MARKETH_
-#define _HEADER_CRYPTO_MARKETH_
+#ifndef _HEADER_CRYPTO_MARKET_H_
+#define _HEADER_CRYPTO_MARKET_H_
 
 /* OS dependent */
 #define OS_WINDOWS	0
@@ -78,10 +79,12 @@ namespace stradian {
 
 		virtual ~CryptoMarket(void) noexcept;
 
-	    
+	    virtual void fork_crawler(void) override;
+		
 	private:
 		
-		
+		const std::filesystem::path crawler_exec =
+			"pylib/exec/crypto_crawler.py";
 	};
 }
 

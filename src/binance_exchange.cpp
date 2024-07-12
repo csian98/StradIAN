@@ -8,6 +8,7 @@
 
 #include "stradian/binance_exchange.h"
 #include <chrono>
+#include <utility>
 
 /* C & CPP */
 /*
@@ -67,12 +68,12 @@ stradian::BinanceExchange::BinanceExchange(const std::string& host,
 }
 
 stradian::BinanceExchange::~BinanceExchange(void) noexcept {
-	Logger logger("BinanceExchange: biance exchagne disconnected");
+	Logger logger("BinanceExchange: biance exchange disconnected");
 	logger.log(LOGLEVEL::INFO);
 }
 
 std::pair<double, double>
-stradian::BinanceExchange::get_asset(void) const {
+stradian::BinanceExchange::get_validation(void) {
 	double key = 0, other = 0;
 
 	std::unique_lock<std::mutex> lock(this->mtx);
@@ -80,8 +81,10 @@ stradian::BinanceExchange::get_asset(void) const {
 	for (auto iter = this->assets.begin();
 		 iter != this->assets.end(); ++iter) {
 		if (iter->first != this->key_currency) {
-			other += iter->second.first;
-			other += iter->second.second;
+			double price = this->price(iter->first);
+			
+			other += iter->second.first * price;
+			other += iter->second.second * price;
 		} else {
 			key += iter->second.first;
 			key += iter->second.second;
@@ -93,6 +96,78 @@ stradian::BinanceExchange::get_asset(void) const {
 	return std::make_pair(key, other);
 }
 
+std::map<std::string, std::pair<double, double>>
+stradian::BinanceExchange::get_items(void) {
+	std::map<std::string, std::pair<double, double>> assets;
+
+	boost::json::value req = {
+		{"id", stradian::BinanceExchange::get_id()},
+		{"method", "account.status"},
+		{"params", {
+				{"apiKey", this->api_key},
+				{"timestamp",
+				 stradian::BinanceExchange::get_timestamp()}
+			}}
+	};
+
+	stradian::BinanceExchange::signature(req);
+	
+	auto res = this->request_wrapper(req);
+
+	auto& object = res.get_object();
+
+	auto unquote = [](std::string str) {
+		return str.substr(1, str.size() - 2);
+	};
+	
+	std::unique_lock<std::mutex> lock(this->mtx);
+	
+	for (const auto& ptr :
+			 object.at("result").at("balances").as_array()) {
+		auto& object = ptr.as_object();
+		std::string symbol =
+			unquote(boost::json::serialize(object.at("asset")));
+		if (symbol != this->key_currency)
+			symbol += this->key_currency;
+		double free = std::stod(
+			unquote(boost::json::serialize(object.at("free"))));
+		double locked = std::stod(
+			unquote(boost::json::serialize(object.at("locked"))));
+
+		if (symbol != this->key_currency && free + locked > 0.0)
+			assets.insert(
+				std::make_pair(symbol,
+							   std::make_pair(this->price(symbol),
+											  free + locked)));
+	}
+
+	lock.unlock();
+
+	return std::move(assets);
+}
+
+std::vector<std::string>
+stradian::BinanceExchange::get_symbols(void) {
+	std::vector<std::string> symbols;
+	
+	boost::json::value req = {
+		{"id", stradian::BinanceExchange::get_id()},
+		{"method", "exchangeInfo"}
+	};
+
+    auto res = this->request_wrapper(req);
+
+    for (const auto& value : res.at("result").at("symbols").as_array()) {
+		std::string symbol = boost::json::serialize(value.at("symbol"));
+	    symbol = symbol.substr(1, symbol.size() - 2);
+		if (symbol.substr(symbol.size() - this->key_currency.size(), this->key_currency.size())
+			== this->key_currency && value.at("status").as_string() == "TRADING") {
+			symbols.push_back(symbol);
+		}
+	}
+
+	return std::move(symbols);
+}
 
 void stradian::BinanceExchange::handler(const Order& order) {
 	if (this->ping()) {
@@ -139,7 +214,7 @@ void stradian::BinanceExchange::signature(boost::json::value& json) const {
 }
 
 std::string stradian::BinanceExchange::encryptHMAC(
-	const char* key, const char* data) const {
+	const char* key, const char* data) {
 	unsigned char* result;
 	static char res_hexstring[64];
 	int result_len = 32;
@@ -261,7 +336,6 @@ bool stradian::BinanceExchange::ping(void) {
 
     auto res = this->request_wrapper(req);
 
-	this->limits(res);
     return this->status(res);
 }
 
@@ -293,6 +367,8 @@ void stradian::BinanceExchange::update(void) {
 		auto& object = ptr.as_object();
 		std::string symbol =
 			unquote(boost::json::serialize(object.at("asset")));
+		if (symbol != this->key_currency)
+			symbol += this->key_currency;
 		double free = std::stod(
 			unquote(boost::json::serialize(object.at("free"))));
 		double locked = std::stod(
@@ -308,11 +384,15 @@ void stradian::BinanceExchange::update(void) {
 }
 
 double stradian::BinanceExchange::price(const Order& order) {
+    return this->price(order.symbol);
+}
+
+double stradian::BinanceExchange::price(const std::string& symbol) {
 	boost::json::value req = {
 		{"id", BinanceExchange::get_id()},
 		{"method", "ticker.price"},
 		{"params", {
-				{"symbol", order.symbol}
+				{"symbol", symbol}
 			}}
 	};
 

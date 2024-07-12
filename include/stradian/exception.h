@@ -5,13 +5,14 @@
  * @version		1.0.0
  * @date		2024-06-15
  */
-	 
-//#pragma once
-//#pragma GCC diagnostic ignored "-Wstringop-truncation"
+
+// #pragma once
+// #pragma GCC diagnostic ignored "-Wstringop-truncation"
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"  
 //#pragma comment(lib, "libpthread.so")
 
-#ifndef _HEADER_EXCEPTIONH_
-#define _HEADER_EXCEPTIONH_
+#ifndef _HEADER_EXCEPTION_H_
+#define _HEADER_EXCEPTION_H_
 
 /* OS dependent */
 #define OS_WINDOWS	0
@@ -136,11 +137,41 @@ namespace stradian {
 
 		static Slack slack;
 	};
+
+	enum class REPORT_TYPE {
+		DAILY,
+		WEEKLY,
+		MONTLY,
+		QUARTER
+	};
+
+	class Reporter final {
+	public:
+		Reporter(double current, double past,
+				 REPORT_TYPE report_type = REPORT_TYPE::DAILY);
+
+		void report(void) const;
+
+	private:
+		const std::string date(void) const;
+
+		REPORT_TYPE report_type = REPORT_TYPE::DAILY;
+
+	    std::filesystem::path path = "./var/log";
+
+		std::stringstream content;
+
+		static Slack slack;
+	};
 }
 
 /* Functions declaration */
 
-// void swap(Sample&, Sample&) noexcept;
+namespace stradian {
+	std::string to_string(LOGLEVEL);
+
+	std::string to_string(REPORT_TYPE);
+}
 
 /*
 #ifdef __cplusplus

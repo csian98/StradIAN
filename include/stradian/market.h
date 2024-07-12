@@ -5,13 +5,14 @@
  * @version		1.0.0
  * @date		2024-06-15
  */
-	 
-//#pragma once
-//#pragma GCC diagnostic ignored "-Wstringop-truncation"
-//#pragma comment(lib, "libpthread.so")
 
-#ifndef _HEADER_MARKETH_
-#define _HEADER_MARKETH_
+// #pragma once
+// #pragma GCC diagnostic ignored "-Wstringop-truncation"
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+// #pragma comment(lib, "libpthread.so")
+
+#ifndef _HEADER_MARKET_H_
+#define _HEADER_MARKET_H_
 
 /* OS dependent */
 #define OS_WINDOWS	0
@@ -25,9 +26,14 @@
 
 /* Include */
 
+#include <string>
+#include <string_view>
+
 #include <memory>
+#include <map>
 
 #include "stradian/exchange.h"
+#include "stradian/forkexecable.h"
 #include "stradian/exception.h"
 
 #if __has_include(<iostream>)
@@ -79,26 +85,34 @@ namespace stradian {
 		CRYPTO
 	};
 	
-	class Market {
+	class Market : public ForkExecable {
 	public:
 		Market(MARKETCODE);
 
 		virtual ~Market(void) noexcept;
 
+		virtual void fork_crawler(void) = 0;
+
 		MARKETCODE get_code(void) const;
 
-		std::pair<double, double> get_asset(void) const;
+		std::pair<double, double> get_validation(void) const;
+
+		std::map<std::string, std::pair<double, double>> get_items(void) const;
+
+		std::vector<std::string> get_symbols(void) const;
 
     protected:
 		std::unique_ptr<Exchange> exchange;
 
-		MARKETCODE code;
+		const MARKETCODE code;
 	};
 }
 
 /* Functions declaration */
 
-// void swap(Sample&, Sample&) noexcept;
+namespace stradian {
+	std::string to_string(MARKETCODE);
+}
 
 /*
 #ifdef __cplusplus

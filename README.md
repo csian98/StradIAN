@@ -21,7 +21,7 @@
 	<a href="https://csian98.github.io"><img src="https://img.shields.io/badge/csian98.github.io-grey?logo=Homepage"></a>
 	<a href="https://www.linkedin.com/in/jeong-hoon-choi-086b55288/"><img src="https://img.shields.io/badge/LinkedIn-grey?logo=linkedin"></a>
 	<p align="center">
-	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+	StradIAN is a data model-based Robo-Advisor production project personally created by the author.
 	<br/>
 	<br/>
 	<a href="https://github.com/csian98/stradian">

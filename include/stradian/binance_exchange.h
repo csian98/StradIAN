@@ -94,14 +94,18 @@ namespace stradian {
 
 		virtual ~BinanceExchange(void) noexcept;
 
-		std::pair<double, double> get_asset(void) const override;
+		std::pair<double, double> get_validation(void) override;
+
+		std::map<std::string, std::pair<double, double>> get_items(void) override;
+
+		std::vector<std::string> get_symbols(void) override;
 
 	private:
 		virtual void handler(const Order&) override;
 
 		void signature(boost::json::value&) const;
 
-		std::string encryptHMAC(const char*, const char*) const;
+		static std::string encryptHMAC(const char*, const char*);
 
 		static std::string read_file(const std::filesystem::path&);
 		
@@ -121,9 +125,13 @@ namespace stradian {
 
 		double price(const Order&);
 
+		double price(const std::string&);
+
 		void buy(const Order&);
 
 		void sell(const Order&);
+
+		std::vector<std::string> symbols(void);
 
 		WebSocket websocket;
 
@@ -135,9 +143,9 @@ namespace stradian {
 
 		std::string api_key, secret_key;
 
-		const std::filesystem::path key_path = "etc/key/binance_api_key";
+		const std::filesystem::path key_path = "etc/exchange/binance_api_key";
 
-		const std::filesystem::path secret_path = "etc/key/binance_api_secret";
+		const std::filesystem::path secret_path = "etc/exchange/binance_api_secret";
 
 		const std::string key_currency = "USDT";
 	};

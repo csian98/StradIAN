@@ -5,13 +5,14 @@
  * @version		1.0.0
  * @date		2024-06-22
  */
-	 
-//#pragma once
-//#pragma GCC diagnostic ignored "-Wstringop-truncation"
-//#pragma comment(lib, "libpthread.so")
 
-#ifndef _HEADER_MARIADBH_
-#define _HEADER_MARIADBH_
+// #pragma once
+// #pragma GCC diagnostic ignored "-Wstringop-truncation"
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"  
+// #pragma comment(lib, "libpthread.so")
+
+#ifndef _HEADER_MARIADB_H_
+#define _HEADER_MARIADB_H_
 
 /* OS dependent */
 #define OS_WINDOWS	0
@@ -25,8 +26,13 @@
 
 /* Include */
 
+#include <algorithm>
+#include <utility>
+
 #include <string>
 #include <string_view>
+#include <filesystem>
+#include <chrono>
 
 #include <mariadb/conncpp.hpp>
 
@@ -78,31 +84,58 @@ extern "C" {
 namespace stradian {
 	class MariaDB {
 	public:
-		MariaDB(const std::string&,
-				const std::string&,
-				const std::string&,
-				const std::string&,
-				const int);
+		typedef sql::ResultSet* RESULT_TYPE;
+		
+		MariaDB(const std::string& db = "system");
 
 		virtual ~MariaDB(void) noexcept;
 
+		void query(const std::string&);
+
+		void query(const std::string&, sql::ResultSet*&);
+
+		void create_tables(void);
+
+		void alter_table(const std::string&);
+
+		static const std::string date(void);
+
+		static const std::string date_time(void);
+
+		static const std::string timestamp(void);
 
 	private:
+		
 		void connect(void);
 
 		void disconnect(void);
+
+		void create_table(const std::filesystem::path&);
+
+		static std::string read_file(const std::filesystem::path&);
+
+		static std::string create_table_query(const boost::json::value&);
+
+		static std::string alter_table_query(const boost::json::value&);
 		
 		std::unique_ptr<sql::Connection> conn;
 
-		const std::string& user;
+		const std::filesystem::path user_path = "etc/dbms/mariadb_user";
 
-		const std::string& password;
+		const std::filesystem::path passwd_path =
+			"etc/dbms/mariadb_passwd";
 
-		const std::string& host;
+		const std::filesystem::path json_path;
+		
+	    std::string user;
 
-		const std::string& db;
+		std::string password;
 
-		const int port;
+		const std::string host = "localhost";
+
+		const std::string db;
+
+		const int port = 3306;
 	};
 }
 
