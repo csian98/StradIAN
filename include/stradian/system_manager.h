@@ -40,6 +40,7 @@
 
 #include "stradian/mariadb.h"
 #include "stradian/market.h"
+#include "stradian/c2c_server.h"
 #include "stradian/exception.h"
 
 #if __has_include(<iostream>)
@@ -85,7 +86,7 @@ extern "C" {
 /* Data structures declaration - struct & class */
 
 namespace stradian {
-	class SystemManager {
+	class SystemManager : public c2cServer {
 	public:
 		SystemManager(void);
 
@@ -105,6 +106,10 @@ namespace stradian {
 		virtual std::vector<std::string> get_symbols(MARKETCODE) const = 0;
 
 		virtual void update_system_manager(void) = 0;
+
+		// c2cServer
+		virtual std::pair<bool, bool> login(const std::string&,
+											const std::string&) override;
 		
 		// users
 		// needs to write again share parts;

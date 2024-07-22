@@ -28,7 +28,7 @@ import zipfile
 from bs4 import BeautifulSoup
 import pandas as pd
 import datetime
-import ccxt
+from io import StringIO
 
 class CryptoWebCrawler:
     def __init__(self, db, interval="1d"):
@@ -45,18 +45,16 @@ class CryptoWebCrawler:
         sql = f"CREATE TABLE IF NOT EXISTS {symbol} ({sub});"
         self.maria.query(sql);
         
-        last = self.maria.query_fetchone(f"SELECT MAX(timestamp) FROM {symbol};");
+        last = self.maria.query_fetchone(f"SELECT MAX(opentime) FROM {symbol};");
         
-        crt_date = datetime.date(2000, 1, 1)
+        crt_date = datetime.datetime(2000, 1, 1, 1, 0, 0)
         if last == None:
             return crt_date
         else:
             if self.interval=="1d":
-                crt_date = datetime.date.fromtimestamp(last)
-                crt_date += datetime.timedelta(days = 1)
+                crt_date = last + datetime.timedelta(days = 1)
             elif self.interval=="1h":
-                crt_date = datetime.date.fromtimestamp(last)
-                crt_date += datetime.timedelta(hours = 1)
+                crt_date = last + datetime.timedelta(hours = 1)
 
             return crt_date
     
@@ -67,6 +65,7 @@ class CryptoWebCrawler:
         options = webdriver.ChromeOptions()
         options.add_argument("headless")
         options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36")
+        options.add_argument("--remote-debugging-pipe")
         # service = Service(executable_path = driver_path)
         service = Service(executable_path = ChromeDriverManager().install())
         
@@ -84,11 +83,11 @@ class CryptoWebCrawler:
             logger = Logger("CryptoWebCrawler: Binance Web Crawling Failed")
             logger.log("ERROR")
             
-            html = driver.page_source
+        html = driver.page_source
         soup = BeautifulSoup(html, "lxml")
         html_table = soup.select("table")
         
-        table = pd.read_html(str(html_table))
+        table = pd.read_html(StringIO(str(html_table)))
         
         file_list = list(table[0].iloc[1:, 0])
         
@@ -97,22 +96,23 @@ class CryptoWebCrawler:
                 year = int(download[-14: -10])
                 month = int(download[-9: -7])
                 day = int(download[-6: -4])
-                file_time = datetime.date(year, month, day)
+
+                file_time = datetime.datetime(year, month, day, 1, 0, 0)
             
-            if month_from < file_time:
-                wget.download(wget_url + download,
-                              out = self.wget_path + download)
-                self.stack.append(download)
+                if month_from < file_time:
+                    wget.download(wget_url + download,
+                                  out = self.wget_path + download)
+                    self.stack.append(download)
   
-    def wget_remove_file(self):
+    def wget_remove_files(self):
         while(len(self.stack)):
             file_name = self.stack.pop()
             check = self.wget_path + file_name
             
-        if os.path.isfile(check):
-            os.remove(check)
-        else:
-            os.rmdir(check)
+            if os.path.isfile(check):
+                os.remove(check)
+            else:
+                os.rmdir(check)
   
 
     def unzip_all_files(self):
@@ -123,23 +123,36 @@ class CryptoWebCrawler:
       
             unzip_list.append(file + ".unzip")
     
-        self.wget_remove_file()
-        self.stack+=unzip_list
+        self.wget_remove_files()
+        self.stack += unzip_list
+
+    def series_typecast(self, utf_nano_series):
+        dts = list(map(datetime.datetime.fromtimestamp, utf_nano_series / 1e3))
+        format_list = list()
+        for dt in dts:
+            format_list.append(dt.strftime("%Y-%m-%d %H:%M:%S"))
+        
+        return pd.Series(format_list)
   
     def read_remove_csv(self, file):
         csv = self.wget_path + file + "/" + file[:-9] + "csv"
         df = pd.read_csv(csv, header = None)
-        df = df.iloc[:, :6]
-        df[0] = pd.to_datetime(df[0], unit = "ms").astype(str)
-    
+        df = df.iloc[:, :9]
+
+        opentime = self.series_typecast(df[0])
+        closetime = self.series_typecast(df[6])
+        
+        df = df.drop([0, 6], axis = 1)
+        df.insert(0, 0, opentime)
+        df.insert(6, 6, closetime)
         os.remove(csv)
     
         return df
   
     def upload_mariaDB(self, symbol):
-        self.stack = sorted(self.stack, key = lambda file: file[11: 18])
+        self.stack = sorted(self.stack, key = lambda file : file[11: 18])
         for file in self.stack:
-            df = self.read_remove_cvs(file)
+            df = self.read_remove_csv(file)
             self.maria.upload_df(symbol, df)
 
     def get_symbols(self):
@@ -153,8 +166,10 @@ class CryptoWebCrawler:
         return symbols
   
     def upload(self, symbol):
+        Logger("CryptoWebCrawler: " + self.db + " crawler started").log("INFO")
         month = self.month_from(symbol)
         self.wget_from_binance(symbol, month)
         self.unzip_all_files()
         self.upload_mariaDB(symbol)
         self.wget_remove_files()
+        Logger("CryptoWebCrawler: " + self.db + " crawler terminated").log("INFO")

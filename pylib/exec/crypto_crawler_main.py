@@ -16,12 +16,12 @@ from stradian.crypto_web_crawler import CryptoWebCrawler
 from stradian.logger import Logger
 
 if __name__ == "__main__":
-    crawler_1d = CryptoWebCrawler("crypto_market_1d")   
+    crawler_1d = CryptoWebCrawler("crypto_market_1d", "1d")
     symbols_1d = crawler_1d.get_symbols()
     for symbol in symbols_1d:
         crawler_1d.upload(symbol)
 
-    crawler_1h = CryptoWebCrawler("crypto_market_1h")
+    crawler_1h = CryptoWebCrawler("crypto_market_1h", "1h")
     symbols_1h = crawler_1h.get_symbols()
     for symbol in symbols_1h:
         crawler_1h.upload(symbol)

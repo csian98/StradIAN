@@ -52,13 +52,10 @@ class MariaDB:
         self.db = db
         self.port = port
         self.autocommit = autocommit
-        self.connect()
-
-    def __del__(self):
-        self.disconnect()
-
+        self.connection = self.connect()
+    
     def connect(self):
-        self.connection = pymysql.connect(
+        return pymysql.connect(
             user = self.user,
             host = self.host,
             passwd = self.password,
@@ -67,7 +64,7 @@ class MariaDB:
             autocommit = self.autocommit,
             charset = "utf8"
         )
-
+    
     def disconnect(self):
         self.connection.close()
 
@@ -83,16 +80,16 @@ class MariaDB:
         return self.query(sql).fetchone()[0]
 
     def query_fetchall(self, sql):
-        return self. query(sql).fetchall()
+        return self.query(sql).fetchall()
 
     def upload_df(self, table, df):
         data = list(df.itertuples(index = False, name = None))
-        sql = f"REPLACE INTO '{table}' VALUES ("
+        sql = f"REPLACE {table} VALUES ("
 
         for i in range(df.shape[1] - 1):
             sql += "%s, "
 
         sql += "%s)"
-
+        
         cursor = self.connection.cursor()
         cursor.executemany(sql, data)

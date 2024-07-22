@@ -53,6 +53,32 @@ stradian::SystemManager::SystemManager(void)
 	SystemManager::uid = this->update_uid();
 }
 
+std::pair<bool, bool>
+stradian::SystemManager::login(const std::string& user,
+							   const std::string& pswd) {
+	bool logined = false, sudo = false;
+	
+	std::string sql =
+		"SELECT user, passwd, auth FROM users WHERE user = " + user;
+	MariaDB::RESULT_TYPE result;
+
+	this->systemDB.query(sql, result);
+
+	if (result->isNull(1)) {
+		logined = false;
+	} else {
+		if (result->getString(2) == SystemManager::sha256(pswd)) {
+			logined = true;
+			sudo = result->getBoolean(3);
+		} else {
+			logined = false;
+		}
+	}
+
+	delete result;
+	return std::make_pair(logined, sudo);
+}
+
 unsigned int stradian::SystemManager::update_uid(void) {
 	int uid = 0;
 	std::string sql = "SELECT MAX(uid) FROM users;";

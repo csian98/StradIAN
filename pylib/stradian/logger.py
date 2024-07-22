@@ -25,11 +25,11 @@ class Logger:
     
     def log(self, level):
         log_content = "[%s] (%s) %s\n" %(self.get_time(), level, self.message)
-        fp = open(self.log_path, 'a')
+        fp = open(self.log_file, 'a')
         fp.write(log_content)
         fp.close()
         
-        if is_slack:
+        if self.is_slack:
             slack = Slack()
             slack.post_message(log_content)
 

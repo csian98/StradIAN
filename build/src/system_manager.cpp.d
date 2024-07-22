@@ -1040,7 +1040,11 @@ build/src/system_manager.cpp.o: src/system_manager.cpp \
   /Users/csian/projects/stradian/include/stradian/slack.h \
   /Users/csian/projects/stradian/include/stradian/market.h \
   /Users/csian/projects/stradian/include/stradian/exchange.h \
-  /Users/csian/projects/stradian/include/stradian/forkexecable.h
+  /Users/csian/projects/stradian/include/stradian/forkexecable.h \
+  /Users/csian/projects/stradian/include/stradian/c2c_server.h \
+  /Users/csian/projects/stradian/include/stradian/ipv4.h \
+  /Users/csian/projects/stradian/include/sian/tcp.h \
+  /Users/csian/projects/stradian/include/sian/ssl.h
 
 /Users/csian/projects/stradian/include/stradian/system_manager.h:
 
@@ -3127,3 +3131,11 @@ build/src/system_manager.cpp.o: src/system_manager.cpp \
 /Users/csian/projects/stradian/include/stradian/exchange.h:
 
 /Users/csian/projects/stradian/include/stradian/forkexecable.h:
+
+/Users/csian/projects/stradian/include/stradian/c2c_server.h:
+
+/Users/csian/projects/stradian/include/stradian/ipv4.h:
+
+/Users/csian/projects/stradian/include/sian/tcp.h:
+
+/Users/csian/projects/stradian/include/sian/ssl.h:
