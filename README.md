@@ -135,13 +135,13 @@ Project Link: [https://github.com/csian98/StradIAN](https://github.com/csian98/S
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-[language-shield]: https://img.shields.io/github/languages/top/csian98/sian.svg?style=for-the-badge
-[code-size-shield]: https://img.shields.io/github/languages/code-size/csian98/sian.svg?style=for-the-badge
-[repo-size-shield]: https://img.shields.io/github/repo-size/csian98/sian.svg?style=for-the-badge
-[commit-activity-shield]: https://img.shields.io/github/commit-activity/w/csian98/sian.svg?style=for-the-badge
-[last-commit-shield]: https://img.shields.io/github/last-commit/csian98/sian.svg?style=for-the-badge
-[license-shield]: https://img.shields.io/github/license/csian98/sian.svg?style=for-the-badge
-[license-url]: https://github.com/csian98/sian/blob/main/LICENSE
+[language-shield]: https://img.shields.io/github/languages/top/csian98/StradIAN.svg?style=for-the-badge
+[code-size-shield]: https://img.shields.io/github/languages/code-size/csian98/StradIAN.svg?style=for-the-badge
+[repo-size-shield]: https://img.shields.io/github/repo-size/csian98/StradIAN.svg?style=for-the-badge
+[commit-activity-shield]: https://img.shields.io/github/commit-activity/w/csian98/StradIAN.svg?style=for-the-badge
+[last-commit-shield]: https://img.shields.io/github/last-commit/csian98/StradIAN.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/csian98/StradIAN.svg?style=for-the-badge
+[license-url]: https://github.com/csian98/StradIAN/blob/main/LICENSE
 
 [macos-shield]: https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0
 [macos-url]: https://developer.apple.com/macos
