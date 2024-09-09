@@ -47,7 +47,7 @@ func:
 stradian::ForkExecable::ForkExecable(void) {}
 
 stradian::ForkExecable::~ForkExecable(void) noexcept {
-	if (running) {
+	if (this->running) {
 		this->m_thread.join();
 	}
 }

@@ -81,10 +81,10 @@ class MariaDB:
 
     def query_fetchall(self, sql):
         return self.query(sql).fetchall()
-
+    
     def upload_df(self, table, df):
         data = list(df.itertuples(index = False, name = None))
-        sql = f"REPLACE {table} VALUES ("
+        sql = f"REPLACE `{table}` VALUES ("
 
         for i in range(df.shape[1] - 1):
             sql += "%s, "

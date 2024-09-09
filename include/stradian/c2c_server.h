@@ -130,6 +130,7 @@ namespace stradian {
 		void disconnect_client(sian::ssl_client*);
 		
 	    void send_motd(sian::ssl_client*) const;
+//
 
 		sian::SSL* ssl;
 

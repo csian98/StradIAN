@@ -166,10 +166,10 @@ class CryptoWebCrawler:
         return symbols
   
     def upload(self, symbol):
-        Logger("CryptoWebCrawler: " + self.db + " crawler started").log("INFO")
+        Logger("CryptoWebCrawler: " + symbol + " crawler started").log("INFO")
         month = self.month_from(symbol)
         self.wget_from_binance(symbol, month)
         self.unzip_all_files()
         self.upload_mariaDB(symbol)
         self.wget_remove_files()
-        Logger("CryptoWebCrawler: " + self.db + " crawler terminated").log("INFO")
+        Logger("CryptoWebCrawler: " + symbol + " crawler terminated").log("INFO")

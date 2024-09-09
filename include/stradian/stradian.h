@@ -84,6 +84,8 @@ namespace stradian {
 
 		virtual ~StradIAN(void) noexcept;
 
+		void run(void);
+
 	private:
 
 		virtual std::pair<double, double> get_validation(void) const override;
