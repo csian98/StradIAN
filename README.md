@@ -70,7 +70,8 @@
 ![last commit][last-commit-shield]
 [![MIT License][license-shield]][license-url]
 
-![Product Name Screen Shot](./images/screenshot.png){: width="75%"}{: .center}
+![Product Name Screen Shot](./images/screenshot.png)
+<img src="images/screenshot.png" alt="screenshot" width="500">
 
 StradIAN is a financial robo-advisor project based on data learning.
 The project, which started in mid-2024, is a personal project, and the author has the authority over its development.
