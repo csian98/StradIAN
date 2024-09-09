@@ -46,35 +46,18 @@
 			<ul>
 				<li><a href="#built-with">Built With</a></li>
 			</ul>
-		</li>
-		<li>
-			<a href="#getting-started">Getting Started</a>
 			<ul>
-				<li>
-					<a href="#prerequisites">Prerequisites</a>
-				</li>
-				<li>
-					<a href="#installation">Installation</a>
-				</li>
+				<li><a href="#data-source">Data Source</a></li>
 			</ul>
 		</li>
 		<li>
-			<a href="#usage">Usage</a>
-		</li>
-		<li>
 			<a href="#roadmap">Roadmap</a>
-		</li>
-		<li>
-			<a href="#contributing">Contributing</a>
 		</li>
 		<li>
 			<a href="#license">License</a>
 		</li>
 		<li>
 			<a href="#contact">Contact</a>
-		</li>
-		<li>
-			<a href="#acknowledgments">Acknowledgments</a>
 		</li>
   </ol>
 </details>
@@ -87,70 +70,49 @@
 ![last commit][last-commit-shield]
 [![MIT License][license-shield]][license-url]
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][./images/screenshot.png]](https://example.com)
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
 ### Development Environment
 * [![Arch Linux][archlinux-shield]][archlinux-url]
+* [![CUDA][cuda-shield]][cuda-url]
 
 ### Built With
+* [![C++][cpp-shield]][cpp-url]
+* [![Python][python-shield]][python-url]
+* [![TensorFlow][tensorflow-shield]][tensorflow-url]
 * [![openSSL][openssl-shield]][openssl-url]
 * [![curl][curl-shield]][curl-url]
 * [![mariaDB][mariadb-shield]][mariadb-url]
+* [![mongoDB][mongodb-shield]][mongodb-url]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Getting Started
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/csian/stradian.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Usage
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-_For more examples, please refer to the [usages](https://github.com/csian98/stradian/tree/main/usages)_
+### Data Source
+* [![Yahoo! Finance][yahoo-shield]][yahoo-url]
+* [![Binance][binance-shield]][binance-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [ ] Exchange
+	- [X] Binance Exchange
+	- [ ] Fidetlity Exchange
+- [ ] General Data Crawler
+	- [X] Crypto Market (Binanace)
+	- [X] Currency Market (Yahoo)
+	- [X] Indices Market (Yahoo)
+	- [ ] Stock Market (Yahoo)
+- [ ] Models
+    - [ ] Trading
+    - [ ] Rebalancing
+- [ ] System
+	- [X] Slack & Email notificator
+	- [ ] User management
+	- [ ] C2C Server
 
 See the [open issues](https://github.com/csian98/StradIAN/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Contributing
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -165,14 +127,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Jeong Hoon (Sian) Choi - [@csian98](https://instagram.com/csian98) - [csian7386@gmail.com](mailto:csian7386@gmail.com)
 
 Project Link: [https://github.com/csian98/StradIAN](https://github.com/csian98/StradIAN)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Acknowledgments
-
-* []()
-* []()
-* []()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -195,6 +149,7 @@ Project Link: [https://github.com/csian98/StradIAN](https://github.com/csian98/S
 [mariadb-shield]: https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white
 [mariadb-url]: https://mariadb.com/docs/server/connect/
 [mongodb-shield]: https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white
+[mongodb-url]: https://www.mongodb.com
 [slack-shield]: https://img.shields.io/badge/Slack%20API-4A154B?style=for-the-badge&logo=slack&logoColor=white
 [slack-url]: https://api.slack.com
 [openai-shield]: https://img.shields.io/badge/openAI%20API-74aa9c?style=for-the-badge&logo=openai&logoColor=white
@@ -207,10 +162,13 @@ Project Link: [https://github.com/csian98/StradIAN](https://github.com/csian98/S
 
 [hadoop-shield]: https://img.shields.io/badge/Apache%20Hadoop-66CCFF?style=for-the-badge&logo=apachehadoop&logoColor=black
 [tensorflow-shield]: https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white
+[tensorflow-url]: https://www.tensorflow.org
 
 [c-shield]: https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white
 [cpp-shield]: https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white
+[cpp-url]: https://cplusplus.com
 [python-shield]: https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue
+[python-url]: https://www.python.org
 [elisp-shield]: https://img.shields.io/badge/Emacs%20Lisp-%237F5AB6.svg?&style=for-the-badge&logo=gnu-emacs&logoColor=white
 [r-shield]: https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white
 [shell-shield]: https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white
@@ -218,4 +176,7 @@ Project Link: [https://github.com/csian98/StradIAN](https://github.com/csian98/S
 [keras-shield]: https://img.shields.io/badge/Keras-%23D00000.svg?style=for-the-badge&logo=Keras&logoColor=white
 [pytorch-shield]: https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white
 
+[binance-shield]: https://img.shields.io/badge/Binance-FCD535?style=for-the-badge&logo=binance&logoColor=white
 [binance-url]: https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api
+[yahoo-shield]: https://img.shields.io/badge/Yahoo!-6001D2?style=for-the-badge&logo=Yahoo!&logoColor=white
+[yahoo-url]: https://finance.yahoo.com
