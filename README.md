@@ -70,9 +70,12 @@
 ![last commit][last-commit-shield]
 [![MIT License][license-shield]][license-url]
 
-![Product Name Screen Shot](./images/screenshot.png)
+![Product Name Screen Shot](./images/screenshot.png){: width="75%"}{: .center}
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+StradIAN is a financial robo-advisor project based on data learning.
+The project, which started in mid-2024, is a personal project, and the author has the authority over its development.
+No data other than data shared on git hub is shared.
+The author is not an expert in the financial market, and the investor is responsible for all investments.
 
 ### Development Environment
 * [![Arch Linux][archlinux-shield]][archlinux-url]
