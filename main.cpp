@@ -22,9 +22,11 @@
  * along with this program; if not, write to the Free Software
  */
 
-#include <vector>
-#include "stradian/binance_exchange.h"
+
+#include "stradian/stradian.h"
 #include "stradian/exception.h"
+
+#include "stradian/mariadb.h"
 
 #define OS_WINDOWS	0
 #define OS_LINUX	1
@@ -46,10 +48,16 @@
 int main(int argc, char* argv[]) {
 // 	std::terminate_handler default_terminate =
 //	std::set_terminate(&custom_terminate_fnct);
-//	stradian::BinanceExchange binanceexchange;
-	stradian::Logger logger("This is for text", true);
-	logger.log(stradian::LOGLEVEL::WARN);
-    
+/*
+	stradian::StradIAN stradian;
+	auto [key, other] = stradian.asset();
+
+	std::cout << "key : " << key <<'\n'
+			  << "other : " << other << std::endl;
+*/
+	stradian::StradIAN stradian;
+
+	
 	return 0;
 }
 
