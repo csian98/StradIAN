@@ -85,6 +85,7 @@ class CurrencyWebCrawler:
         
         df = pd.read_html(StringIO(str(html_table)))[0]
         df = df.iloc[:, :6]
+        
         df.iloc[:, 0] = df.iloc[:, 0].map(lambda tstr : datetime.datetime.strptime(tstr, "%b %d, %Y").strftime("%Y-%m-%d %H:%M:%S"))
         
         return df
