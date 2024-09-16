@@ -3,5 +3,11 @@
 *.cpp linguist-vendored=false
 *.h linguist-vendored=false
 *.hpp linguist-vendored=false
+*.o linguist-vendored=false
 *.py linguist-vendored=false
-*.mk linguist-vendored=false
+*.md linguist-vendored=false
+*makefile linguist-vendored=false
+*.txt linguist-vendored=false
+*.org linguist-vendored=false
+*.a linguist-vendored=false
+*.so linguist-vendored=false
