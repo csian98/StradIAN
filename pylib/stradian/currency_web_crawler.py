@@ -32,13 +32,13 @@ import datetime
 from io import StringIO
 
 class CurrencyWebCrawler:
-    def __init__(self, db = "currency_exchange_1d"):
+    def __init__(self, db = "currency_1d"):
         self.maria = MariaDB(db)
         self.wget_path = "var/tmp/"
         self.db = db
     
     def day_from(self, symbol):
-        table_format = read_json("etc/json/currency_exchange_1d/currency_format.json")
+        table_format = read_json("etc/json/currency_1d/currency_format.json")
         sub = attributes_format(table_format["attributes"],
                                 table_format["primary"])
         sql = f"CREATE TABLE IF NOT EXISTS {symbol} ({sub});"
@@ -87,6 +87,7 @@ class CurrencyWebCrawler:
         df = df.iloc[:, :6]
         
         df.iloc[:, 0] = df.iloc[:, 0].map(lambda tstr : datetime.datetime.strptime(tstr, "%b %d, %Y").strftime("%Y-%m-%d %H:%M:%S"))
+        df.iloc[:, 1:] = 1 / df.iloc[:, 1:]
         
         return df
   

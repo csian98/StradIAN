@@ -16,7 +16,7 @@ from stradian.currency_web_crawler import CurrencyWebCrawler
 from stradian.logger import Logger
 
 if __name__ == "__main__":
-    currency_1d = CurrencyWebCrawler("currency_exchange_1d")
+    currency_1d = CurrencyWebCrawler("currency_1d")
     symbols_1d = currency_1d.get_symbols()
     for symbol in symbols_1d:
         currency_1d.upload(symbol)

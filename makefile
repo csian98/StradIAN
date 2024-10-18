@@ -2,6 +2,8 @@
 EXEC_TARGET := main
 EXEC_SRC := main.cpp
 LIB_TARGET := libstradian.a
+UNIT_TEST_TARGET := unit_test
+UNIT_TEST_SRC := unit_test.cpp
 #SHD_LIB_TARGET := libstradian.so
 CC := clang
 CXX := c++
@@ -12,6 +14,7 @@ AR := ar
 # DIR_STRUCTURE
 BUILD_DIR := build
 SRC_DIR := src
+TEST_DIR := test
 INC_DIR := /opt/homebrew/include /Users/csian/projects/stradian/include
 LIB_DIR := /Users/csian/projects/stradian/lib
 
@@ -31,6 +34,7 @@ INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 # Flags
 CFLAGS := $(INC_FLAGS) -MMD -MP
 CXXFLAGS := -std=c++20 $(INC_FLAGS) -MMD -MP
+TESTFLAGS := -std=c++20 -I/opt/homebrew/include
 #SHD_CXXFLAGS := -std=c++20 $(INC_FLAGS) -MMD -MP -fPIC
 NVCCFLAGS := $(INC_FLAGS)
 LDFLAGS := -L/Users/csian/projects/stradian/lib -lstradian -L/opt/homebrew/lib -lssl -lcrypto -lcurl -L/usr/local/lib/mariadb -lmariadbcpp
@@ -57,13 +61,7 @@ $(BUILD_DIR)/%.cu.o: %.cu
 	mkdir -p $(dir $@)
 	$(NVCC) $(NVCCFLAGS) -c $< -o $@
 
-.PHONY: exec exec_debug clean clean_lib
-clean:
-	rm -r $(BUILD_DIR)/*
-
-clean_lib:
-	rm -r $(LIB_DIR)/*
-
+.PHONY: exec exec_debug test clean clean_lib
 exec: $(LIB_DIR)/$(LIB_TARGET)
 	$(CXX) -o $(EXEC_TARGET) $(EXEC_SRC) $(CXXFLAGS) $(LDFLAGS)
 	rm $(EXEC_TARGET).d
@@ -71,5 +69,14 @@ exec: $(LIB_DIR)/$(LIB_TARGET)
 exec_debug: $(LIB_DIR)/$(LIB_TARGT)
 	$(CXX) -o $(EXEC_TARGET) $(EXEC_SRC) $(CXXFLAGS) $(LDFLAGS) -g
 	rm -r $(EXEC_TARGET).d #$(EXEC_TARGET).dSYM
+
+test:
+	$(CXX) -o $(TEST_DIR)/$(UNIT_TEST_TARGET) $(TEST_DIR)/$(UNIT_TEST_SRC) $(TESTFLAGS)
+
+clean:
+	rm -r $(BUILD_DIR)/*
+
+clean_lib:
+	rm -r $(LIB_DIR)/*
 
 -include $(DEPS)

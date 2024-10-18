@@ -25,20 +25,29 @@ def read_json(json_file_name):
     json2dict = json.load(fp)
     return json2dict
 
-def attributes_format(attributes, primary):
+def attributes_format(attributes, primary, foreign = None):
     keys = attributes.keys()
     sql = ""
     for key in keys:
         sql += "%s %s, " %(key, attributes[key])
-
+    
     if len(primary):
         sub = ""
         for pk in primary:
             sub += "%s, " %pk
-            
+        
         sql += "PRIMARY KEY (%s), " %sub[: -2]
-
-    return sql[: -2]
+    
+    if foreign:
+        sub = ""
+        keys = foreign.keys()
+        for key in keys:
+            sub += "FOREIGN KEY (%s) REFERENCES %s, " %(key, foreign[key])
+        
+        sql += sub
+    
+    sql = sql[: - 2]
+    return sql
 
 class MariaDB:
     def __init__(self, db,
@@ -81,6 +90,12 @@ class MariaDB:
 
     def query_fetchall(self, sql):
         return self.query(sql).fetchall()
+
+    def skip_cursor(self, cursor, n):
+        for i in range(n):
+            cursor.fetchone()
+
+        return cursor
     
     def upload_df(self, table, df):
         data = list(df.itertuples(index = False, name = None))
