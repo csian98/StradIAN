@@ -13,6 +13,7 @@ import sys, os
 sys.path.append("pylib/")
 from stradian.logger import Logger
 
+import re
 import pickle
 
 class QueryParser:
