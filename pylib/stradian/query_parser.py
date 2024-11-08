@@ -14,7 +14,7 @@ sys.path.append("pylib/")
 from stradian.logger import Logger
 
 import re
-import pickle
+import pickle        
 
 class QueryParser:
     def __init__(self):
@@ -26,13 +26,18 @@ class QueryParser:
     def load_query_hash(self):
         with open(self.query_hash_file, "rb") as fp:
             return pickle.load(fp)
-        
+    
     def dump_query_hash(self):
         with open(self.query_hash_file, "wb") as fp:
             pickle.dump(self.query_hash, fp)
         
     def update(self, structure):
         self.db_structure = structure
+    
+    def get_auth(self, db, table):
+        json_file_name = "etc/json/" + db + "/" + table + ".json"
+        json_object = read_json(json_file_name)
+        return json_object["auth"]
     
     def exist(self, db, table = None, attribute = None, dtype = None):
         if db not in self.db_structure.keys():
@@ -69,10 +74,20 @@ class QueryParser:
     def get_databases(self):
         return list(self.db_structure.keys())
 
-    def get_tables(self, db):
+    def get_tables(self, db, auth = True):
         if not self.exist(db):
             return None
-        return list(self.db_structure[db].keys())
+
+        tables = list(self.db_structure[db].keys())
+        if auth:
+            return tables
+        else:
+            auth_tables = list()
+            for table in tables:
+                if self.get_auth(db, table):
+                    auth_tables.append(table)
+
+            return auth_tables
 
     def get_attrs(*args):
         if len(args) == 0:
@@ -100,8 +115,10 @@ class QueryParser:
         return sql + ';'
 
     def build_sql(self, db, table, *args,
-                group_by = None, having_cond = None,
-                where_cond = None, limit = None, offset = None):
+                  group_by = None, having_cond = None,
+                  where_cond = None, limit = None, offset = None):
         sql = "SELECT @attr FROM @table GROUP BY @qtl HAVING @attr @cond WHERE @attr @cond LIMIT @int OFFSET @int"
-
+        attr = self.get_attrs(*args)
+        
+        
         return sql + ';'

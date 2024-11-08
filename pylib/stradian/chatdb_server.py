@@ -136,7 +136,8 @@ class ChatDBServer:
         return len(dbs)
 
     def chat_tbl_list(self, client, db, sep = True):
-        tbls = self.query_parser.get_tables(db)
+        tbls = self.query_parser.get_tables(db, client.auth)
+        
         if sep:
             self.send_client(
                 client, "= SHOW TABLES ====================================\n")
@@ -183,7 +184,7 @@ class ChatDBServer:
                 continue
             else:
                 self.chat_explore_data(
-                    client, db, self.query_parser.get_tables(db)[int(choice) - 1])
+                    client, db, self.query_parser.get_tables(db, client.auth)[int(choice) - 1])
 
     def chat_explore_data(self, client, db, table):
         options = ("= EXPLORE DATA ===================================\n"
@@ -211,8 +212,29 @@ class ChatDBServer:
         return
 
     def chat_raw_data(self, client, db, table):
-        print("stop")
-        ###
+        columns = list(self.query_parser.db_structure[db][table].keys())
+        line = "|"
+        for column in columns:
+            line += "%20s|" %column
+
+        line += '\n'
+        self.send_client(client, line)        
+        
+        instances = self.systemdb.get_raw_data(db, table)
+        
+        for instance in instances:
+            line = "|"
+            for value in instance:
+                if isinstance(value, float):
+                    line += "%20.6f|" %value
+                elif isinstance(value, int):
+                    line += "%20d|" %value
+                else:
+                    line += "%20s|" %value
+
+            line += '\n'
+            
+            self.send_client(client, line)
     
 
     def run_server(self):

@@ -31,11 +31,12 @@ class SystemDB:
     def create_table(self, json_file_name, db = "system"):
         json_object = read_json(json_file_name)
         sql = "CREATE TABLE `%s` (%s)" %(json_object["name"],
-                                         attributes_format(json_object["attributes"],
-                                                           json_object["primary"],
-                                                           json_object["foreign"]))
+                                         attributes_format(
+                                             json_object["attributes"],
+                                             json_object["primary"],
+                                             json_object["foreign"]))
         return self.mariadb[db].query(sql)
-
+    
     def get_structure(self, db = "system"):
         o_cursor = self.mariadb[db].query("SHOW TABLES")
         tables = o_cursor.fetchall()
@@ -65,23 +66,28 @@ class SystemDB:
         return structure
 
     def get_schema(self, db, table):
-        seperate = '+' + ('-' * 16) + '+' + ('-' * 20) + '+' + ('-' * 5) + '+' + ('-' * 5) + '+' + ('-' * 9)  + '+' + ('-' * 7) + "+\n"
+        seperate = '+' + ('-' * 20) + '+' + ('-' * 20) + '+' + ('-' * 5) + '+' + ('-' * 5) + '+' + ('-' * 9)  + '+' + ('-' * 7) + "+\n"
         sql = f"DESC '{table}'"
         cursor = self.mariadb[db].query(
             "DESC `%s`" %table)
         fetch = cursor.fetchone()
         schema = seperate
-        schema += "|%16s|%20s|%5s|%5s|%9s|%7s|\n" %(
+        schema += "|%20s|%20s|%5s|%5s|%9s|%7s|\n" %(
             "Field", "Type", "Null", "Key", "Default", "Extra")
         schema += seperate
         
         while fetch is not None:
-            schema += "|%16s|%20s|%5s|%5s|%9s|%7s|\n" %(
+            schema += "|%20s|%20s|%5s|%5s|%9s|%7s|\n" %(
                 fetch[0], fetch[1], fetch[2],
                 fetch[3], fetch[4], fetch[5])
             fetch = cursor.fetchone()
         schema += seperate
         return schema
+
+    def get_raw_data(self, db, table):
+        sql = f"SELECT * FROM {table}"
+        cursor = self.mariadb[db].query(sql)
+        return cursor.fetchall()
     
     def update_uid(self):
         sql = "SELECT uid FROM user ORDER BY uid DESC LIMIT 1"
