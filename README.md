@@ -19,7 +19,7 @@
 	<a href="https://instagram/csian98"><img src="https://img.shields.io/badge/csian98-grey?logo=Instagram"></a>
 	<a href="https://discord.gg/YhghyDBgKa"><img src="https://img.shields.io/badge/Discord-grey?logo=Discord"></a>
 	<a href="https://csian98.github.io"><img src="https://img.shields.io/badge/csian98.github.io-grey?logo=Homepage"></a>
-	<a href="https://www.linkedin.com/in/jeong-hoon-choi-086b55288/"><img src="https://img.shields.io/badge/LinkedIn-grey?logo=linkedin"></a>
+	<a href="https://www.linkedin.com/in/csian98/"><img src="https://img.shields.io/badge/LinkedIn-grey?logo=linkedin"></a>
 	<p align="center">
 	StradIAN is a data model-based Robo-Advisor production project personally created by the author.
 	<br/>

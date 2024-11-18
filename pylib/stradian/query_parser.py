@@ -12,9 +12,14 @@ __email__ = "csian7386@gmail.com"
 import sys, os
 sys.path.append("pylib/")
 from stradian.logger import Logger
+from stradian.mariadb import read_json
 
 import re
-import pickle        
+import pickle
+import random
+
+import nltk
+import spacy
 
 class QueryParser:
     def __init__(self):
@@ -22,6 +27,7 @@ class QueryParser:
         self.warn = "NOT VALID"
         self.query_hash_file = "etc/pkl/query_hash_file.pkl"
         self.query_hash = self.load_query_hash()
+        self.nlp = spacy.blank("en")
 
     def load_query_hash(self):
         with open(self.query_hash_file, "rb") as fp:
@@ -89,13 +95,16 @@ class QueryParser:
 
             return auth_tables
 
-    def get_attrs(*args):
+    def get_attrs(self, *args):
+        if isinstance(args[0], list):
+            args = args[0]
+        
         if len(args) == 0:
             return "*"
         
         sql = str()
         for attr in args:
-            sql += attr + ", "
+            sql += f"{attr}, "
         return sql[: -2]
     
     def explore_sql(self, db, table, *args,
@@ -114,11 +123,475 @@ class QueryParser:
             
         return sql + ';'
 
-    def build_sql(self, db, table, *args,
-                  group_by = None, having_cond = None,
-                  where_cond = None, limit = None, offset = None):
-        sql = "SELECT @attr FROM @table GROUP BY @qtl HAVING @attr @cond WHERE @attr @cond LIMIT @int OFFSET @int"
-        attr = self.get_attrs(*args)
+    def random_attributes(self, db, table, group_by = None):
+        json_object = self.db_structure[db][table]
+        attributes = list()
         
+        if not group_by:
+            for key in json_object.keys():
+                select = random.randint(0, 1)
+                if select:
+                    attributes.append(key)
+        else:
+            attributes.append(group_by)
+            aggregates = ["COUNT", "AVG", "SUM", "MAX", "STD"]
+            select = random.randint(0, len(aggregates) - 1)
+
+            aggregate = aggregates[select]
+            if aggregate == "COUNT":
+                attributes.append("COUNT(*)")
+            else:
+                qnts = [key for key, value in json_object.items() if value[0] == "QNT"]
+                if len(qnts):
+                    select = random.randint(0, len(qnts) - 1)
+                    attributes.append(f"{aggregate}({qnts[select]})")
+
+        sql = self.get_attrs(attributes)
+        if sql == "*":
+            attributes = list(json_object.keys())
         
-        return sql + ';'
+        return sql, attributes
+
+    def random_attributes_join(self, db, l_table, r_table, l_attr, r_attr):
+        left_object = self.db_structure[db][l_table]
+        right_object= self.db_structure[db][r_table]
+
+        attributes = list()
+        attributes.append(f"l.{l_attr}")
+
+        for key in left_object.keys():
+            select = random.randint(0, 1)
+            if select and key != l_attr:
+                attributes.append(f"l.{key}")
+
+        for key in right_object.keys():
+            select = random.randint(0, 1)
+            if select and key != r_attr:
+                attributes.append(f"r.{key}")
+
+        sql = self.get_attrs(attributes)
+        return sql, attributes
+
+    def random_group_by(self, db, table):
+        file_name = f"etc/json/{db}/{table}.json"
+        if db != "system":
+            file_name = f"etc/json/{db}/{db}_format.json"
+        
+        foreign_keys = read_json(file_name)["foreign"]
+        if not foreign_keys:
+            return None
+
+        select = random.randint(0, len(foreign_keys) - 1)
+        key = list(foreign_keys.keys())[select]
+        sql = f"GROUP BY {key}"
+        return sql, key
+    
+    def random_where(self, db, table, attributes, value = None):
+        run_able = True
+        if not value:
+            value = "<#WHERE>"
+            run_able = False
+        
+        conditions = ["=", "<", "<=", ">", ">="]
+        select = random.randint(0, len(conditions) - 1)
+        condition = conditions[select]
+
+        select = random.randint(0, len(attributes) - 1)
+        attribute = attributes[select]
+        
+        sql = f"WHERE {attribute} {condition} {value}"
+        return sql, run_able, attribute
+
+    def random_having(self, db, table, group_by, value = None):
+        run_able = True
+        if not value:
+            value = "<#HAVING>"
+            run_able = False
+        
+        conditions = ["=", "<", "<=", ">", ">="]
+        select = random.randint(0, len(conditions) - 1)
+        condition = conditions[select]
+
+        aggregates = ["COUNT", "AVG", "SUM", "MAX", "STD"]
+        select = random.randint(0, len(aggregates) - 1)
+        aggregate = aggregates[select]
+
+        if aggregate == "COUNT":
+            aggregate = "COUNT(*)"
+        else:
+            json_object = self.db_structure[db][table]
+            qnts = [key for key, value in json_object.items() if value[0] == "QNT" and key != group_by]
+
+            if len(qnts):
+                select = random.randint(0, len(qnts) - 1)
+                aggregate = f"{aggregate}({qnts[select]})"
+            else:
+                aggregate = "COUNT(*)"
+        
+        sql = f"HAVING {aggregate} {condition} {value}"
+        return sql, run_able, aggregate
+
+    def random_order_by(self, db, table, attributes):
+        json_object = self.db_structure[db][table]
+
+        select = random.randint(0, len(attributes) - 1)
+        order = "ASC" if random.randint(0, 1) else "DESC"
+        sql = f"ORDER BY {attributes[select]} {order}"
+        return sql
+
+    def random_join(self, db, table):
+        file_name = f"etc/json/{db}/{table}.json"
+        if db != "system":
+            file_name = f"etc/json/{db}/{db}_format.json"
+        
+        foreign_keys = read_json(file_name)["foreign"]
+        
+        if not foreign_keys:
+            return None
+
+        select = random.randint(0, len(foreign_keys) - 1)
+        left_attribute = list(foreign_keys.keys())[select]
+        right_table = foreign_keys[left_attribute].split('(')[0]
+        right_attribute = foreign_keys[left_attribute].split('(')[1][: -1]
+        
+        sql = f"AS l LEFT JOIN {right_table} AS r ON l.{left_attribute} = r.{right_attribute}"
+        return sql, left_attribute, right_table, right_attribute
+
+    def random_query(self, db, table, where = False, where_value = None,
+                     group_by = False, having = False, having_value = None,
+                     join = False, order_by = False, limit = None, offset = None):
+        sql = "SELECT "
+        run_able = True
+        where_element = None
+        having_element = None
+        
+        if group_by:
+            group = self.random_group_by(db, table)
+            if not group:
+                return None, False, None, None
+            
+            group, group_element = group
+
+            attribute, l_atr = self.random_attributes(db, table, group_element)
+            sql += attribute
+            sql += f" FROM {table}"
+            sql += f" {group}"
+
+            if having:
+                having, run_able, having_element = self.random_having(
+                    db, table, group_element, having_value)
+                sql += f" {having}"
+
+        elif join:
+            join = self.random_join(db, table)
+
+            if not join:
+                return None, False, None, None
+
+            join, left_element, right_table, right_element = join
+
+            attribute, l_atr = self.random_attributes_join(db, table, right_table,
+                                                           left_element,
+                                                           right_element)
+            
+            sql += attribute
+            sql += f" FROM {table}"
+            sql += f" {join}"
+            
+        else:
+            attribute, l_atr = self.random_attributes(db, table)
+            sql += attribute
+            sql += f" FROM {table}"
+
+        if where:
+            where_cond, run_able, where_element = self.random_where(
+                db, table, l_atr, where_value)
+            sql += f" {where_cond}"
+
+        if order_by:
+            order = self.random_order_by(db, table, l_atr)
+            sql += f" {order}"
+        
+        if limit:
+            sql += " LIMIT %d" %limit
+
+        if offset:
+            sql += " OFFSET %d" %offset
+
+        sql += ';'
+        
+        return sql, run_able, where_element, having_element
+    
+    def set_value(self, sql, where = None, having = None):
+        if where:
+            if isinstance(where, int) or isinstance(where, float):
+                sql = sql.replace("<#WHERE>", str(where))
+            else:
+                sql = sql.replace("<#WHERE>", f"'{where}'")
+
+        if having:
+            if isinstance(having, int) or isinstance(having, float):
+                sql = sql.replace("<#HAVING>", str(having))
+            else:
+                sql = sql.replace("<#HAVING>", f"'{having}'")
+
+        return sql, sql.find("<#WHERE>") != -1 and sql.find("<#HAVING>") != -1
+
+    def attribute_parsing(self, sql):
+        if sql[-1] == ' ' or sql[-1] == ',':
+            sql = sql[: -1]
+        
+        attributes = sql.split(',')
+        sql = str()
+        
+        if attributes[0] == '*':
+            return "all"
+        
+        functions = {
+            "COUNT": "count <#VALUES>",
+            "AVG": "average of <#VALUES>",
+            "SUM": "sum of <#VALUES>",
+            "MAX": "max value of <#VALUES>",
+            "MIN": "min value of <#VALUES>",
+            "STD": "standard deviation of <#VALUES>"
+        }
+        
+        for attribute in attributes:
+            if attribute[0] == ',' or attribute[0] == ' ':
+                attribute = attribute[1:]
+            
+            if attribute.find('(') == -1:
+                if attribute[:2] == "l.":
+                    attribute = "left table's " + attribute[2:]
+
+                if attribute[:2] == "r.":
+                    attribute = "right table's " + attribute[2:]
+                
+                sql += attribute + ", "
+            else:
+                f = attribute.find('(')
+                b = attribute.find(')')
+                function = attribute[: f]
+                value = attribute[f + 1: b]
+                natural = functions[function]
+                natural = natural.replace("<#VALUES>", value)
+                sql += natural + ", "
+
+        return sql[: -2]
+
+    def make_explain(self, sql):
+        invalid = "INVALID QUERY"
+        if sql[-1] == ';':
+            sql = sql[: -1]
+
+        keywords = {
+            "SELECT": "show the <#SELECT>",
+            "FROM": "in the <#FROM> table",
+            "AS": "(called as <#AS>)",
+            "WHERE": "with <#WHERE>",
+            "GROUP BY": "by <#GROUPBY> group",
+            "HAVING": "that is <#HAVING>",
+            "LEFT JOIN": "joining the <#LEFTJOIN> table",
+            "ON": "that have <#ON>",
+            "ORDER BY": "in ascending order of <#ORDERBY>",
+            "LIMIT": "only <#LIMIT> rows",
+            "OFFSET": "skip <#OFFSET> rows"
+        }
+
+        qsql = str()
+        
+        has_key = list()
+        for key in keywords.keys():
+            loc = sql.find(key)
+            if loc != -1:
+                has_key.append([loc, key])
+                qsql += f"{key} <#{key}> "
+
+        qsql = qsql[: -1] + ';'
+
+        has_key = sorted(has_key)
+        description = str()
+        pattern = str()
+        
+        for i in range(len(has_key)):
+            loc, key = has_key[i]
+            if len(description) != 0 and description[-1] != ' ':
+                description += ' '
+                pattern += ' '
+            
+            value = str()
+            if i == len(has_key) - 1:
+                value = sql[loc + len(key) + 1: ]
+            else:
+                value = sql[loc + len(key) + 1: has_key[i + 1][0]]
+            
+            natural = keywords[key]
+
+            if key == "SELECT":
+                value = self.attribute_parsing(value)
+            
+            if key == "ORDER BY":
+                if sql.find("DESC") != -1:
+                    natural = natural.replace("ascending", "descending")
+                    natural = natural.replace("ASC", '')
+                    natural = natural.replace("DESC", '')
+
+            pattern += f"{natural}"
+            natural = natural.replace(f"<#{key}>", value)
+            description += f"{natural}"
+
+        if description[-1] == ' ':
+            description = description[: -1]
+            pattern = pattern[: - 1]
+
+
+        #self.save_hash(qsql, pattern)
+            
+        return description
+
+    def patternize(self, explain):
+        keywords = {"<#SELECT>", "<#FROM>",
+                    "<#AS>", "<#WHERE>",
+                    "<#GROUPBY>", "<#HAVING>",
+                    "<#LEFTJOIN>", "<#ON>",
+                    "<#ORDERBY>", "<#LIMIT>"
+                    "<#OFFSET>"}
+        
+        kilt = dict()
+
+        split = explain.split(' ')
+        dbs = self.get_databases()
+        tables = list()
+        for db in dbs:
+            table = self.get_tables(db)
+            for t in table:
+                tables.append(t.lower())
+
+        flag = True
+        for i in range(len(split)):
+            if split[i].lower() in tables and flag:
+                kilt["<#FROM>"] = split[i]
+                split[i] = "<#FROM>"
+                flag = False
+
+                if (len(split) > i + 3 and
+                    split[i + 1].lower() in ["as", "like", "likes"]):
+                    kilt["<#AS>"] = split[i + 2]
+                    split[i + 2] = "<#AS>"
+
+                continue
+
+            if not flag:
+                kilt["<#LEFTJOIN>"] = split[i]
+                split[i] = "<#LEFTJOIN>"
+                flag = True
+
+                if (len(split) > i + 3 and
+                    split[i + 1].lower() in ["as", "like", "likes"]):
+                    kilt["<#AS>"] = [kilt["<#AS>"], split[i + 2]]
+                    split[i + 2] = "<#AS>"
+                
+                break
+        
+        attributes = list(self.db_structure[db][kilt["<#FROM>"]].keys())
+        attributes = list(map(lambda x: x.lower(), attributes))
+        
+        for i in range(len(split)):
+            text = split[i]
+            if split[i].find('.') != -1:
+                text = split[i].split('.')[1]
+
+            if text[-1] == ',':
+                text = text[: -1]
+            
+            if text.lower() in attributes:
+                if ((i != 0 and split[i - 1].find("group") != -1) or
+                    (i != 1 and split[i - 2].find("group") != -1)):
+                    kilt["<#GROUPBY>"] = split[i]
+                    split[i] = "<#GROUPBY>"
+
+                elif ((i != 0 and split[i - 1].find("order") != -1) or
+                    (i != 1 and split[i - 2].find("order") != -1)):
+                    kilt["<#ORDERBY"] = split[i]
+                    split[i] = "<#ORDERBY>"
+
+                elif (len(split) > i + 2 and split[i + 1] in ["=", "<", ">", "<=", ">="]):
+                    condition = ["<#LEFTJOIN>", "<#GROUPBY>", "<#FROM>"]
+                    queue = list()
+                    for j in range(i):
+                        if split[j] in condition:
+                            queue.append(split[j])
+
+                    keyword = "<#WHERE>"
+                    if queue[-1] == "<#LEFTJOIN>":
+                        keyword = "<#ON>"
+                    elif queue[-1] == "<#GROUPBY>":
+                        keyword = "<#HAVING>"
+
+                    kilt[keyword] = ' '.join(split[i: i + 2])
+                    for j in range(2):
+                        split[i + j] = keyword
+
+                else:    
+                    k = i
+                    for j in range(i + 1, len(split)):
+                        point = split[j]
+                        if split[j].find('.') != -1:
+                            point = split[j].split('.')[1]
+
+                        if point not in attributes:
+                            break
+                        else:
+                            k = j
+
+                    kilt["<#SELECT>"] = ' '.join(split[i: k + 1])
+                    for j in range(i, k + 1):
+                        split[j] = "<#SELECT>"
+
+            elif text.isdigit():
+                if (i != 0 and split[i - 1].find("skip") != -1):
+                    kilt["<#OFFSET>"] = split[i]
+                    split[i] = "<#OFFSET>"
+
+                if (i != 0 and split[i - 1].find("only") != -1):
+                    kilt["<#LIMIT>"] = split[i]
+                    split[i] = "<#LIMIT>"
+
+        explain = ' '.join(split)
+        return explain, kilt
+
+    def reverse_patternize(self, sql, kilt):
+        for key, value in kilt.itmes():
+            sql = sql.replace(key, value)
+        
+        return sql
+
+    def tokenize(self, sentence):
+        doc = self.nlp(sentence)
+        tokens = {token.text.lower() for token in doc if not token.is_stop and not token.is_punct}
+        return tokens
+        
+    def token_similarity(self, tok1, tok2):
+        jacard = len(tok1 & tok2) / len(tok1 | tok2) if tok1 / tok2 else 0.0
+        return jacard
+
+    def save_hash(self, sql, explain):
+        token = self.tokenize(explain)
+        self.query_hash[frozenset(token)] = sql
+
+    def find_similar(self, explain):
+        pattern, kilt = self.patternize(explain)
+        
+        max_jacard = 0.0
+        max_sql = str()
+        tokens = self.query_hash.keys()
+        token = self.tokenize(pattern)
+
+        for other_token in tokens:
+            jacard = self.token_similarity(token, other_token)
+            if jacard > max_jacard:
+                max_jacard = jacard
+                max_sql = self.query_hash[other_token]
+
+        sql = self.reverse_patternize(max_sql, kilt)
+        return sql

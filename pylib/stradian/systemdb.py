@@ -16,6 +16,7 @@ from stradian.mariadb import read_json, attributes_format
 from stradian.logger import Logger
 
 import hashlib
+import random
 
 class SystemDB:
     def __init__(self, db = "system"):
@@ -50,9 +51,9 @@ class SystemDB:
             fetch = i_cursor.fetchone()
             
             while fetch is not None:
-                dtype = "QNT"
-                if (fetch[1].find("char") == -1) or (fetch[1].find("text") == -1):
-                    dtype = "QLT"
+                dtype = "QLT"
+                if (fetch[1].find("char") == -1) and (fetch[1].find("text") == -1) and (fetch[1].find("time")):
+                    dtype = "QNT"
                 
                 key = None
                 if (fetch[3] != ""):
@@ -84,8 +85,16 @@ class SystemDB:
         schema += seperate
         return schema
 
-    def get_raw_data(self, db, table):
+    def get_raw_data(self, db, table,
+                     limit = None, offset = None):
         sql = f"SELECT * FROM {table}"
+        
+        if limit:
+            sql += f" LIMIT {limit}"
+
+        if offset:
+            sql += f" OFFSET {offset}"
+        
         cursor = self.mariadb[db].query(sql)
         return cursor.fetchall()
     
@@ -153,4 +162,31 @@ class SystemDB:
             fetch = cursor.fetchone()
 
         return symbols
-            
+
+    def query(self, db, sql):
+        return self.mariadb[db].query(sql)
+
+    def get_minmax(self, db, table, attribute):
+        min_sql = f"SELECT MIN({attribute}) FROM table"
+        max_sql = f"SELECT MAX({attribute}) FROM table"
+        
+        cursor = self.mariadb[db].query(min_sql)
+        min_value = cursor.fetchone()[0]
+        cursor = self.mariadb[db].query(max_sql)
+        max_value = cursor.fetchone()[0]
+
+        return (min_value, max_value)
+
+    def get_random_value(self, db, table, attribute):
+        sql = f"SELECT DISTINCT {attribute} FROM {table}"
+
+        cursor = self.mariadb[db].query(sql)
+        values = cursor.fetchall()
+        select = random.randint(0, len(values) - 1)
+        return values[select][0]
+
+    def get_level(self, db, table, attribute):
+        sql = f"SELECT DISTINCT {attribute} FROM table"
+
+        cursor = self.mariadb[db].query(sql)
+        return cursor.fetchall()
