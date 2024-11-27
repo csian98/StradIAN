@@ -117,7 +117,7 @@ The author is not an expert in the financial market, and the investor is respons
 	- [ ] User management
 	- [ ] C2C Server
 - [ ] User Interface
-    - [ ] ChatDB (USC DSCI 551 Project)
+    - [X] ChatDB (USC DSCI 551 Project)
 	- [ ] Meta-Llama (NLP interface: Kyra)
 
 See the [open issues](https://github.com/csian98/StradIAN/issues) for a full list of proposed features (and known issues).

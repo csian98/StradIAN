@@ -20,6 +20,8 @@ import threading
 from queue import Queue
 from getpass import getpass
 
+import re
+
 class ThreadClient:
     def __init__(self, client_socket, addr):
         self.client_socket = client_socket
@@ -107,7 +109,7 @@ class ChatDBServer:
     def chat_admin(self, client):
         options = ("= ADMIN ==========================================\n"
                    "1) add user\n"
-                   "2) dump hash\n"
+                   "2) show hash\n"
                    "3) terminate server\n")
         
         if not client.auth:
@@ -115,15 +117,19 @@ class ChatDBServer:
 
         while True:
             self.send_client(client, options)
+            self.send_client(client, f"('q' to return)")
             self.send_client(client, client.prompt)
             self.send_client(client, "#ask")
             choice = self.recv_client(client)
+
+            if choice == 'q':
+                return
 
             match choice:
                 case "1":
                     print(None)
                 case "2":
-                    self.query_parser.dump_query_hash()
+                    self.send_client(client, str(self.query_parser.query_hash))
                 case "3":
                     self.send_client(client, "Terminate Server\n")
                     sys.exit(0)
@@ -648,12 +654,32 @@ class ChatDBServer:
             recv = self.recv_client(client)
 
             if recv == '1':
-                self.execute_query(recv)
-                #self.save_hash(sql, nlp)
+                sql = self.replace_pattern(client, sql)
+
+                try:
+                    self.execute_query(client, db, sql)
+                    #self.save_hash(sql, nlp)
+                except:
+                    self.send_client(client, f"Not allowed query\n{sql}\n")
             else:
                 continue
                 
         return
+
+    def replace_pattern(self, client, sql):
+        patterns = re.findall(r"<#.*?>", sql)
+        
+        for pattern in patterns:
+            self.send_client(client, "Please enter pattern\n")
+            self.send_client(client, f"{sql}\n")
+            self.send_client(client, f"{pattern} >>> ")
+            self.send_client(client, "#ask")
+            recv = self.recv_client(client)
+
+            sql = sql.replace(pattern, recv, 3)
+
+        return sql
+        
     
     def run_server(self):
         self.HOST = socket.gethostbyname(socket.gethostname())

@@ -14,21 +14,37 @@ sys.path.append("pylib/")
 from stradian.logger import Logger
 from stradian.mariadb import read_json
 
-import re
+import re, string
 import pickle
 import random
+import heapq
 
 import nltk
 import spacy
+from spacy.tokenizer import Tokenizer
+from spacy.util import compile_infix_regex
 
 class QueryParser:
     def __init__(self):
         self.db_structure = dict()
         self.warn = "NOT VALID"
         self.query_hash_file = "etc/pkl/query_hash_file.pkl"
+        self.query_dictionary_file = "etc/pkl/query_dictionary.pkl"
         self.query_hash = self.load_query_hash()
+        self.dictionary = self.load_query_dictionary()
         self.nlp = spacy.blank("en")
+        self.nlp.tokenizer = self.get_tokenizer(self.nlp)
 
+    def get_tokenizer(self, nlp):
+        tokenizer = nlp.tokenizer
+
+        infixes = nlp.Defaults.infixes + [r"<#\w+>"]
+        infix_re = compile_infix_regex(infixes)
+
+        tokenizer = Tokenizer(nlp.vocab, infix_finditer = infix_re.finditer)
+        
+        return tokenizer
+        
     def load_query_hash(self):
         with open(self.query_hash_file, "rb") as fp:
             return pickle.load(fp)
@@ -36,6 +52,14 @@ class QueryParser:
     def dump_query_hash(self):
         with open(self.query_hash_file, "wb") as fp:
             pickle.dump(self.query_hash, fp)
+
+    def load_query_dictionary(self):
+        with open(self.query_dictionary_file, "rb") as fp:
+            return pickle.load(fp)
+
+    def dump_query_dictionary(self):
+        with open(self.query_dictionary_file, "wb") as fp:
+            pickle.dump(self.dictionary, fp)
         
     def update(self, structure):
         self.db_structure = structure
@@ -110,7 +134,7 @@ class QueryParser:
     def explore_sql(self, db, table, *args,
                     where_cond = None, limit = None, offset = None):
         attrs = self.get_attrs(args)
-        sql = f"SELECT {attr} FROM {table}"
+        sql = f"SELECT {attr} FROM `{table}`"
         
         if where_cond:
             sql += f" WHERE {where_cond}"
@@ -254,7 +278,7 @@ class QueryParser:
         right_table = foreign_keys[left_attribute].split('(')[0]
         right_attribute = foreign_keys[left_attribute].split('(')[1][: -1]
         
-        sql = f"AS l LEFT JOIN {right_table} AS r ON l.{left_attribute} = r.{right_attribute}"
+        sql = f"AS l LEFT JOIN `{right_table}` AS r ON l.{left_attribute} = r.{right_attribute}"
         return sql, left_attribute, right_table, right_attribute
 
     def random_query(self, db, table, where = False, where_value = None,
@@ -274,7 +298,7 @@ class QueryParser:
 
             attribute, l_atr = self.random_attributes(db, table, group_element)
             sql += attribute
-            sql += f" FROM {table}"
+            sql += f" FROM `{table}`"
             sql += f" {group}"
 
             if having:
@@ -295,13 +319,13 @@ class QueryParser:
                                                            right_element)
             
             sql += attribute
-            sql += f" FROM {table}"
+            sql += f" FROM `{table}`"
             sql += f" {join}"
             
         else:
             attribute, l_atr = self.random_attributes(db, table)
             sql += attribute
-            sql += f" FROM {table}"
+            sql += f" FROM `{table}`"
 
         if where:
             where_cond, run_able, where_element = self.random_where(
@@ -379,7 +403,7 @@ class QueryParser:
 
         return sql[: -2]
 
-    def make_explain(self, sql):
+    def make_explain(self, sql, for_pattern = False):
         invalid = "INVALID QUERY"
         if sql[-1] == ';':
             sql = sql[: -1]
@@ -402,10 +426,10 @@ class QueryParser:
         
         has_key = list()
         for key in keywords.keys():
-            loc = sql.find(key)
+            loc = sql.find(f"{key} ")
             if loc != -1:
                 has_key.append([loc, key])
-                qsql += f"{key} <#{key}> "
+                qsql += f"{key} <#{key.replace(' ', '')}> "
 
         qsql = qsql[: -1] + ';'
 
@@ -437,15 +461,16 @@ class QueryParser:
                     natural = natural.replace("DESC", '')
 
             pattern += f"{natural}"
-            natural = natural.replace(f"<#{key}>", value)
+            natural = natural.replace(f"<#{key.replace(' ', '')}>", value)
             description += f"{natural}"
 
         if description[-1] == ' ':
             description = description[: -1]
             pattern = pattern[: - 1]
 
-
         #self.save_hash(qsql, pattern)
+        if for_pattern:
+            return (qsql, pattern)
             
         return description
 
@@ -461,15 +486,21 @@ class QueryParser:
 
         split = explain.split(' ')
         dbs = self.get_databases()
-        tables = list()
+        tables = dict()
         for db in dbs:
             table = self.get_tables(db)
             for t in table:
-                tables.append(t.lower())
+                tables[t] = db
 
         flag = True
         for i in range(len(split)):
-            if split[i].lower() in tables and flag:
+            table = split[i].lower()
+            if table[0] == '`':
+                table = table[1:]
+            if table[-1] == '`':
+                table = table[: -1]
+                
+            if table in tables and flag:
                 kilt["<#FROM>"] = split[i]
                 split[i] = "<#FROM>"
                 flag = False
@@ -481,7 +512,7 @@ class QueryParser:
 
                 continue
 
-            if not flag:
+            if table in tables and not flag:
                 kilt["<#LEFTJOIN>"] = split[i]
                 split[i] = "<#LEFTJOIN>"
                 flag = True
@@ -492,8 +523,18 @@ class QueryParser:
                     split[i + 2] = "<#AS>"
                 
                 break
+
+        if "<#FROM>" not in kilt.keys():
+            return None
         
-        attributes = list(self.db_structure[db][kilt["<#FROM>"]].keys())
+        table = kilt["<#FROM>"]
+        if table[0] =='`':
+            table = table[1: ]
+        if table[-1] == '`':
+            table = table[: -1]
+
+        
+        attributes = list(self.db_structure[tables[table]][table].keys())
         attributes = list(map(lambda x: x.lower(), attributes))
         
         for i in range(len(split)):
@@ -528,8 +569,8 @@ class QueryParser:
                     elif queue[-1] == "<#GROUPBY>":
                         keyword = "<#HAVING>"
 
-                    kilt[keyword] = ' '.join(split[i: i + 2])
-                    for j in range(2):
+                    kilt[keyword] = ' '.join(split[i: i + 3])
+                    for j in range(3):
                         split[i + j] = keyword
 
                 else:    
@@ -545,6 +586,13 @@ class QueryParser:
                             k = j
 
                     kilt["<#SELECT>"] = ' '.join(split[i: k + 1])
+
+                    
+                    for star in ["all", "entire", "every"]:
+                        if kilt["<#SELECT>"].find(star) != -1:
+                            kilt["<#SELECT>"] = '*'
+                            break
+                    
                     for j in range(i, k + 1):
                         split[j] = "<#SELECT>"
 
@@ -557,30 +605,69 @@ class QueryParser:
                     kilt["<#LIMIT>"] = split[i]
                     split[i] = "<#LIMIT>"
 
-        explain = ' '.join(split)
+        split_wo_dup = list()
+        for i in range(len(split) - 1):
+            if split[i] != split[i + 1]:
+                split_wo_dup.append(split[i])
+
+        explain = ' '.join(split_wo_dup)
+        return explain, kilt
+
+    def simple_patternize(self, explain):
+        splits = explain.split(' ')
+        sub_string = "<#WHERE>"
+        kilt = dict()
+        for i in range(len(splits)):
+            if splits[i].replace('.', '').isdigit():
+                kilt[sub_string] = splits[i]
+                splits[i] = sub_string
+                sub_string = "<#HAVING>"
+
+        explain = ' '.join(splits)
         return explain, kilt
 
     def reverse_patternize(self, sql, kilt):
-        for key, value in kilt.itmes():
+        for key, value in kilt.items():
             sql = sql.replace(key, value)
         
         return sql
 
     def tokenize(self, sentence):
         doc = self.nlp(sentence)
-        tokens = {token.text.lower() for token in doc if not token.is_stop and not token.is_punct}
+        # tokens = {token.text.lower() for token in doc if not token.is_stop and not token.is_punct}
+        tokens = {token.text.lower() for token in doc if not token.is_punct}
+        def lower(token):
+            if re.match(r"<#.*>", token.text):
+                return token.text
+            else:
+                text = token.text
+                text.translate(str.maketrans('', '', string.punctuation))
+                return text.lower()
+            
+        tokens = {lower(token) for token in doc if not token.is_punct}
         return tokens
         
     def token_similarity(self, tok1, tok2):
-        jacard = len(tok1 & tok2) / len(tok1 | tok2) if tok1 / tok2 else 0.0
+#        tok1 &= self.dictionary
+#        tok2 &= self.dictionary       
+        jacard = len(tok1 & tok2) / len(tok1 | tok2) if tok1 | tok2 else 0.0
         return jacard
 
     def save_hash(self, sql, explain):
         token = self.tokenize(explain)
+        new_set = {tok for tok in token}
+#        self.dictionary |= new_set
         self.query_hash[frozenset(token)] = sql
 
-    def find_similar(self, explain):
-        pattern, kilt = self.patternize(explain)
+    def find_similar(self, explain, simple = False):
+        patterned = self.patternize(explain)
+        if simple:
+            patterned = self.simple_patternize(explain)
+        
+        if not patterned:
+            return "SELECT * FROM <#TABLE>;"
+            
+        pattern, kilt = patterned
         
         max_jacard = 0.0
         max_sql = str()
@@ -595,3 +682,35 @@ class QueryParser:
 
         sql = self.reverse_patternize(max_sql, kilt)
         return sql
+
+    def find_similars(self, explain, size = 10, simple = False):
+        patterned = self.patternize(explain)
+        if simple:
+            patterned = self.simple_patternize(explain)
+
+        if not patterned:
+            return "SELECT * FROM <#TABLE>;"
+
+        pattern, kilt = patterned
+        heap = list()
+
+        tokens = self.query_hash.keys()
+        token = self.tokenize(pattern)
+
+        for other_token in tokens:
+            jacard = self.token_similarity(token, other_token)
+            heapq.heappush(heap, (jacard, other_token))
+
+        sqls = list()
+        for _ in range(size):
+            popped = heapq.heappop(heap)
+            if not popped:
+                break
+
+            token = popped[1]
+            sql = self.reverse_patternize(self.query_hash[token], kilt)
+            if not sql:
+                return None
+            sqls.append(sql)
+            
+        return sqls

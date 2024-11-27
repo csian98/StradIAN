@@ -87,7 +87,7 @@ class SystemDB:
 
     def get_raw_data(self, db, table,
                      limit = None, offset = None):
-        sql = f"SELECT * FROM {table}"
+        sql = f"SELECT * FROM `{table}`"
         
         if limit:
             sql += f" LIMIT {limit}"
