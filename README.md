@@ -126,7 +126,7 @@ It requires the <u>etc/c2c/stradian.key<u/> and <u>etc/c2c/stradian.crt<u/> cert
 
 An example of certificate generation using OpenSSL is shown below.
 ```sh
-	openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout stradian.key -out stradian.crt
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout stradian.key -out stradian.crt
 ```
 
 Additionally, all crawlers use Selenium, which requires ChromeDriver.
@@ -142,23 +142,23 @@ Every execute codes are located under _pylib/exec_ with _*.py_ extension.
 
 Running Server and Client for the ChatDB
 ```sh
-	python3 pylib/exec/chatdb_server_main.py &
-	python3 pylib/exec/chatdb_client_main.py
+python3 pylib/exec/chatdb_server_main.py &
+python3 pylib/exec/chatdb_client_main.py
 ```
 
 The data (symobls) stored in the database are limited to symbols with <u>trade=1<u/> in the <u>system.<market_type>_market<u/> table.
 After modifying this, you can run the crawler using the code below.
 ```sh
-	python3 pylib/exec/crypto_crawler_main.py
-	python3 pylib/exec/currency_crawler_main.py
-	python3 pylib/exec/indices_crawler_main.py
+python3 pylib/exec/crypto_crawler_main.py
+python3 pylib/exec/currency_crawler_main.py
+python3 pylib/exec/indices_crawler_main.py
 
 ```
 
 Currently, the natural language parsing task in ChatDB is based on the existing descriptions and the <u>etc/query/query_explain.json<u/> file.
 After adding or modifying the file's descriptions, you can use the code below to store them in the hash table.
 ```sh
-	python3 pylib/exec/random_hash.py
+python3 pylib/exec/random_hash.py
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
