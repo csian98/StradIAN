@@ -1,0 +1,11 @@
+{
+	"name": "market_type",
+	"attributes": {
+		"type": "VARCHAR(32) NOT NULL",
+		"trade": "BOOLEAN DEFAULT false"
+	},
+	"primary": ["type"],
+	"foreign": false,
+	"is_format": true,
+	"auth": false
+}

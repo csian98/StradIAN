@@ -1,0 +1,18 @@
+{
+	"name": "user",
+	"attributes": {
+		"uid": "INT UNSIGNED NOT NULL",
+		"auth": "BOOLEAN DEFAULT false",
+		"user": "VARCHAR(32) NOT NULL",
+		"passwd": "VARCHAR(64) NOT NULL",
+		"name": "VARCHAR(32) NOT NULL",
+		"share": "DOUBLE UNSIGNED DEFAULT 0.0",
+		"email": "VARCHAR(32)",
+		"phone": "VARCHAR(32)",
+		"slack": "VARCHAR(32)"
+	},
+	"primary": ["uid"],
+	"foreign": false,
+	"is_format": true,
+	"auth": true
+}

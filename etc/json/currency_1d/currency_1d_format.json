@@ -1,0 +1,15 @@
+{
+	"name": "currency_1d_format",
+	"attributes":{
+		"opentime": "TIMESTAMP NOT NULL",
+		"open": "DOUBLE UNSIGNED NOT NULL",
+		"high": "DOUBLE UNSIGNED NOT NULL",
+		"low": "DOUBLE UNSIGNED NOT NULL",
+		"close": "DOUBLE UNSIGNED NOT NULL",
+		"adj_close": "DOUBLE UNSIGNED NOT NULL"
+	},
+	"primary": ["opentime"],
+	"foreign": {},
+	"is_format": false,
+	"auth": false
+}

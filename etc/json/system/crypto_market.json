@@ -1,0 +1,11 @@
+{
+	"name": "crypto_market",
+	"attributes": {
+		"symbol": "VARCHAR(16) NOT NULL",
+		"trade": "BOOLEAN DEFAULT false"
+	},
+	"primary": ["symbol"],
+	"foreign": false,
+	"is_format": true,
+	"auth": true
+}

@@ -1,0 +1,11 @@
+{
+	"name": "market",
+	"attributes": {
+		"type": "VARCHAR(32) NOT NULL",
+		"period": "VARCHAR(4) NOT NULL"
+	},
+	"primary": ["type", "period"],
+	"foreign": {"type": "market_type(type)"},
+	"is_format": true,
+	"auth": false
+}

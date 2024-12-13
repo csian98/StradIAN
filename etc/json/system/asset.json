@@ -1,0 +1,12 @@
+{
+	"name": "asset",
+	"attributes": {
+		"type": "VARCHAR(32) NOT NULL",
+		"symbol": "VARCHAR(32) NOT NULL",
+		"qty": "DOUBLE UNSIGNED NOT NULL"
+	},
+	"primary": ["type", "symbol"],
+	"foreign": {"type": "market_type(type)"},
+	"is_format": true,
+	"auth": true
+}

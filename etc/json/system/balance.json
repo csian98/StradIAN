@@ -1,0 +1,11 @@
+{
+	"name": "balance",
+	"attributes": {
+		"date": "DATATIME NOT NULL",
+		"usd": "DOUBLE UNSIGNED NOT NULL"
+	},
+	"primary": ["date"],
+	"foreign": false,
+	"is_format": true,
+	"auth": true
+}
