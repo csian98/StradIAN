@@ -1,0 +1,7 @@
+-std=c++2b
+-xc++
+-I/usr/include
+-I/usr/local/include
+-I/opt/homebrew/include
+-I/Users/csian/projects/stradian/include
+-I/Users/csian/projects/cuda/include
